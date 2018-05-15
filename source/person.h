@@ -10,7 +10,7 @@ protected:
   std::string lastName;
 
 public:
-  // Person(); // Do not accept a person without name
+  Person() = delete; // Do not accept a person without name
   Person(const std::string &first, const std::string &last);
   ~Person();
   std::string& getFirstName() const;
