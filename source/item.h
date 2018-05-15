@@ -20,7 +20,9 @@ protected:
   static int totalItems; 
 
 public:
-
+  Item();
+  Item(const int& id, const std::string& type);
+  ~Item();
   std::string getItemType() const;
   std::string getItem() const;
   double getFullPrice() const;
