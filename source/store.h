@@ -3,17 +3,17 @@
 #include <string>
 class Store
 {
-  private:
+private:
   std::string storeName;
   int storeID;
 
-  public:
+public:
   Store();
-  explicit Store(const std::string& name);
+  explicit Store(const std::string &name);
   ~Store();
 
-  std::string& getStoreName() const;
-  int& getStoreID() const;
+  std::string &getStoreName() const;
+  int &getStoreID() const;
 }
 
 #endif

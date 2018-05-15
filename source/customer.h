@@ -2,7 +2,7 @@
 #define _CUSTOMER_H
 
 #include <string>
-
+#include "source/person.h"
 class Customer : public Person
 {
 private:
@@ -11,8 +11,8 @@ private:
 
 public:
   Customer();
-  Customer(const int& id);
-  Customer(const std::string& first, const std::string& last, const int& id);
+  Customer(const int &id);
+  Customer(const std::string &first, const std::string &last, const int &id);
   ~Customer();
   int &getCustomerID() const;
   int &getTotalCustomers() const;

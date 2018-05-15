@@ -12,21 +12,20 @@ private:
 protected:
   // unique item identification number
   int itemID{0};
-  
+
   // type of item
   std::string itemType{""};
-  
+
   // initialize in source
-  static int totalItems; 
+  static int totalItems;
 
 public:
   Item();
-  Item(const int& id, const std::string& type);
+  Item(const int &id, const std::string &type);
   ~Item();
   std::string getItemType() const;
   std::string getItem() const;
   double getFullPrice() const;
-
 };
 
 #endif ITEM_H
