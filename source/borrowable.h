@@ -15,8 +15,8 @@ class Borrowable
 
   ~Borrowable();
 
-  bool borrow(const int& quantity);
-  bool return(const int& quantity);
+  bool borrowItem(const int& quantity);
+  bool returnItem(const int& quantity);
 
   int& getCurrentStock() const;
   int& getTotalStock() const;
