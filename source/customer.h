@@ -12,6 +12,7 @@ private:
 public:
   Customer();
   Customer(const int& id);
+  Customer(const std::string& first, const std::string& last, const int& id);
   ~Customer();
   int &getCustomerID() const;
   int &getTotalCustomers() const;
