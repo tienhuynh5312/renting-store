@@ -11,7 +11,7 @@ private:
 
 public:
   Borrowable();
-  Borrowable(const int &total = 0, const double &price = 0.0);
+  Borrowable(const int &total = 0, const double &price = 0.0, const bool& borrow = true);
 
   ~Borrowable();
 
