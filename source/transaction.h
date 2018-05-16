@@ -8,7 +8,7 @@ private:
   std::string transactionDetail;
 
 public:
-  Transaction();
+  Transaction() = delete; // Do not accept empty transaction.
   Transaction(const std::string &detail);
   ~Transaction();
   std::string &getTransactionDetail() const;
