@@ -2,7 +2,7 @@
 #define _CUSTOMER_H
 
 #include <string>
-#include "source/person.h"
+#include "person.h"
 class Customer : public Person
 {
 private:
