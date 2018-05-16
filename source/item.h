@@ -3,7 +3,7 @@
 #define ITEM_H
 
 #include <string>
-
+#include "borrowable.h"
 class Item : public Borrowable
 {
 private:
