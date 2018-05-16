@@ -4,7 +4,7 @@
 
 #include <string>
 
-class Item
+class Item : public Borrowable
 {
 private:
   double fullPrice{0.0};
