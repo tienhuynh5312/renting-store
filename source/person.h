@@ -13,8 +13,8 @@ public:
   Person() = delete; // Do not accept a person without name
   Person(const std::string &first, const std::string &last);
   ~Person();
-  std::string& getFirstName() const;
-  std::string& getLastName() const;
+  std::string &getFirstName() const;
+  std::string &getLastName() const;
   void setFirstName(const std::string &last);
   void setLastName(const std::string last);
 }

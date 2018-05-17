@@ -1,16 +1,17 @@
 #ifndef _TRANSACTION_H
 #define _TRANSACTION_H
 
+#include <string>
 class Transaction
 {
-  private:
+private:
   std::string transactionDetail;
 
-  public:
-  Transaction();
-  Transaction(const std::string& detail);
+public:
+  Transaction() = delete; // Do not accept empty transaction.
+  Transaction(const std::string &detail);
   ~Transaction();
-  std::string& getTransactionDetail() const;
+  std::string &getTransactionDetail() const;
 }
 
 #endif
