@@ -56,7 +56,7 @@ public:
    * 
    * @return const int& number of item that we have left in inventory
    */
-  virtual const int &getCurrentStock() const;
+  virtual int getCurrentStock() const;
 
   /**
    * @brief Initial total stock that we have at the beginning.

@@ -50,7 +50,7 @@ int Borrowable::getCurrentStock() const
     return totalSupply - itemBorrowed;
 }
 
-int Borrowable::getTotalStock() const
+const int& Borrowable::getTotalStock() const
 {
     return totalSupply;
 }
@@ -60,7 +60,7 @@ bool Borrowable::isBorrowable() const
     return borrowable;
 }
 
-const double &::getBorrowingPrice() const
+const double &Borrowable::getBorrowingPrice() const
 {
     return borrowingPrice;
 }
