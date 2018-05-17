@@ -14,6 +14,6 @@ public:
 
   std::string &getStoreName() const;
   int &getStoreID() const;
-}
+};
 
 #endif

@@ -10,21 +10,28 @@ private:
   double borrowingPrice;
 
 public:
-  Borrowable() = default;
-  Borrowable(const int &total, const double &price = 0.0, const bool &borrow = true);
+  // borrowable item needs details
+  Borrowable() 
+  {
 
-  ~Borrowable();
+  }
 
-  bool borrowItem(const int &quantity);
-  bool returnItem(const int &quantity);
+  Borrowable(const int &total = 0, const double &price = 0.0, const bool& borrow = true)
+  {
+    // init
+  }
 
-  int getCurrentStock() const;
-  int getTotalStock() const;
-  bool isBorrowable() const;
+  virtual ~Borrowable()
+  {
+    
+  }
 
-  double getBorrowingPrice() const;
-
-  bool setTotalSupply(const int &total);
-}
+  virtual bool borrowItem(const int &quantity) = 0;
+  virtual bool isBorrowable() const = 0;
+  virtual bool returnItem(const int &quantity) = 0;
+  virtual const double &getBorrowingPrice() const = 0;
+  virtual const int &getCurrentStock() const = 0; // are these the same?
+  virtual const int &getTotalStock() const = 0; // ask tien
+};
 
 #endif

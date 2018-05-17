@@ -12,12 +12,12 @@ enum class ItemType
 class Item : public Borrowable
 {
 private:
+  // price of item
   double fullPrice;
 
 protected:
   // unique item identification number
   int itemID;
-
   // type of item
   std::string itemType;
 
