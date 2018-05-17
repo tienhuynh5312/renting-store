@@ -2,6 +2,7 @@
 
 Borrowable::Borrowable()
 {
+    
     itemBorrowed = 0;
     totalSupply = 10;
     borrowable = true;
