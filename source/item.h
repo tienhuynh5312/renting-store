@@ -3,29 +3,29 @@
 #define ITEM_H
 
 #include <string>
-#include "borrowable.h"
-class Item : public Borrowable
+
+class Item
 {
 private:
-  double fullPrice{0.0};
+  double fullPrice;
 
 protected:
   // unique item identification number
-  int itemID{0};
+  int itemID;
 
   // type of item
-  std::string itemType{""};
+  std::string itemType;
 
   // initialize in source
   static int totalItems;
 
 public:
-  Item();
+  Item(void) = delete; // item needs id and type
   Item(const int &id, const std::string &type);
-  ~Item();
-  std::string getItemType() const;
-  std::string getItem() const;
-  double getFullPrice() const;
+  ~Item(void);
+  double getFullPrice(void) const;
+  int getItemID(void) const;
+  std::string getItemType(void) const;
 };
 
-#endif ITEM_H
+#endif
