@@ -4,25 +4,27 @@
 class Borrowable
 {
 private:
-  int itemNumber;
+  int itemBorrowed;
   int totalSupply;
   bool borrowable;
   double borrowingPrice;
 
 public:
-  Borrowable();
-  Borrowable(const int &total = 0, const double &price = 0.0, const bool& borrow = true);
+  Borrowable() = default;
+  Borrowable(const int &total, const double &price = 0.0, const bool &borrow = true);
 
   ~Borrowable();
 
   bool borrowItem(const int &quantity);
   bool returnItem(const int &quantity);
 
-  int &getCurrentStock() const;
-  int &getTotalStock() const;
+  int getCurrentStock() const;
+  int getTotalStock() const;
   bool isBorrowable() const;
 
-  double &getBorrowingPrice() const;
+  double getBorrowingPrice() const;
+
+  bool setTotalSupply(const int &total);
 }
 
 #endif

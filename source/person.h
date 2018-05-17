@@ -5,17 +5,19 @@
 
 class Person
 {
+private:
 protected:
   std::string firstName;
   std::string lastName;
 
 public:
-  Person() = delete; // Do not accept a person without name
+  // person needs name
+  Person(void) = delete;
   Person(const std::string &first, const std::string &last);
-  ~Person();
-  std::string &getFirstName() const;
-  std::string &getLastName() const;
-  void setFirstName(const std::string &last);
-  void setLastName(const std::string last);
-}
+  ~Person(void);
+  const std::string &getFirstName(void) const;
+  const std::string &getLastName(void) const;
+  void setFirstName(const std::string &first);
+  void setLastName(const std::string &last);
+};
 #endif

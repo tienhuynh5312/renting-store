@@ -19,11 +19,7 @@ public:
     
     Drama(const std::string &title, int stock, const std::string &director);
     Drama(const std::string &title, int stock, const std::string &director, int year);
-    
-    
-    virtual std::string getGenre() const override;
-    virtual std::string toString() const override;
-    virtual void displayMovieInfo() const override;
+
     
     bool operator<(const Drama &) const;
     bool operator>(const Drama &) const;
@@ -35,9 +31,7 @@ public:
     friend std::istream& operator>>(std::istream& is, Drama& obj);
     
 private:
-    const std::string Genre;
     const std::string movieType;
-    
 };
 
 #endif /* drama_h */
