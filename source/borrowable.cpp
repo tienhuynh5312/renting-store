@@ -4,7 +4,7 @@ Borrowable::Borrowable()
 {
     itemBorrowed = 0;
     totalSupply = 10;
-    borrowable = false;
+    borrowable = true;
     borrowingPrice = 0.0;
 }
 
