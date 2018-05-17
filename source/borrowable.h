@@ -4,19 +4,19 @@
 class Borrowable
 {
 private:
-  int itemNumber;
+  int itemBorrowed;
   int totalSupply;
   bool borrowable;
   double borrowingPrice;
 
 public:
   // borrowable item needs details
-  virtual Borrowable() 
+  Borrowable() 
   {
 
   }
 
-  virtual Borrowable(const int &total = 0, const double &price = 0.0, const bool& borrow = true)
+  Borrowable(const int &total = 0, const double &price = 0.0, const bool& borrow = true)
   {
     // init
   }

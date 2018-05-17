@@ -11,30 +11,28 @@
 
 #include <stdio.h>
 #include <string>
-#include <iostream>
-#include <fstream>
-#include <queue>
+// #include <iostream>
+// #include <fstream>
+// #include <queue>
 #include "date.h"
+#include "item.h"
 
-class Video {
+class Video : public Item {
 private:
     
-    std::string title {""};
-    std::string director {""};
-    Date date{0,0,0};
-    int stock {0};
+    std::string title;
+    std::string director;
+    Date date;
     
 
 public:
-    Video();
-    ~Video();
+    Video(); // Video need at least title
+    virtual ~Video();
     
     Video(const std::string &title);
-    Video(const std::string &title, const std::string &directr);
+    Video(const std::string &title, const std::string &director);
     Video(const std::string &title, int stock, const std::string &director);
-    Video(const std::string &title, int stock, const std::string &director, int year);
-    Video(const std::string &title, int stock, const std::string &director, int year, int month);
-    Video(const std::string &title, int stock, const std::string &director, int year, int month, int day);
+    Video(const std::string &title, int stock, const std::string &director, const Date& date);
     
     
     virtual std::string getGenre() const = 0;
@@ -44,17 +42,11 @@ public:
     
     std::string getTitle() const;
     std::string getDirector() const;
-    int getReleaseYear() const;
-    int getReleaseMonth() const;
-    int getReleaseDay() const;
-    int getStock() const;
+    const Date& getDate() const;
     
     void setTitle(const std::string &title);
     void setDirector(const std::string &director);
-    void setYear(const int &year);
-    void setMonth(const int &month);
-    void setDay(const int &day);
-    void setStock(const int &stock);
+    void setDate(const Date& date);
     
     
 };

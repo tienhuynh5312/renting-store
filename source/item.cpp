@@ -9,11 +9,18 @@
 // protected
 int Item::totalItems = 0;
 
+Item::Item(const std::string &type) : Borrowable()
+{
+    itemID = totalItems++;
+    itemType = type;
+}
+
 // public
-Item::Item(const int &id, const std::string &type)
-    : itemID(id), itemType(type), fullPrice(0.0)
+Item::Item(const std::string &type, const int& total, const double& price = 0.0)
+    : itemID(totalItems), itemType(type), fullPrice(price)
 {
   ++totalItems;
+  setTotalSupply(total);
 }
 
 Item::~Item()
@@ -23,20 +30,20 @@ Item::~Item()
 
 double Item::getFullPrice() const
 {
-  return this->fullPrice;
+  return fullPrice;
 }
 
 int Item::getItemID() const
 {
-  return this->itemID;
+  return itemID;
 }
 
-const std::string &Item::getItemType() const
+std::string Item::getItemType() const
 {
-  return this->itemType;
+  return itemType;
 }
 
-const int &Item::getTotalItems() const
+int Item::getTotalItems() const
 {
   return totalItems;
 }

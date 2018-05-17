@@ -1,31 +1,39 @@
-
 #ifndef ITEM_H
 #define ITEM_H
 
 #include <string>
+#include "borrowable.h"
 
-class Item
+enum class ItemType
+{
+  MOVIE
+};
+
+class Item : public Borrowable
 {
 private:
-  // price of item
   double fullPrice;
+
+protected:
   // unique item identification number
   int itemID;
-protected:
   // type of item
   std::string itemType;
-  // count of all items
+
+  // initialize in source
   static int totalItems;
 
 public:
-  // item needs id and type
-  Item(void) = delete;
-  Item(const int &id, const std::string &type);
-  ~Item(void);
-  double getFullPrice(void) const;
-  int getItemID(void) const;
-  const std::string &getItemType(void) const;
-  const int &getTotalItems(void) const;
+  Item() = delete; // Dont allow create new Item without specifying item type
+  explicit Item(const std::string &type);
+  Item(const std::string &type, const int& total, const double& price = 0.0);
+
+  ~Item();
+  std::string getItemType() const;
+  double getFullPrice() const;
+  int getItemID() const;
+  int getTotalItems() const;
+  static Item *Create(ItemType type);
 };
 
 #endif

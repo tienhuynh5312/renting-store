@@ -20,11 +20,7 @@ public:
     Comedy(const std::string &title, int stock, const std::string &director);
     Comedy(const std::string &title, int stock, const std::string &director, int year);
     
-    
-    virtual std::string getGenre() const override;
-    virtual std::string toString() const override;
-    
-    virtual void displayMovieInfo() const override ;
+
     
     bool operator<(const Comedy & rhs) const;
     bool operator>(const Comedy & rhs) const;
@@ -36,7 +32,6 @@ public:
     friend std::istream& operator>>(std::istream& is, Comedy& obj);
     
 private:
-    const std::string Genre;
     const std::string movieType;
 };
 
