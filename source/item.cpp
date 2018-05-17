@@ -31,12 +31,12 @@ int Item::getItemID() const
   return this->itemID;
 }
 
-const std::string &Item::getItemType() const
+std::string Item::getItemType() const
 {
   return this->itemType;
 }
 
-const int &Item::getTotalItems() const
+int Item::getTotalItems() const
 {
   return totalItems;
 }
