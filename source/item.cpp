@@ -29,7 +29,7 @@ int Item::getItemID() const
   return this->itemID;
 }
 
-std::string Item::getItemType() const
+const std::string &Item::getItemType() const
 {
   return this->itemType;
 }

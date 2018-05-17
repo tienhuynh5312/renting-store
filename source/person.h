@@ -10,11 +10,12 @@ protected:
   std::string lastName;
 
 public:
-  Person() = delete; // Do not accept a person without name
+  // Do not accept a person without name
+  Person(void) = delete; 
   Person(const std::string &first, const std::string &last);
-  ~Person();
-  const std::string &getFirstName() const;
-  const std::string &getLastName() const;
+  ~Person(void);
+  const std::string &getFirstName(void) const;
+  const std::string &getLastName(void) const;
   void setFirstName(const std::string &first);
   void setLastName(const std::string &last);
 }

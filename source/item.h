@@ -26,7 +26,7 @@ public:
   ~Item(void);
   double getFullPrice(void) const;
   int getItemID(void) const;
-  std::string getItemType(void) const;
+  const std::string& getItemType(void) const;
 };
 
 #endif
