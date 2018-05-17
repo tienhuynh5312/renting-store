@@ -20,13 +20,8 @@ private:
     Classics(const std::string &title, int stock, const std::string &director);
     Classics(const std::string &title, int stock, const std::string &director, std::string &majorActor,
              int year);
-    
-    virtual std::string getGenre() const override;
-    
-    virtual std::string toString() const override;
-    virtual void displayMovieInfo() const override;
-    
 
+    
     bool operator<(const Classics & rhs) const;
     bool operator>(const Classics & rhs) const;
     bool operator==(const Classics & rhs) const;
@@ -37,7 +32,6 @@ private:
     friend std::istream& operator>>(std::istream& is, Classics& obj);
     
 public:
-    const std::string Genre;
     const std::string movieType;
     const std::string majorActor;
 };

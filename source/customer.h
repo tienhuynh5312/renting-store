@@ -21,7 +21,7 @@ public:
   // this helps us not having duplicated ID.
   // Customer(const int &id); // ask tien
   Customer(const std::string &first, const std::string &last, const int &id);
-  ~Customer();
+  virtual ~Customer();
   const int &getCustomerID() const;
   const int &getTotalCustomers() const;
 };
