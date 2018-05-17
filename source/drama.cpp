@@ -9,4 +9,41 @@
 #include "drama.h"
 #include "video.h"
 
+Drama::Drama(){
+    
+};
+virtual Drama::~Drama(){
+    
+};
+
+Drama::Drama(const std::string &title, int stock, const std::string &director){
+    
+};
+Drama::Drama(const std::string &title, int stock, const std::string &director, int year){
+    
+};
+
+bool Drama::operator<(const Drama &) const{
+    
+};
+bool Drama::operator>(const Drama &) const{
+    
+};
+bool Drama::operator==(const Drama &) const{
+    
+};
+bool Drama::operator!=(const Drama &) const{
+    
+};
+bool Drama::operator<=(const Drama &) const{
+    
+};
+bool Drama::operator>=(const Drama &) const{
+    
+};
+
+friend Drama::std::istream& operator>>(std::istream& is, Drama& obj){
+    
+};
+
 
