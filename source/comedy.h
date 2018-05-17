@@ -22,15 +22,10 @@ public:
     
 
     
+    
     bool operator<(const Comedy & rhs) const;
-    
-    
     bool operator>(const Comedy & rhs) const;
-    
-    
     bool operator==(const Comedy & rhs) const;
-    
-    
     bool operator!=(const Comedy & rhs) const;
     bool operator<=(const Comedy & rhs) const;
     bool operator>=(const Comedy & rhs) const;
