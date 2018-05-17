@@ -3,18 +3,27 @@
 
 #include <string>
 
+#include "person.h"
+
 class Customer : public Person
 {
 private:
+protected:
+  // unique customer id
   int customerID;
+  // count of all customers
   static int totalCustomers;
 
 public:
-  Customer();
-  Customer(const int& id);
-  Customer(const std::string& first, const std::string& last, const int& id);
-  ~Customer();
-  int &getCustomerID() const;
-  int &getTotalCustomers() const;
-}
+  // customers need id
+  Customer() = delete;
+  // ID will be handle automatically on this class
+  // this helps us not having duplicated ID.
+  // Customer(const int &id); // ask tien
+  Customer(const std::string &first, const std::string &last, const int &id);
+  virtual ~Customer();
+  const int &getCustomerID() const;
+  const int &getTotalCustomers() const;
+};
+
 #endif
