@@ -14,5 +14,8 @@
 // test main to make sure it compiles
 int main()
 {
+  Customer me{"Tien","Huynh",1111};
+  Transaction a{"Nhung ma"};
+  Item book{"book"};
   return 0;
 }
