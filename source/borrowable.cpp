@@ -59,7 +59,7 @@ bool Borrowable::isBorrowable() const
     return borrowable;
 }
 
-const double &Borrowable::getBorrowingPrice() const
+const double &::getBorrowingPrice() const
 {
     return borrowingPrice;
 }
