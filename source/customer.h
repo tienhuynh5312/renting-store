@@ -17,9 +17,7 @@ protected:
 public:
   // customers need id
   Customer() = delete;
-  // ID will be handle automatically on this class
-  // this helps us not having duplicated ID.
-  // Customer(const int &id); // ask tien
+  Customer(const int &id) = delete; // ask tien, we also need names to instantiate Person base class.
   Customer(const std::string &first, const std::string &last, const int &id);
   virtual ~Customer();
   const int &getCustomerID() const;
