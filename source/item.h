@@ -36,3 +36,5 @@ public:
   int getTotalItems() const;
   static Item *Create(ItemType type);
 };
+
+#endif
