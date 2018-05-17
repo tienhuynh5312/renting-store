@@ -7,16 +7,14 @@
 class Item
 {
 private:
-  double fullPrice;
-
 protected:
+  // price of item
+  double fullPrice;
   // unique item identification number
   int itemID;
-
   // type of item
   std::string itemType;
-
-  // initialize in source
+  // count of all items
   static int totalItems;
 
 public:
@@ -26,7 +24,8 @@ public:
   ~Item(void);
   double getFullPrice(void) const;
   int getItemID(void) const;
-  const std::string& getItemType(void) const;
+  const std::string &getItemType(void) const;
+  const int &getTotalItems(void) const;
 };
 
 #endif

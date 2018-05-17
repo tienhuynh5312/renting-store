@@ -35,3 +35,8 @@ const std::string &Item::getItemType() const
 {
   return this->itemType;
 }
+
+const int &Item::getTotalItems() const
+{
+  return totalItems;
+}

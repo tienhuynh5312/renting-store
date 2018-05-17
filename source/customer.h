@@ -2,19 +2,26 @@
 #define _CUSTOMER_H
 
 #include <string>
+
 #include "person.h"
+
 class Customer : public Person
 {
 private:
+protected:
+  // unique customer id
   int customerID;
+  // count of all customers
   static int totalCustomers;
 
 public:
-  Customer();
-  Customer(const int &id);
+  // customers need id
+  Customer() = delete;
+  // Customer(const int &id); // ask tien
   Customer(const std::string &first, const std::string &last, const int &id);
   ~Customer();
-  int &getCustomerID() const;
-  int &getTotalCustomers() const;
-}
+  const int &getCustomerID() const;
+  const int &getTotalCustomers() const;
+};
+
 #endif
