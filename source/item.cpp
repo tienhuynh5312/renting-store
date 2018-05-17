@@ -13,10 +13,12 @@ int Item::totalItems = 0;
 Item::Item(const int &id, const std::string &type)
     : itemID(id), itemType(type), fullPrice(0.0)
 {
+  ++totalItems;
 }
 
 Item::~Item()
 {
+  --totalItems;
 }
 
 double Item::getFullPrice() const
