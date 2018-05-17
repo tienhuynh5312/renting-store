@@ -12,6 +12,7 @@ enum class ItemType
 class Item : public Borrowable
 {
 private:
+  // price of item
   double fullPrice;
 
 protected:
