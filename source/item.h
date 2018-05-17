@@ -20,7 +20,8 @@ protected:
   static int totalItems;
 
 public:
-  Item(void) = delete; // item needs id and type
+  // item needs id and type
+  Item(void) = delete;
   Item(const int &id, const std::string &type);
   ~Item(void);
   double getFullPrice(void) const;
