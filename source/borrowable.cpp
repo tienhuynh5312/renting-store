@@ -1,10 +1,11 @@
 #include "borrowable.h"
 
-Borrowable::Borrowable() 
+Borrowable::Borrowable()
 {
+    
     itemBorrowed = 0;
     totalSupply = 10;
-    borrowable = false;
+    borrowable = true;
     borrowingPrice = 0.0;
 }
 
@@ -21,7 +22,7 @@ Borrowable::~Borrowable()
 {
 }
 
-bool Borrowable::borrowItem(const int &quantity)
+bool Borrowable::borrowItem(const int &quantity = 1)
 {
     if (borrowable == false)
         return false;
@@ -34,7 +35,7 @@ bool Borrowable::borrowItem(const int &quantity)
         return true;
     }
 }
-bool Borrowable::returnItem(const int &quantity)
+bool Borrowable::returnItem(const int &quantity = 1)
 {
     if (quantity < 0)
         return false;
@@ -49,7 +50,7 @@ int Borrowable::getCurrentStock() const
     return totalSupply - itemBorrowed;
 }
 
-int Borrowable::getTotalStock() const
+const int& Borrowable::getTotalStock() const
 {
     return totalSupply;
 }
@@ -59,12 +60,12 @@ bool Borrowable::isBorrowable() const
     return borrowable;
 }
 
-double Borrowable::getBorrowingPrice() const
+const double &Borrowable::getBorrowingPrice() const
 {
     return borrowingPrice;
 }
 
-bool Borrowable::setTotalSupply(const int& total)
+bool Borrowable::setTotalSupply(const int &total)
 {
     totalSupply = total;
 }

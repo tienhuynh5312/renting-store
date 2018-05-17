@@ -11,13 +11,43 @@ protected:
   std::string lastName;
 
 public:
-  // person needs name
   Person(void) = delete;
+
+  /**
+   * @brief Create a new persone with name
+   * 
+   * @param first First name.
+   * @param last Last name.
+   */
   Person(const std::string &first, const std::string &last);
   ~Person(void);
+
+  /**
+   * @brief Get the First Name 
+   * 
+   * @return const std::string& First name.
+   */
   const std::string &getFirstName(void) const;
+
+  /**
+   * @brief Get the Last Name
+   * 
+   * @return const std::string& Last name.
+   */
   const std::string &getLastName(void) const;
+
+  /**
+   * @brief Set the First Name
+   * 
+   * @param first First name.
+   */
   void setFirstName(const std::string &first);
+
+  /**
+   * @brief Set the Last Name
+   * 
+   * @param last Last name.
+   */
   void setLastName(const std::string &last);
 };
 #endif
