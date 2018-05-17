@@ -7,11 +7,11 @@
 class Item
 {
 private:
-protected:
   // price of item
   double fullPrice;
   // unique item identification number
   int itemID;
+protected:
   // type of item
   std::string itemType;
   // count of all items

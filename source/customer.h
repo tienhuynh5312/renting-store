@@ -8,9 +8,9 @@
 class Customer : public Person
 {
 private:
-protected:
   // unique customer id
   int customerID;
+protected:
   // count of all customers
   static int totalCustomers;
 
