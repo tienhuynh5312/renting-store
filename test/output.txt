@@ -1,5 +1,7 @@
 #!/bin/bash
 SOURCE="../source"
+
+# Base class design
 g++ -c -o person.o "${SOURCE}/person.cpp"
 g++ -c -o customer.o "${SOURCE}/customer.cpp"
 g++ -c -o borrowable.o "${SOURCE}/borrowable.cpp"
@@ -11,9 +13,14 @@ g++ -c -o comedy.o "${SOURCE}/comedy.cpp"
 g++ -c -o classics.o "${SOURCE}/classics.cpp"
 g++ -c -o drama.o "${SOURCE}/drama.cpp"
 
-#g++ -c -o store.o ${SOURCE}/store.cpp
+# Uncomment this when need Store class
+# g++ -c -o store.o ${SOURCE}/store.cpp
 
+# Test drive
 g++ -std=c++14 -g -Wall -Wextra test.cpp person.o customer.o borrowable.o item.o video.o date.o transaction.o comedy.o classics.o drama.o
 
-#delete all compiled objects.
+# Generate program for use
+# g++ -std=c++14 -g -Wall -Wextra -o TIS.out main.cpp person.o customer.o borrowable.o item.o video.o date.o transaction.o comedy.o classics.o drama.o
+
+# delete all compiled objects.
 rm -rf *.o
