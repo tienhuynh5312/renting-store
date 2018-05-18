@@ -11,15 +11,20 @@ int Item::totalItems = 0;
 
 Item::Item(const std::string &type) : Borrowable()
 {
-    itemID = totalItems++;
-    itemType = type;
+  ++totalItems;
+  itemType = getItemType(type);
+}
+
+Item::Item(const std::string &type, const int &id) : Item(type)
+{
+  itemID = id;
 }
 
 // public
-Item::Item(const std::string &type, const int& total, const double& price)
-    : itemID(totalItems), itemType(type), fullPrice(price)
+Item::Item(const std::string &type, const int &id, const int &total, const double &price)
+    : Item(type, id)
 {
-  ++totalItems;
+  fullPrice = price;
   setTotalSupply(total);
 }
 
@@ -40,10 +45,22 @@ int Item::getItemID() const
 
 std::string Item::getItemType() const
 {
-  return itemType;
+  if (itemType == ItemType::VIDEO)
+    return "Video";
 }
 
 int Item::getTotalItems() const
 {
   return totalItems;
+}
+
+ItemType Item::getItemType(const std::string &itemType)
+{
+  if (itemType == "Video")
+    return ItemType::VIDEO;
+}
+
+int Item::Hashable::getHash() const
+{
+  return 0;
 }
