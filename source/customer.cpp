@@ -5,7 +5,7 @@
 #include "customer.h"
 
 Customer::Customer(const std::string &first, const std::string &last,
-  const int &id)
+                   const int &id)
     : Person(first, last), customerID(id)
 {
   ++totalCustomers;
@@ -25,3 +25,5 @@ const int &Customer::getTotalCustomers() const
 {
   return totalCustomers;
 }
+
+int Customer::totalCustomers = 0;

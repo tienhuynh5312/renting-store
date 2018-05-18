@@ -42,7 +42,7 @@ public:
    */
   Item(const std::string &type, const int& total, const double& price = 0.0);
 
-  ~Item();
+  virtual ~Item();
 
   /**
    * @brief Get the Item Type
