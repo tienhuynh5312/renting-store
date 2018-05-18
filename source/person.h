@@ -1,3 +1,10 @@
+/**
+ * @brief Person header file
+ * 
+ * @file person.h
+ * @author Tien Huynh
+ * @date 2018-05-17
+ */
 #ifndef _Person_H
 #define _Person_H
 
