@@ -26,6 +26,7 @@ protected:
 
 public:
   Item() = delete; // Dont allow create new Item without specifying item type
+
   /**
    * @brief Construct a new Item
    * 

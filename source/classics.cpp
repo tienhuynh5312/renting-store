@@ -9,49 +9,45 @@
 #include "classics.h"
 #include "video.h"
 
-Classics::Classics() : Video(){
-    
-};
-virtual Classics::~Classics(){
-    
+
+Classics::~Classics(){};
+
+Classics::Classics(const std::string &title, int stock, const std::string &director)
+    : Video(title, stock, director){};
+
+Classics::Classics(const std::string &title, int stock, const std::string &director, std::string &major, int year) : Video(title, stock, director, Date(year))
+{
+    this->majorActor = major;
 };
 
-Classcis::Classics(const std::string &title, int stock, const std::string &director)
-: Video(title,stock,director) {
-    
-};
+bool Classics::operator<(const Classics &rhs) const {
 
-Classiscs::Classics(const std::string &title, int stock, const std::string &director, std::string &majorActor,int year) : Video(title,stock,director,majorActor,year){
-    
 };
+bool Classics::operator>(const Classics &rhs) const
+{
 
+    return *this > rhs;
+};
+bool Classics::operator==(const Classics &rhs) const {
 
-bool Classics::operator<(const Classics & rhs) const{
-    
 };
-bool Classics::operator>(const Classics & rhs) const{
-    
-    return *this>rhs;
-};
-bool Classics::operator==(const Classics & rhs) const{
-    
-};
-bool Classics::operator!=(const Classics & rhs) const{
-    
+bool Classics::operator!=(const Classics &rhs) const
+{
+
     return !(*this == rhs);
 };
 
-bool Classics::operator<=(const Classics & rhs) const{
-    
+bool Classics::operator<=(const Classics &rhs) const
+{
+
     return (*this < rhs || *this == rhs);
 };
-bool Classics::operator>=(const Classics & rhs) const{
-    
+bool Classics::operator>=(const Classics &rhs) const
+{
+
     return (rhs <= *this);
 };
 
-friend Classics::std::istream& operator>>(std::istream& is, Classics& obj){
-    
+std::ostream &operator>>(std::ostream &os, Classics &obj){
+
 };
-
-

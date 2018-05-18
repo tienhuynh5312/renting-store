@@ -14,7 +14,7 @@
 
 class Drama : public Video{
 public:
-    Drama();
+    Drama() = delete;
     virtual ~Drama();
     
     Drama(const std::string &title, int stock, const std::string &director);

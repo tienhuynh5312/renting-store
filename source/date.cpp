@@ -22,7 +22,7 @@ Date::~Date()
 {
 }
 
-Date::Date(const int &y, const int &m = 1, const int &d = 1)
+Date::Date(const int &y, const int &m, const int &d)
     : year(y), month(m), day(d)
 {
 }

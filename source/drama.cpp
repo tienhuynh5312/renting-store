@@ -9,17 +9,14 @@
 #include "drama.h"
 #include "video.h"
 
-Drama::Drama(){
-    
-};
-virtual Drama::~Drama(){
+Drama::~Drama(){
     
 };
 
-Drama::Drama(const std::string &title, int stock, const std::string &director){
+Drama::Drama(const std::string &title, int stock, const std::string &director) : Video(title, stock, director) {
     
 };
-Drama::Drama(const std::string &title, int stock, const std::string &director, int year){
+Drama::Drama(const std::string &title, int stock, const std::string &director, int year) : Video(title,stock, director, Date(year)) {
     
 };
 
@@ -42,7 +39,7 @@ bool Drama::operator>=(const Drama &) const{
     
 };
 
-friend Drama::std::istream& operator>>(std::istream& is, Drama& obj){
+std::ostream& operator>>(std::ostream& os, Drama& obj){
     
 };
 

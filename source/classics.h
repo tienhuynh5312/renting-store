@@ -11,10 +11,11 @@
 
 #include <stdio.h>
 #include "video.h"
+#include <ostream>
 
 class Classics : public Video{
-private:
-    Classics();
+public:
+    Classics() = delete;
     virtual ~Classics();
     
     Classics(const std::string &title, int stock, const std::string &director);
@@ -29,10 +30,10 @@ private:
     bool operator<=(const Classics & rhs) const;
     bool operator>=(const Classics & rhs) const;
     
-    friend std::istream& operator>>(std::istream& is, Classics& obj);
+    friend std::ostream& operator>>(std::ostream& os, Classics& obj);
     
-public:
-    const std::string movieType;
-    const std::string majorActor;
+private:
+    std::string movieType;
+    std::string majorActor;
 };
 #endif /* classics_h */
