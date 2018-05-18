@@ -3,7 +3,9 @@
 #define _TRANSACTION_H
 
 #include <string>
-class Transaction
+#include "hashable.h"
+
+class Transaction : public Hashable<int>
 {
 private:
   std::string transactionDetail;

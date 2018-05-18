@@ -20,3 +20,8 @@ const std::string &Transaction::getTransactionDetail() const
 {
   return this->transactionDetail;
 }
+
+const int Transaction::Hashable::getHash() const
+{
+  return 0;
+}
