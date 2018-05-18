@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ -std=c++14 -g -Wall -Wextra test.cpp ../source/person.cpp
+g++ -std=c++14 -g -Wall -Wextra test.cpp ../source/person.cpp  ../source/customer.cpp
