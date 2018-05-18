@@ -11,7 +11,7 @@
 Video::Video(const std::string &title) : Item("Video")
 {
     date = Date();
-    itemType = "Video";
+    itemType = ItemType::MOVIE;
 }
 
 Video::Video(const std::string &title, const std::string &director) : Video(title)

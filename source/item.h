@@ -19,7 +19,7 @@ protected:
   // unique item identification number
   int itemID;
   // type of item
-  std::string itemType;
+  ItemType itemType;
 
   // initialize in source
   static int totalItems;
