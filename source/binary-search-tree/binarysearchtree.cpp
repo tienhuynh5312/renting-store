@@ -370,7 +370,7 @@ ItemType* BinarySearchTree<ItemType>::inorderArray = nullptr;
 
 template<class ItemType>
 bool
-BinarySearchTree<ItemType>::compare(
+BinarySearchTree<ItemType>::compare (
   const BinaryNode<ItemType>* subTreePtr1,
   const BinaryNode<ItemType>* subTreePtr2) const
 {

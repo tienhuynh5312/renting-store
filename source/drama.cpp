@@ -10,7 +10,7 @@
 #include "video.h"
 
 Drama::~Drama(){
-
+    
 };
 
 Drama::Drama(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)

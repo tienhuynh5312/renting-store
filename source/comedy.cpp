@@ -35,7 +35,7 @@ bool Comedy::operator==(const Comedy &rhs) const {
 };
 bool Comedy::operator!=(const Comedy &rhs) const
 {
-    
+
     return !(*this == rhs);
 };
 
@@ -51,5 +51,4 @@ bool Comedy::operator>=(const Comedy &rhs) const
 };
 
 std::ostream &operator>>(std::ostream &os, Comedy &obj){
-
 };

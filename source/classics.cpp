@@ -9,7 +9,9 @@
 #include "classics.h"
 #include "video.h"
 
-Classics::~Classics(){};
+Classics::~Classics(){
+
+};
 
 Classics::Classics(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)
 {
