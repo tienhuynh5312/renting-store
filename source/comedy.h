@@ -21,8 +21,6 @@ public:
     Comedy(const std::string &title, int stock, const std::string &director, int year);
     
 
-    
-    
     bool operator<(const Comedy & rhs) const;
     bool operator>(const Comedy & rhs) const;
     bool operator==(const Comedy & rhs) const;

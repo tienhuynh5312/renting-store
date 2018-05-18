@@ -25,6 +25,8 @@ Date::~Date()
 Date::Date(const int &y, const int &m, const int &d)
     : year(y), month(m), day(d)
 {
+    
+    
 }
 
 int Date::getYear() const
