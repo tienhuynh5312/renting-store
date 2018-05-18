@@ -30,10 +30,7 @@ public:
     bool operator<=(const Comedy & rhs) const;
     bool operator>=(const Comedy & rhs) const;
     
-    friend std::istream& operator>>(std::istream& is, Comedy& obj);
-    
-private:
-    const std::string movieType;
+    friend std::ostream& operator>>(std::ostream& os, Comedy& obj);
 };
 
 #endif /* comedy_h */

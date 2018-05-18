@@ -33,7 +33,6 @@ public:
     friend std::ostream& operator>>(std::ostream& os, Classics& obj);
     
 private:
-    std::string movieType;
     std::string majorActor;
 };
 #endif /* classics_h */

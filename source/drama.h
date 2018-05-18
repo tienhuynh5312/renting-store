@@ -29,9 +29,6 @@ public:
     bool operator>=(const Drama &) const;
     
     friend std::istream& operator>>(std::istream& is, Drama& obj);
-    
-private:
-    const std::string movieType;
 };
 
 #endif /* drama_h */

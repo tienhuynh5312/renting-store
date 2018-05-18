@@ -9,15 +9,17 @@
 #include "classics.h"
 #include "video.h"
 
-
 Classics::~Classics(){};
 
-Classics::Classics(const std::string &title, int stock, const std::string &director)
-    : Video(title, stock, director){};
+Classics::Classics(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)
+{
+  videoType = VideoType::CLASSICS;
+};
 
 Classics::Classics(const std::string &title, int stock, const std::string &director, std::string &major, int year) : Video(title, stock, director, Date(year))
 {
-    this->majorActor = major;
+  this->majorActor = major;
+  videoType = VideoType::CLASSICS;
 };
 
 bool Classics::operator<(const Classics &rhs) const {
@@ -26,7 +28,7 @@ bool Classics::operator<(const Classics &rhs) const {
 bool Classics::operator>(const Classics &rhs) const
 {
 
-    return *this > rhs;
+  return *this > rhs;
 };
 bool Classics::operator==(const Classics &rhs) const {
 
@@ -34,18 +36,18 @@ bool Classics::operator==(const Classics &rhs) const {
 bool Classics::operator!=(const Classics &rhs) const
 {
 
-    return !(*this == rhs);
+  return !(*this == rhs);
 };
 
 bool Classics::operator<=(const Classics &rhs) const
 {
 
-    return (*this < rhs || *this == rhs);
+  return (*this < rhs || *this == rhs);
 };
 bool Classics::operator>=(const Classics &rhs) const
 {
 
-    return (rhs <= *this);
+  return (rhs <= *this);
 };
 
 std::ostream &operator>>(std::ostream &os, Classics &obj){
