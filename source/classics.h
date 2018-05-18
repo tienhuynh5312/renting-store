@@ -13,26 +13,26 @@
 #include "video.h"
 #include <ostream>
 
-class Classics : public Video{
+class Classics : public Video
+{
 public:
-    Classics() = delete;
-    virtual ~Classics();
-    
-    Classics(const std::string &title, int stock, const std::string &director);
-    Classics(const std::string &title, int stock, const std::string &director, std::string &majorActor,
-             int year);
+  Classics() = delete;
+  virtual ~Classics();
 
-    
-    bool operator<(const Classics & rhs) const;
-    bool operator>(const Classics & rhs) const;
-    bool operator==(const Classics & rhs) const;
-    bool operator!=(const Classics & rhs) const;
-    bool operator<=(const Classics & rhs) const;
-    bool operator>=(const Classics & rhs) const;
-    
-    friend std::ostream& operator>>(std::ostream& os, Classics& obj);
-    
+  Classics(const std::string &title, int stock, const std::string &director);
+  Classics(const std::string &title, int stock, const std::string &director, std::string &majorActor,
+           int year);
+
+  bool operator<(const Classics &rhs) const;
+  bool operator>(const Classics &rhs) const;
+  bool operator==(const Classics &rhs) const;
+  bool operator!=(const Classics &rhs) const;
+  bool operator<=(const Classics &rhs) const;
+  bool operator>=(const Classics &rhs) const;
+
+  friend std::ostream &operator>>(std::ostream &os, Classics &obj);
+
 private:
-    std::string majorActor;
+  std::string majorActor;
 };
 #endif /* classics_h */
