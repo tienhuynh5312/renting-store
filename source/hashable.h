@@ -1,7 +1,11 @@
+/**
+ * @brief 
+ * 
+ */
 
 #ifndef _HASHABLE_H
 #define _HASHABLE_H
-
+#include <string>
 /**
  * @brief Provice interface for Hashtree to get unique ID.
  * 
@@ -11,15 +15,15 @@ template <class Type>
 class Hashable
 {
 public:
-  Hashable();
-  virtual ~Hashable();
+  // Hashable<Type>();
+  // virtual ~Hashable<Type>();
 
   /**
    * @brief Get unique ID of object.
    * 
    * @return Type type unique ID. Number or string are common.
    */
-  virtual const Type getHash() const = 0;
+  virtual Type getHash() const = 0;
 
   /**
    * @brief Get the Hash of a string.
@@ -27,7 +31,7 @@ public:
    * @param hash An string
    * @return Type Hash return type.
    */
-  static const int getHash(const std::string& hash) const;
+  static const int getHash(const std::string& hash);
 
   /**
    * @brief Get the Hash of a integer.
@@ -35,7 +39,7 @@ public:
    * @param hash An integer.
    * @return Type Hash return type.
    */
-  static const int getHash(const int& hash) const;
+  static const int getHash(const int& hash);
 };
 
 #endif // !_HASHABLE_H
