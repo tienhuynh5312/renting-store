@@ -60,6 +60,3 @@ bool Drama::operator>=(const Drama &rhs) const {
     return (rhs <= *this);
 };
 
-std::ostream &operator>>(std::ostream &os, Drama &obj)
-{
-}

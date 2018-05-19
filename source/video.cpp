@@ -76,7 +76,3 @@ bool Video::operator==(const Video &rhs) const
     return false;
 }
 
-void Video::setDirector(const std::string &director)
-{
-  this->director = director;
-}

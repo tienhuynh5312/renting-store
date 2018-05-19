@@ -39,4 +39,8 @@ bool Comedy::operator<(const Comedy &rhs) const
 
 bool Comedy::operator==(const Comedy &rhs) const
 {
+  if (getTitle() == rhs.getTitle() && getDate().getYear() == rhs.getDate().getYear())
+    return true;
+  else
+    return false;
 }
