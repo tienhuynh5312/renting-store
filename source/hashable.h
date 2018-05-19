@@ -31,7 +31,14 @@ public:
    * @param hash An string
    * @return Type Hash return type.
    */
-  static const int getHash(const std::string& hash);
+  static int getHash(const std::string &hash)
+  {
+    size_t sum = 0;
+    for (size_t i = 0; i < hash.length(); i++)
+      sum += (int)hash.at(i);
+
+    return sum;
+  };
 
   /**
    * @brief Get the Hash of a integer.
@@ -39,7 +46,10 @@ public:
    * @param hash An integer.
    * @return Type Hash return type.
    */
-  static const int getHash(const int& hash);
+  static int getHash(const int &hash)
+  {
+    return (hash * 7 - 121) * 2;
+  };
 };
 
 #endif // !_HASHABLE_H
