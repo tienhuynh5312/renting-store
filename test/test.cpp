@@ -11,6 +11,10 @@
 #include <iostream>
 #include "../source/person.h"
 #include "../source/customer.h"
+#include "../source/hashable.h"
+#include "../source/item.h"
+#include "../source/video.h"
+#include "../source/transaction.h"
 
 using namespace std;
 
@@ -47,5 +51,14 @@ TEST_CASE("BASE DESIGN", "[design]")
 
     REQUIRE(a.getCustomerID() == 1111);
     REQUIRE(a.getTotalCustomers() == 3);
+  }
+
+  SECTION("Hashable")
+  {
+    REQUIRE(Item("Video").getHash() == 0);
+    REQUIRE(Transaction("123").getHash() == 0);
+    REQUIRE(Customer("Tien","Huynh", 1234).getHash() == 0);
+    REQUIRE(Hashable<int>::getHash(123) == 1480);
+    REQUIRE(Hashable<int>::getHash("Tien Huynh") == 956);
   }
 }
