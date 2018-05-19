@@ -83,6 +83,7 @@ public:
   int getTotalItems() const;
   static Item *Create(ItemType type);
   static ItemType getItemType(const std::string& itemType);
+  int getHash() const;
 };
 
 #endif

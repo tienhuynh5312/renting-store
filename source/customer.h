@@ -23,6 +23,7 @@ public:
   virtual ~Customer();
   const int &getCustomerID() const;
   const int &getTotalCustomers() const;
+  int getHash() const;
 };
 
 #endif
