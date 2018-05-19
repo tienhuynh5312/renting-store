@@ -64,12 +64,16 @@ void Video::setDate(const Date &date)
   this->date = date;
 }
 
-bool Video::operator<(const Video &) const
+bool Video::operator<(const Video &rhs) const
 {
+  if (rhs.videoType != videoType)
+    return false;
 }
 
-bool Video::operator==(const Video &) const
+bool Video::operator==(const Video &rhs) const
 {
+  if (rhs.videoType != videoType)
+    return false;
 }
 
 // void Video::ReadTxtFile(std::string file)

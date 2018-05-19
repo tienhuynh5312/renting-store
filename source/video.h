@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <string>
-
 #include "date.h"
 #include "item.h"
 enum class VideoType
@@ -20,6 +19,8 @@ enum class VideoType
   COMEDY,
   DRAMA
 };
+class Classics;
+
 class Video : public Item
 {
 private:
@@ -39,9 +40,9 @@ public:
   Video(const std::string &title, int stock, const std::string &director);
   Video(const std::string &title, int stock, const std::string &director, const Date &date);
 
-  virtual std::string getGenre() const = 0;
-  virtual std::string toString() const = 0;
-  virtual void displayMovieInfo() const = 0;
+  // virtual std::string getGenre() const = 0;
+  // virtual std::string toString() const = 0;
+  // virtual void displayMovieInfo() const = 0;
 
   std::string getTitle() const;
   std::string getDirector() const;
@@ -51,8 +52,8 @@ public:
   void setDirector(const std::string &director);
   void setDate(const Date &date);
 
-  virtual bool operator<(const Video &) const = 0;
-  virtual bool operator==(const Video &) const = 0;
+  virtual bool operator<(const Video &) const;
+  virtual bool operator==(const Video &) const;
 };
 
 #endif /* video_h */
