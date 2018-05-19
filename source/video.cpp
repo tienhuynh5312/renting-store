@@ -10,27 +10,65 @@
 
 Video::Video(const std::string &title) : Item("Video")
 {
-    date = Date();
-    itemType = ItemType::VIDEO;
-    this->title = title;
+  date = Date();
+  itemType = ItemType::VIDEO;
+  this->title = title;
 }
 
 Video::Video(const std::string &title, const std::string &director) : Video(title)
 {
-    this->director = director;
+  this->director = director;
 }
 
 Video::Video(const std::string &title, int stock, const std::string &director) : Video(title, director)
 {
-    setTotalSupply(stock);
+  setTotalSupply(stock);
 }
 
 Video::Video(const std::string &title, int stock, const std::string &director, const Date &date) : Video(title, stock, director)
 {
-    this->date = date;
+  setDate(date);
 }
 
 Video::~Video()
+{
+}
+
+std::string Video::getTitle() const
+{
+  return title;
+}
+
+std::string Video::getDirector() const
+{
+  return director;
+}
+
+const Date &Video::getDate() const
+{
+  return date;
+}
+
+void Video::setTitle(const std::string &title)
+{
+  this->title = title;
+}
+
+void Video::setDirector(const std::string &director)
+{
+  this->director = director;
+}
+
+void Video::setDate(const Date &date)
+{
+  this->date = date;
+}
+
+bool Video::operator<(const Video &) const
+{
+}
+
+bool Video::operator==(const Video &) const
 {
 }
 

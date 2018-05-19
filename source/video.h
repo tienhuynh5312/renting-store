@@ -11,9 +11,7 @@
 
 #include <stdio.h>
 #include <string>
-// #include <iostream>
-// #include <fstream>
-// #include <queue>
+
 #include "date.h"
 #include "item.h"
 enum class VideoType
@@ -52,6 +50,9 @@ public:
   void setTitle(const std::string &title);
   void setDirector(const std::string &director);
   void setDate(const Date &date);
+
+  virtual bool operator<(const Video &) const = 0;
+  virtual bool operator==(const Video &) const = 0;
 };
 
 #endif /* video_h */

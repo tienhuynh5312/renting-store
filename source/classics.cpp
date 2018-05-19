@@ -9,47 +9,44 @@
 #include "classics.h"
 #include "video.h"
 
-Classics::~Classics(){};
+Classics::~Classics() {}
 
 Classics::Classics(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)
 {
   videoType = VideoType::CLASSICS;
-};
+  majorActor = "";
+}
 
-Classics::Classics(const std::string &title, int stock, const std::string &director, std::string &major, int year) : Video(title, stock, director, Date(year))
+Classics::Classics(const std::string &title, int stock, const std::string &director, const std::string &major, const Date &date) : Video(title, stock, director, date)
 {
-  this->majorActor = major;
+  majorActor = major;
   videoType = VideoType::CLASSICS;
-};
+}
 
-bool Classics::operator<(const Classics &rhs) const {
-
-};
-bool Classics::operator>(const Classics &rhs) const
+bool Classics::operator<(const Classics &rhs) const
 {
+  if (getDate() < rhs.getDate())
+    return true;
+  else if (getDate() > rhs.getDate())
+    return false;
+  else
+  {
+    if (majorActor < rhs.majorActor)
+      return true;
+    else
+      return false;
+  }
+}
 
-  return *this > rhs;
-};
-bool Classics::operator==(const Classics &rhs) const {
-
-};
-bool Classics::operator!=(const Classics &rhs) const
+bool Classics::operator==(const Classics &rhs) const
 {
+  if (getDate() == rhs.getDate() && majorActor == rhs.majorActor)
+    return true;
+  else
+    return false;
+}
 
-  return !(*this == rhs);
-};
-
-bool Classics::operator<=(const Classics &rhs) const
+const std::string &getMajorActor() const
 {
-
-  return (*this < rhs || *this == rhs);
-};
-bool Classics::operator>=(const Classics &rhs) const
-{
-
-  return (rhs <= *this);
-};
-
-std::ostream &operator>>(std::ostream &os, Classics &obj){
-
-};
+  return majorActor;
+}

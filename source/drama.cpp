@@ -22,25 +22,25 @@ Drama::Drama(const std::string &title, int stock, const std::string &director, i
   videoType = VideoType::DRAMA;
 }
 
-bool Drama::operator<(const Drama &) const {
+bool Drama::operator<(const Drama &rhs) const
+{
+  if (getDirector() < rhs.getDirector())
+    return true;
+  else if (getDirector() > rhs.getTitle())
+    return false;
+  else
+  {
+    if (getTitle() < rhs.getTitle())
+      return true;
+    else if (getTitle() > rhs.getTitle())
+      return false;
+  }
+}
 
-};
-bool Drama::operator>(const Drama &) const {
+bool Drama::operator==(const Drama &rhs) const
+{
+}
 
-};
-bool Drama::operator==(const Drama &) const {
-
-};
-bool Drama::operator!=(const Drama &) const {
-
-};
-bool Drama::operator<=(const Drama &) const {
-
-};
-bool Drama::operator>=(const Drama &) const {
-
-};
-
-std::ostream &operator>>(std::ostream &os, Drama &obj){
-
-};
+std::ostream &operator>>(std::ostream &os, Drama &obj)
+{
+}

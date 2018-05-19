@@ -22,13 +22,7 @@ public:
   Drama(const std::string &title, int stock, const std::string &director, int year);
 
   bool operator<(const Drama &) const;
-  bool operator>(const Drama &) const;
   bool operator==(const Drama &) const;
-  bool operator!=(const Drama &) const;
-  bool operator<=(const Drama &) const;
-  bool operator>=(const Drama &) const;
-
-  friend std::istream &operator>>(std::istream &is, Drama &obj);
 };
 
 #endif /* drama_h */
