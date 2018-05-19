@@ -30,8 +30,12 @@
 *.exe
 *.out
 *.app
+.vscode/c_cpp_properties.json
+.vscode/launch.json
 .vscode/settings.json
+.vscode/tasks.json
 source/test
+<<<<<<< HEAD
 CMakeLists.txt
 .idea/misc.xml
 .idea/modules.xml
@@ -76,3 +80,6 @@ cmake-build-debug/CMakeFiles/Progress/2
 cmake-build-debug/CMakeFiles/Progress/4
 cmake-build-debug/CMakeFiles/Progress/5
 cmake-build-debug/CMakeFiles/Progress/count.txt
+=======
+.DS_Store
+>>>>>>> design

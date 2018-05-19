@@ -29,3 +29,11 @@ const int &Customer::getTotalCustomers() const
 }
 
 int Customer::totalCustomers = 0;
+<<<<<<< HEAD
+=======
+
+int Customer::getHash() const
+{
+  return Hashable<int>::getHash(customerID);
+}
+>>>>>>> design
