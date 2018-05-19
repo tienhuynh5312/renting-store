@@ -3,7 +3,9 @@
 #define _TRANSACTION_H
 
 #include <string>
-class Transaction
+#include "hashable.h"
+
+class Transaction : public Hashable<int>
 {
 private:
   std::string transactionDetail;
@@ -25,6 +27,8 @@ public:
    * @return const std::string& Detail of transaction.
    */
   const std::string &getTransactionDetail() const;
+
+  int getHash() const;
 };
 
 #endif

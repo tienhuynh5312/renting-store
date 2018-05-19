@@ -11,24 +11,18 @@
 
 #include <stdio.h>
 #include "video.h"
+#include <string>
 
 class Comedy : public Video{
 public:
-    Comedy();
+    Comedy() = delete;
     virtual ~Comedy();
     
     Comedy(const std::string &title, int stock, const std::string &director);
-    Comedy(const std::string &title, int stock, const std::string &director, int year);
-    
+    Comedy(const std::string &title, int stock, const std::string &director, const Date& date);
 
     bool operator<(const Comedy & rhs) const;
-    bool operator>(const Comedy & rhs) const;
     bool operator==(const Comedy & rhs) const;
-    bool operator!=(const Comedy & rhs) const;
-    bool operator<=(const Comedy & rhs) const;
-    bool operator>=(const Comedy & rhs) const;
-    
-    friend std::ostream& operator>>(std::ostream& os, Comedy& obj);
 };
 
 #endif /* comedy_h */

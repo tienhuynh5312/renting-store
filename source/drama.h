@@ -12,23 +12,21 @@
 #include <stdio.h>
 #include "video.h"
 
-class Drama : public Video{
+class Drama : public Video
+{
 public:
-    Drama() = delete;
-    virtual ~Drama();
-    
-    Drama(const std::string &title, int stock, const std::string &director);
-    Drama(const std::string &title, int stock, const std::string &director, int year);
+  Drama() = delete;
+  virtual ~Drama();
 
-    
-    bool operator<(const Drama &) const;
-    bool operator>(const Drama &) const;
-    bool operator==(const Drama &) const;
-    bool operator!=(const Drama &) const;
-    bool operator<=(const Drama &) const;
-    bool operator>=(const Drama &) const;
-    
-    friend std::istream& operator>>(std::istream& is, Drama& obj);
+  Drama(const std::string &title, int stock, const std::string &director);
+  Drama(const std::string &title, int stock, const std::string &director, int year);
+
+  bool operator<(const Drama &rhs) const;
+  bool operator>(const Drama &rhs) const;
+  bool operator==(const Drama &rhs) const;
+  bool operator!=(const Drama &rhs) const;
+  bool operator<=(const Drama &rhs) const;
+  bool operator>=(const Drama &rhs) const;
 };
 
 #endif /* drama_h */

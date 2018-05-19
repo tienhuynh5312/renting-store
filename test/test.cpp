@@ -11,6 +11,11 @@
 #include <iostream>
 #include "../source/person.h"
 #include "../source/customer.h"
+#include "../source/hashable.h"
+#include "../source/item.h"
+#include "../source/video.h"
+#include "../source/transaction.h"
+#include "../source/classics.h"
 
 using namespace std;
 
@@ -47,5 +52,27 @@ TEST_CASE("BASE DESIGN", "[design]")
 
     REQUIRE(a.getCustomerID() == 1111);
     REQUIRE(a.getTotalCustomers() == 3);
+  }
+
+  SECTION("Hashable")
+  {
+    REQUIRE(Item("Video").getHash() == 624);
+    REQUIRE(Transaction("123").getHash() == 150);
+    REQUIRE(Customer("Tien","Huynh", 1234).getHash() == 8759);
+    REQUIRE(Hashable<int>::getHash(123) == 982);
+    REQUIRE(Hashable<int>::getHash("Tien Huynh") == 956);
+  }
+
+  SECTION("Classics")
+  {
+    Classics Romeo("Romeo",10,"TH","BK",Date(2017));
+    REQUIRE(Romeo.getMajorActor() == "BK");
+    Classics Juliet("Romeo",10,"TH","BK",Date(2017));
+    Video& a = (Video&) Romeo;
+
+    Video& c = dynamic_cast<Video&>(Romeo);
+
+    REQUIRE(a.getDirector() == "TH");
+    REQUIRE(c.getTotalStock() == 10);
   }
 }

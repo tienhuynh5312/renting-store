@@ -3,13 +3,14 @@
 
 #include <string>
 #include "borrowable.h"
+#include "hashable.h"
 
 enum class ItemType
 {
-  MOVIE
+  VIDEO
 };
 
-class Item : public Borrowable
+class Item : public Borrowable, public Hashable<int>
 {
 private:
   // price of item
@@ -28,11 +29,19 @@ public:
   Item() = delete; // Dont allow create new Item without specifying item type
 
   /**
-   * @brief Construct a new Item
+   * @brief Construct a new Item object
    * 
-   * @param type Type of the item.
+   * @param type Type/
    */
-  explicit Item(const std::string &type);
+  explicit Item(const std::string& type);
+
+  /**
+   * @brief Construct a new Item object
+   * 
+   * @param type 
+   * @param id 
+   */
+  Item(const std::string &type, const int& id);
 
   /**
    * @brief Construct a new Item with item type, total stock, and price
@@ -41,7 +50,7 @@ public:
    * @param total Total stock.
    * @param price Price.
    */
-  Item(const std::string &type, const int& total, const double& price = 0.0);
+  Item(const std::string &type, const int& id, const int& total, const double& price = 0.0);
 
   virtual ~Item();
 
@@ -73,6 +82,8 @@ public:
    */
   int getTotalItems() const;
   static Item *Create(ItemType type);
+  static ItemType getItemType(const std::string& itemType);
+  int getHash() const;
 };
 
 #endif

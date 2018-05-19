@@ -4,8 +4,9 @@
 #include <string>
 
 #include "person.h"
+#include "hashable.h"
 
-class Customer : public Person
+class Customer : public Person, public Hashable<int>
 {
 private:
   // unique customer id
@@ -22,6 +23,7 @@ public:
   virtual ~Customer();
   const int &getCustomerID() const;
   const int &getTotalCustomers() const;
+  int getHash() const;
 };
 
 #endif

@@ -9,30 +9,22 @@
 #ifndef classics_h
 #define classics_h
 
-#include <stdio.h>
+#include <string>
 #include "video.h"
-#include <ostream>
 
-class Classics : public Video{
+class Classics : public Video
+{
 public:
-    Classics() = delete;
-    virtual ~Classics();
-    
-    Classics(const std::string &title, int stock, const std::string &director);
-    Classics(const std::string &title, int stock, const std::string &director, std::string &majorActor,
-             int year);
+  Classics() = delete;
+  virtual ~Classics();
 
-    
-    bool operator<(const Classics & rhs) const;
-    bool operator>(const Classics & rhs) const;
-    bool operator==(const Classics & rhs) const;
-    bool operator!=(const Classics & rhs) const;
-    bool operator<=(const Classics & rhs) const;
-    bool operator>=(const Classics & rhs) const;
-    
-    friend std::ostream& operator>>(std::ostream& os, Classics& obj);
-    
+  Classics(const std::string &title, int stock, const std::string &director);
+  Classics(const std::string &title, int stock, const std::string &director, const std::string &majorActor, const Date &date);
+  const std::string &getMajorActor() const;
+  bool operator<(const Classics &rhs) const;
+  bool operator==(const Classics &rhs) const;
+
 private:
-    std::string majorActor;
+  std::string majorActor;
 };
 #endif /* classics_h */
