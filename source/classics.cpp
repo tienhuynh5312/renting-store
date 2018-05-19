@@ -9,13 +9,7 @@
 #include "classics.h"
 #include "video.h"
 
-<<<<<<< HEAD
-Classics::~Classics(){
-
-};
-=======
 Classics::~Classics() {}
->>>>>>> design
 
 Classics::Classics(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)
 {

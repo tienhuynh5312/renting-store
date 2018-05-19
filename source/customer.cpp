@@ -4,13 +4,9 @@
 #include "person.h"
 #include "customer.h"
 
-Customer::Customer(const std::string &first, const std::string &last,
-                   const int &id)
-    : Person(first, last), customerID(id)
+Customer::Customer(const std::string &first, const std::string &last, const int &id) : Person(first, last), customerID(id)
 {
   ++totalCustomers;
-    
-    
 }
 
 Customer::~Customer()
@@ -29,11 +25,8 @@ const int &Customer::getTotalCustomers() const
 }
 
 int Customer::totalCustomers = 0;
-<<<<<<< HEAD
-=======
 
 int Customer::getHash() const
 {
   return Hashable<int>::getHash(customerID);
 }
->>>>>>> design

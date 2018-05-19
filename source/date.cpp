@@ -114,16 +114,8 @@ bool Date::operator>=(const Date &rhs) const
 
 Date &Date::operator=(const Date &date)
 {
-<<<<<<< HEAD
-    setDay(date.getDay());
-    setMonth(date.getMonth());
-    setYear(date.getYear());
-    return *this;
-}
-=======
   setDay(date.getDay());
   setMonth(date.getMonth());
   setYear(date.getYear());
   return *this;
 }
->>>>>>> design
