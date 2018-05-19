@@ -46,7 +46,7 @@ bool Classics::operator==(const Classics &rhs) const
     return false;
 }
 
-const std::string &getMajorActor() const
+const std::string &Classics::getMajorActor() const
 {
   return majorActor;
 }

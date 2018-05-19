@@ -9,7 +9,6 @@
 #ifndef classics_h
 #define classics_h
 
-#include <stdio.h>
 #include <string>
 #include "video.h"
 

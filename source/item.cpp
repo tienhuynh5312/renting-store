@@ -63,6 +63,5 @@ ItemType Item::getItemType(const std::string &itemType)
 
 int Item::getHash() const
 {
-  const ItemType item = itemType;
   return Hashable<int>::getHash(itemID) + Hashable<int>::getHash(getItemType());
 }
