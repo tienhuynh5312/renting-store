@@ -30,5 +30,5 @@ int Customer::totalCustomers = 0;
 
 int Customer::getHash() const
 {
-  return 0;
+  return Hashable<int>::getHash(customerID);
 }

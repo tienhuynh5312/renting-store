@@ -13,6 +13,7 @@ Item::Item(const std::string &type) : Borrowable()
 {
   ++totalItems;
   itemType = getItemType(type);
+  itemID = 0;
 }
 
 Item::Item(const std::string &type, const int &id) : Item(type)
@@ -62,5 +63,6 @@ ItemType Item::getItemType(const std::string &itemType)
 
 int Item::getHash() const
 {
-  return 0;
+  const ItemType item = itemType;
+  return Hashable<int>::getHash(itemID) + Hashable<int>::getHash(getItemType());
 }

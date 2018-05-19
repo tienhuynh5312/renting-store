@@ -48,7 +48,7 @@ public:
    */
   static int getHash(const int &hash)
   {
-    return (hash * 7 - 121) * 2;
+    return (hash * 7 + 121);
   };
 };
 

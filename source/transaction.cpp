@@ -23,5 +23,5 @@ const std::string &Transaction::getTransactionDetail() const
 
 int Transaction::getHash() const
 {
-  return 0;
+  return Hashable<int>::getHash(transactionDetail);
 }
