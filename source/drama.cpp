@@ -37,9 +37,28 @@ bool Drama::operator<(const Drama &rhs) const
   }
 }
 
-bool Drama::operator==(const Drama &rhs) const
-{
-}
+bool Drama::operator>(const Drama &rhs) const {
+    
+    return *this > rhs;
+};
+
+bool Drama::operator==(const Drama &rhs) const {
+    
+    return (this->getDirector() == rhs.getDirector() &&
+            this->getTitle() == rhs.getTitle());
+};
+
+bool Drama::operator!=(const Drama &rhs) const {
+    return !(*this == rhs);
+};
+
+bool Drama::operator<=(const Drama &rhs) const {
+    return ((*this < rhs) || *this == rhs);
+};
+
+bool Drama::operator>=(const Drama &rhs) const {
+    return (rhs <= *this);
+};
 
 std::ostream &operator>>(std::ostream &os, Drama &obj)
 {
