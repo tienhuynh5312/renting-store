@@ -27,6 +27,8 @@ public:
    * @return const std::string& Detail of transaction.
    */
   const std::string &getTransactionDetail() const;
+
+  int getHash() const;
 };
 
 #endif

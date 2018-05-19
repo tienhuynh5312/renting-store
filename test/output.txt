@@ -2,22 +2,22 @@
 SOURCE="../source"
 
 # Base class design
-g++ -c -o person.o "${SOURCE}/person.cpp"
-g++ -c -o customer.o "${SOURCE}/customer.cpp"
-g++ -c -o borrowable.o "${SOURCE}/borrowable.cpp"
-g++ -c -o item.o "${SOURCE}/item.cpp"
-g++ -c -o video.o "${SOURCE}/video.cpp"
-g++ -c -o date.o "${SOURCE}/date.cpp"
-g++ -c -o transaction.o "${SOURCE}/transaction.cpp"
-g++ -c -o comedy.o "${SOURCE}/comedy.cpp"
-g++ -c -o classics.o "${SOURCE}/classics.cpp"
-g++ -c -o drama.o "${SOURCE}/drama.cpp"
+#g++ -c -o person.o "${SOURCE}/person.cpp"
+#g++ -c -o customer.o "${SOURCE}/customer.cpp"
+#g++ -c -o borrowable.o "${SOURCE}/borrowable.cpp"
+#g++ -c -o item.o "${SOURCE}/item.cpp"
+#g++ -c -o video.o "${SOURCE}/video.cpp"
+#g++ -c -o date.o "${SOURCE}/date.cpp"
+#g++ -c -o transaction.o "${SOURCE}/transaction.cpp"
+#g++ -c -o comedy.o "${SOURCE}/comedy.cpp"
+#g++ -c -o classics.o "${SOURCE}/classics.cpp"
+#g++ -c -o drama.o "${SOURCE}/drama.cpp"
 
 # Uncomment this when need Store class
 # g++ -c -o store.o ${SOURCE}/store.cpp
 
 # Test drive
-g++ -std=c++14 -g -Wall -Wextra test.cpp person.o customer.o borrowable.o item.o video.o date.o transaction.o comedy.o classics.o drama.o
+g++ -std=c++14 -g -Wall -Wextra test.cpp ../source/*.cpp
 
 # Generate program for use
 # g++ -std=c++14 -g -Wall -Wextra -o TIS.out main.cpp person.o customer.o borrowable.o item.o video.o date.o transaction.o comedy.o classics.o drama.o

@@ -60,7 +60,7 @@ ItemType Item::getItemType(const std::string &itemType)
     return ItemType::VIDEO;
 }
 
-const int Item::Hashable::getHash() const
+int Item::getHash() const
 {
   return 0;
 }

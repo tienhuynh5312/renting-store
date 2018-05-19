@@ -28,7 +28,7 @@ const int &Customer::getTotalCustomers() const
 
 int Customer::totalCustomers = 0;
 
-const int Customer::Hashable::getHash() const
+int Customer::getHash() const
 {
   return 0;
 }
