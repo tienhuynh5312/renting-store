@@ -34,12 +34,12 @@ Video::~Video()
 {
 }
 
-std::string Video::getTitle() const
+const std::string &Video::getTitle() const
 {
   return title;
 }
 
-std::string Video::getDirector() const
+const std::string &Video::getDirector() const
 {
   return director;
 }
@@ -76,90 +76,7 @@ bool Video::operator==(const Video &rhs) const
     return false;
 }
 
-// void Video::ReadTxtFile(std::string file)
-// {
-//     std::ifstream inFile;
-//     inFile.open(file);
-
-//     if (inFile.is_open())
-//     {
-//         while (!inFile.eof())
-//         {
-//             //            Transaction Request;
-//             //            inFile >> Request;
-//             //            requestList.push(Request);
-//         }
-//         inFile.close();
-//         return;
-//     }
-//     else
-//     {
-//         std::cerr << "Error !! Cannot open the file" << std::endl;
-//         return;
-//     }
-// }
-
-std::string Video::getTitle() const
+void Video::setDirector(const std::string &director)
 {
-    return this->title;
-}
-
-std::string Video::getDirector() const
-{
-    return this->director;
-}
-
-Date Video::getReleaseDate() const
-{
-    return date;
-}
-
-int Video::getReleaseYear() const
-{
-    return this->date.getYear();
-}
-
-int Video::getReleaseMonth() const
-{
-    return date.getMonth();
-}
-
-int Video::getReleaseDay() const
-{
-    return date.getDay();
-}
-
-int Video::getStock() const
-{
-    return this->stock;
-}
-
-void Video::setTitle(const std::string& title)
-{
-    this->title = title;
-}
-
-void Video::setDirector(const std::string& director)
-{
-    this->director = director;
-}
-
-void Video::setStock(const int& stock)
-{
-    this->stock = stock;
-}
-
-void Video::setYear(const int& year)
-{
-    this->date.setYear(year);
-}
-
-void Video::setMonth(const int& month)
-{
-    this->date.setMonth(month);
-}
-
-void Video::setDay(const int& day)
-{
-    this->date.setDay(day);
+  this->director = director;
 }
