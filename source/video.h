@@ -44,13 +44,25 @@ public:
   // virtual std::string toString() const = 0;
   // virtual void displayMovieInfo() const = 0;
 
-  std::string getTitle() const;
-  std::string getDirector() const;
-  const Date &getDate() const;
-
-  void setTitle(const std::string &title);
-  void setDirector(const std::string &director);
-  void setDate(const Date &date);
+    std::string getTitle() const;
+    std::string getDirector() const;
+    const Date &getDate() const;
+    Date getReleaseDate() const;
+    int getReleaseYear() const;
+    int getReleaseMonth() const;
+    int getReleaseDay() const;
+    int getStock() const;
+    
+    
+    
+    
+    void setTitle(const std::string &title);
+    void setDirector(const std::string &director);
+    void setDate(const Date &date);
+    void setStock(const int& stock);
+    void setYear(const int& year);
+    void setMonth(const int& month);
+    void setDay(const int& day);
 
   virtual bool operator<(const Video &) const;
   virtual bool operator==(const Video &) const;
