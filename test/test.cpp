@@ -55,10 +55,10 @@ TEST_CASE("BASE DESIGN", "[design]")
 
   SECTION("Hashable")
   {
-    REQUIRE(Item("Video").getHash() == 0);
-    REQUIRE(Transaction("123").getHash() == 0);
-    REQUIRE(Customer("Tien","Huynh", 1234).getHash() == 0);
-    REQUIRE(Hashable<int>::getHash(123) == 1480);
+    REQUIRE(Item("Video").getHash() == 624);
+    REQUIRE(Transaction("123").getHash() == 150);
+    REQUIRE(Customer("Tien","Huynh", 1234).getHash() == 8759);
+    REQUIRE(Hashable<int>::getHash(123) == 982);
     REQUIRE(Hashable<int>::getHash("Tien Huynh") == 956);
   }
 }
