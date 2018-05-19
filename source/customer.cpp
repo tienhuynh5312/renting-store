@@ -9,6 +9,8 @@ Customer::Customer(const std::string &first, const std::string &last,
     : Person(first, last), customerID(id)
 {
   ++totalCustomers;
+    
+    
 }
 
 Customer::~Customer()
