@@ -94,3 +94,68 @@ bool Video::operator==(const Video &) const
 //         return;
 //     }
 // }
+
+std::string Video::getTitle() const
+{
+    return this->title;
+}
+
+std::string Video::getDirector() const
+{
+    return this->director;
+}
+
+Date Video::getReleaseDate() const
+{
+    return date;
+}
+
+int Video::getReleaseYear() const
+{
+    return this->date.getYear();
+}
+
+int Video::getReleaseMonth() const
+{
+    return date.getMonth();
+}
+
+int Video::getReleaseDay() const
+{
+    return date.getDay();
+}
+
+int Video::getStock() const
+{
+    return this->stock;
+}
+
+void Video::setTitle(const std::string& title)
+{
+    this->title = title;
+}
+
+void Video::setDirector(const std::string& director)
+{
+    this->director = director;
+}
+
+void Video::setStock(const int& stock)
+{
+    this->stock = stock;
+}
+
+void Video::setYear(const int& year)
+{
+    this->date.setYear(year);
+}
+
+void Video::setMonth(const int& month)
+{
+    this->date.setMonth(month);
+}
+
+void Video::setDay(const int& day)
+{
+    this->date.setDay(day);
+}
