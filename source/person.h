@@ -18,7 +18,7 @@ protected:
   std::string lastName;
 
 public:
-  Person(void) = delete;
+  Person(void){};
 
   /**
    * @brief Create a new persone with name
