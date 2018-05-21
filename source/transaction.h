@@ -4,15 +4,17 @@
 
 #include <string>
 #include "hashable.h"
+#include <ostream>
 
 class Transaction : public Hashable<int>
 {
 private:
   std::string transactionDetail;
+
 protected:
 public:
   Transaction() = delete; // Do not accept empty transaction.
-  
+
   /**
    * @brief Construct a new Transaction
    * 
@@ -29,6 +31,17 @@ public:
   const std::string &getTransactionDetail() const;
 
   int getHash() const;
+
+  /*
+  These following operations are needed for binary search tree to work properly.
+  */
+  bool operator==(const Transaction &rhs) const;
+  bool operator<(const Transaction &rhs) const;
+  bool operator<=(const Transaction &rhs) const;
+
+  friend std::ostream &operator<<(std::ostream &out, const Transaction &rhs);
+
+  // end
 };
 
 #endif
