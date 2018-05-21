@@ -13,7 +13,7 @@ private:
 
 protected:
 public:
-  Transaction() = delete; // Do not accept empty transaction.
+  Transaction() { transactionDetail = ""; };
 
   /**
    * @brief Construct a new Transaction

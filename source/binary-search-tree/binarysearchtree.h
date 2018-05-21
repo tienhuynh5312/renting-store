@@ -44,7 +44,7 @@ public:
 
   //===================================
   // Remove an item
-  bool remove(Const ItemType& item);
+  bool remove(const ItemType& item);
   //===================================
   
   // true if item is in tree

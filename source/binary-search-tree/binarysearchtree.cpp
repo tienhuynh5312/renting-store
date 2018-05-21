@@ -446,6 +446,11 @@ void BinarySearchTree<ItemType>::addPreOrder(BinaryNode<ItemType> *subTreePtr)
     return;
 } // end addPreOrder
 
+template <class ItemType>
+bool BinarySearchTree<ItemType>::remove(const ItemType& item)
+{
+  return true;
+}
 template class BinarySearchTree<Customer>;
 // template class BinarySearchTree<Item>;
 // template class BinarySearchTree<Transaction>;
