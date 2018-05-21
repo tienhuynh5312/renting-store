@@ -57,6 +57,4 @@ private:
     BinaryNode<ItemType>* rightPtr {nullptr};
 };
 
-#include "binarynode.cpp"
-
 #endif // BINARYNODE_H

@@ -17,7 +17,8 @@
 
 // default constructor, children set to nullptr as default
 // item contained is undefined
-
+#include "binarynode.h"
+#include "../customer.h"
 template<class ItemType>
 BinaryNode<ItemType>::BinaryNode() {
     //ctor
@@ -77,3 +78,5 @@ template<class ItemType>
 void BinaryNode<ItemType>::setItem(const ItemType& item) {
     this->item = item;
 }
+
+template class BinaryNode<Customer>;

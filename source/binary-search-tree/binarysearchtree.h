@@ -41,8 +41,14 @@ public:
   // return true if succesasfull
   // false if item already in tree or some other reason to fail
   bool add(const ItemType& item);
+
+  //===================================
+  // Remove an item
+  bool remove(Const ItemType& item);
+  //===================================
+  
   // true if item is in tree
-  bool contains(const ItemType& item) const;
+  BinaryNode<ItemType>* contains(const ItemType& item) const;
   // dispaly a sideways ascii representation of tree
   void displaySideways() const;
   // inorder traversal: left-root-right
@@ -64,7 +70,6 @@ public:
   bool operator==(const BinarySearchTree<ItemType>&) const;
   // not == to each other
   bool operator!=(const BinarySearchTree<ItemType>&) const;
-
 private:
   // root of the tree
   BinaryNode<ItemType>* rootPtr{ nullptr };
@@ -100,6 +105,6 @@ private:
   bool compare(const BinaryNode<ItemType>* subTreePtr1, const BinaryNode<ItemType>* subTreePtr2) const;
 };
 
-#include "binarysearchtree.cpp"
+// #include "binarysearchtree.cpp"
 
 #endif // BINARYSEARCHTREE_H
