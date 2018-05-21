@@ -30,3 +30,23 @@ int Customer::getHash() const
 {
   return Hashable<int>::getHash(customerID);
 }
+
+bool Customer::operator==(const Customer& rhs) const
+{
+  return (customerID == rhs.customerID);
+}
+
+bool Customer::operator<(const Customer& rhs) const
+{
+  return (customerID < rhs.customerID);
+}
+
+bool Customer::operator<=(const Customer& rhs) const
+{
+  return (*this < rhs) || (*this == rhs);
+}
+
+std::ostream& operator<<(std::ostream& out, const Customer& rhs)
+{
+  return out << rhs.customerID;
+}
