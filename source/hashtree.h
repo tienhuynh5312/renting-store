@@ -8,14 +8,17 @@
 #ifndef _HASHTREE_H
 #define _HASHTREE_H
 
+#include "./binary-search-tree/binarynode.h"
 #include "./binary-search-tree/binarysearchtree.h"
+#include "hashable.h"
 
 /**
  * @brief Hash tree
  * 
  * @tparam Type Item type for hash tree container.
  */
-template <class Type>
+
+template <class ItemType>
 class HashTree
 {
 public:
@@ -30,7 +33,7 @@ public:
    * 
    * @param capacity 
    */
-  HashTree(const size_t& capacity);
+  HashTree(const std::size_t& capacity);
 
   /**
    * @brief Destroy the Hash Tree object
@@ -45,7 +48,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const Type &item);
+  virtual bool add(const ItemType &item);
 
   /**
    * @brief Remove an item from hash tree.
@@ -54,7 +57,7 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(const Type &item);
+  virtual bool remove(const ItemType &item);
 
   /**
    * @brief Find an item in hash tree.
@@ -63,7 +66,7 @@ public:
    * @return true 
    * @return false 
    */
-  virtual Type* contain(const Type &item);
+  virtual ItemType contains(const ItemType &item);
 
   /**
    * @brief Optimize the hash tree for better performance.
@@ -77,19 +80,19 @@ private:
    * @brief An array of binary tree.
    * hashTable = new 
    */
-  BinarySearchTree<Type>* hashTable;
+  BinarySearchTree<ItemType> * hashTable;
 
   /**
    * @brief Total Items are stored in the hash tree.
    * 
    */
-  size_t totalItems;
+  std::size_t totalItems;
 
   /**
    * @brief Maximum capaticy of the hash table.
    * 
    */
-  size_t hashTableCapacity;
+  std::size_t hashTableCapacity;
 
   /**
    * @brief Rebalancing each tree in the hash table.
@@ -97,15 +100,7 @@ private:
    */
   void rebalanceTree();
 
-  /**
-   * @brief Get the Hash Index of a item
-   * 
-   * @param item An Item
-   * @return const size_t An index in hash table.
-   */
-  const size_t getHashIndex(const Type& item);
-
-  const size_t DEFAULT_CAPACITY = 50;
+  const std::size_t DEFAULT_CAPACITY = 50;
 };
 
 #endif // _HASHTREE_H
