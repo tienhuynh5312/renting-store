@@ -11,7 +11,7 @@ enum class ItemType
   VIDEO
 };
 
-class Item : public Borrowable
+class Item : public Borrowable, public Hashable
 {
 private:
   // price of item
@@ -83,6 +83,7 @@ public:
    */
   int getTotalItems() const;
   static ItemType getItemType(const std::string& itemType);
+  int getHash() const;
 
     /*
   These following operations are needed for binary search tree to work properly.

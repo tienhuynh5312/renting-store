@@ -94,5 +94,8 @@ std::ostream &operator<<(std::ostream &out, const Item &rhs)
   return out << "[ID:" << rhs.itemID << "]";
 }
 
-
+int Item::getHash() const
+{
+  return Hashable::getHash(totalItems);
+}
 // end

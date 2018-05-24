@@ -7,15 +7,15 @@
 #include "date.h"
 #include "item.h"
 #include "hashable.h"
+
 enum class VideoType
 {
   CLASSICS,
   COMEDY,
   DRAMA
 };
-class Classics;
 
-class Video : public Item, Hashable
+class Video : public Item
 {
 protected:
   std::string title;
