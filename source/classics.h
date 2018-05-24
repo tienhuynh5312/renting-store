@@ -15,7 +15,7 @@
 class Classics : public Video
 {
 public:
-  Classics() = delete;
+  Classics() { videoType = VideoType::CLASSICS; };
   virtual ~Classics();
 
   Classics(const std::string &title, int stock, const std::string &director);
