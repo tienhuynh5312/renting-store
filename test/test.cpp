@@ -17,6 +17,9 @@
 #include "../source/classics.h"
 #include "../source/hashable.h"
 #include "../source/hashtree.h"
+#include <regex>
+#include <iostream>
+#include <set>
 using namespace std;
 
 TEST_CASE("BASE DESIGN", "[design]")
@@ -56,12 +59,9 @@ TEST_CASE("BASE DESIGN", "[design]")
 
   SECTION("Hashable")
   {
-    REQUIRE(Item("Video").getHash() == 624);
-    REQUIRE(Transaction("123").getHash() == 150);
-    REQUIRE(Customer("Tien", "Huynh", 1234).getHash() == 8759);
-    REQUIRE(Hashable<int>::getHash(123) == 982);
-    REQUIRE(Hashable<int>::getHash("Tien Huynh") == 956);
-  }
+    REQUIRE(Hashable::getHash(123) == 982);
+    REQUIRE(Hashable::getHash("Tien Huynh") == 956);
+  } 
 
   SECTION("Classics")
   {
@@ -78,10 +78,81 @@ TEST_CASE("BASE DESIGN", "[design]")
 
   SECTION("HashTree")
   {
-    HashTree<Customer> itemList;
-    itemList.add(Customer("Tien","Huynh",1111));
-    REQUIRE(itemList.contains(Customer("Tien","Huynh",1111)).getFirstName() == "Tien");
-    REQUIRE(itemList.contains(Customer("Tien","Huynh",1111)).getLastName() == "Huynh");
-    REQUIRE(itemList.contains(Customer("Tien","Huynh",1111)).getCustomerID() == 1111);
+    
+    // HashTree<Customer> customerList;
+    // customerList.add(Customer("Tien", "Huynh", 1111));
+    // REQUIRE(customerList.contains(Customer("Tien", "Huynh", 1111)).getFirstName() == "Tien");
+    // REQUIRE(customerList.contains(Customer("Tien", "Huynh", 1111)).getLastName() == "Huynh");
+    // REQUIRE(customerList.contains(Customer("Tien", "Huynh", 1111)).getCustomerID() == 1111);
+
+    // HashTree<Transaction> transactionList;
+    // transactionList.add(Transaction("1234 5560"));
+    // HashTree<Item> itemList;
+    // itemList.add(Item("Video", 1111));
+    // Classics romeo("Romeo", 10, "Tien");
+    // itemList.add(romeo);
+
+    // CHECK(itemList.contains(romeo).getCurrentStock() == 10);
+    // CHECK(itemList.contains(romeo).getTotalStock() == 10);
+
+    // HashTree<Transaction*> list;
+    // list.add(new Transaction("Hahaha"));
+  }
+  SECTION("Reading DataMovies")
+  {
+    try
+    {
+      // classics movie last part pattern: (.+) (\d+) (\d+)
+      std::smatch match;
+      std::regex classicsPattern(R"((.+) (\d+) (\d+))");
+      std::regex pattern(R"(([A-Z]), (\d+), (.+), (.+), ([\w| ]+))");
+      std::string s = {"C, 10, George Cukor, Holiday, Cary Grant 9 1938"};
+      std::regex_match(s, match, pattern);
+
+      std::cout << match.size() << std::endl;
+      for (std::size_t i = 0; i < match.size(); i++)
+        std::cout << i << ": " << match.str(i) << std::endl;
+
+      // For classics movie only
+      if (match.str(1) == "C")
+      {
+        // std::string lastPart = match.str(5);
+        // std::regex_match(lastPart, match, pattern);
+        // std::cout << match.size() << std::endl;
+        // for (std::size_t i = 0; i < match.size(); i++)
+        //   std::cout << i << ": " << match.str(i) << std::endl;
+
+        std::string name = match.str(5);
+        std::regex namePattern(R"(([\w ]+) (\d) (\d+))");
+        std::regex_match(name, match, namePattern);
+        std::cout << match.size() << std::endl;
+        for (std::size_t i = 0; i < match.size(); i++)
+          std::cout << i << ": " << match.str(i) << std::endl;
+      }
+
+      // =================
+      // ID
+
+      std::regex idPattern(R"((\d{4}) (\w+) (\w+))");
+      std::string id{"1111 Mouse Mickey"};
+      std::regex_match(id, match, idPattern);
+      std::cout << match.size() << std::endl;
+      for (std::size_t i = 0; i < match.size(); i++)
+        std::cout << i << ": " << match.str(i) << std::endl;
+
+      // ===================
+      // Transaction
+
+      std::regex transPattern(R"((\w)(.*))");
+      std::string trans{"B 1234 D C 9 1938 Katherine Hepburn"};
+      std::regex_match(trans, match, transPattern);
+      std::cout << match.size() << std::endl;
+      for (std::size_t i = 0; i < match.size(); i++)
+        std::cout << i << ": " << match.str(i) << std::endl;
+    }
+    catch (std::regex_error &e)
+    {
+      std::cout << e.what() << std::endl;
+    }
   }
 }
