@@ -8,8 +8,7 @@
 #ifndef _HASHTREE_H
 #define _HASHTREE_H
 
-#include "./binary-search-tree/binarynode.h"
-#include "./binary-search-tree/binarysearchtree.h"
+#include <list>
 #include "hashable.h"
 
 /**
@@ -80,7 +79,7 @@ private:
    * @brief An array of binary tree.
    * hashTable = new 
    */
-  BinarySearchTree<ItemType> * hashTable;
+  std::list<ItemType> * hashTable;
 
   /**
    * @brief Total Items are stored in the hash tree.
