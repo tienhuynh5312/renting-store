@@ -1,10 +1,3 @@
-//
-//  video.h
-//  Movie
-//
-//  Created by Byunggeun Park on 5/14/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
 
 #ifndef video_h
 #define video_h

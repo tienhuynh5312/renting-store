@@ -1,10 +1,4 @@
-//
-//  date.cpp
-//  Movie
-//
-//  Created by Byunggeun Park on 5/15/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
+
 
 #include <stdio.h>
 #include "date.h"
