@@ -15,11 +15,11 @@
 class Drama : public Video
 {
 public:
-  Drama() = delete;
+  Drama(){ videoType = VideoType::DRAMA; };
   virtual ~Drama();
 
   Drama(const std::string &title, int stock, const std::string &director);
-  Drama(const std::string &title, int stock, const std::string &director, int year);
+  Drama(const std::string &title, int stock, const std::string &director, const Date& date);
 
   bool operator<(const Drama &rhs) const;
   bool operator==(const Drama &rhs) const;

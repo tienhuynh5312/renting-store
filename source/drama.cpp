@@ -17,7 +17,7 @@ Drama::Drama(const std::string &title, int stock, const std::string &director) :
 {
   videoType = VideoType::DRAMA;
 };
-Drama::Drama(const std::string &title, int stock, const std::string &director, int year) : Video(title, stock, director, Date(year))
+Drama::Drama(const std::string &title, int stock, const std::string &director, const Date& date) : Video(title, stock, director, date)
 {
   videoType = VideoType::DRAMA;
 }
