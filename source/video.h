@@ -40,17 +40,15 @@ public:
   Video(const std::string &title, int stock, const std::string &director);
   Video(const std::string &title, int stock, const std::string &director, const Date &date);
 
-  // virtual std::string getGenre() const = 0;
-  // virtual std::string toString() const = 0;
-  // virtual void displayMovieInfo() const = 0;
+  virtual const std::string &getTitle() const;
+  virtual const std::string &getDirector() const;
+  virtual const Date &getDate() const;
+  virtual std::string getVideoType() const;
+  static VideoType getVideoType(const std::string& rhs);
 
-  const std::string &getTitle() const;
-  const std::string &getDirector() const;
-  const Date &getDate() const;
-
-  void setTitle(const std::string &title);
-  void setDirector(const std::string &director);
-  void setDate(const Date &date);
+  virtual void setTitle(const std::string &title);
+  virtual void setDirector(const std::string &director);
+  virtual void setDate(const Date &date);
 
   virtual bool operator<(const Video &) const;
   virtual bool operator==(const Video &) const;

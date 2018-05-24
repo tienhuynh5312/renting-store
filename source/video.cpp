@@ -34,6 +34,24 @@ Video::~Video()
 {
 }
 
+std::string Video::getVideoType() const
+{
+  if (videoType == VideoType::CLASSICS)
+    return "Classics";
+  else if (videoType == VideoType::COMEDY)
+    return "Comedy";
+  else if (videoType == VideoType::DRAMA)
+    return "Drama";
+}
+VideoType Video::getVideoType(const std::string &rhs)
+{
+  if (rhs == "Comedy")
+    return VideoType::COMEDY;
+  else if (rhs == "Classics")
+    return VideoType::CLASSICS;
+  else if (rhs == "Drama")
+    return VideoType::DRAMA;
+}
 const std::string &Video::getTitle() const
 {
   return title;
@@ -75,4 +93,3 @@ bool Video::operator==(const Video &rhs) const
   if (rhs.videoType != videoType)
     return false;
 }
-
