@@ -26,11 +26,6 @@ const int &Customer::getTotalCustomers() const
 
 int Customer::totalCustomers = 0;
 
-int Customer::getHash() const
-{
-  return Hashable<int>::getHash(customerID);
-}
-
 bool Customer::operator==(const Customer& rhs) const
 {
   return (customerID == rhs.customerID);
