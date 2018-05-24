@@ -19,7 +19,8 @@
 #include "../source/hashtree.h"
 #include <regex>
 #include <iostream>
-#include <set>
+#include <vector>
+#include <memory>
 using namespace std;
 
 TEST_CASE("BASE DESIGN", "[design]")
@@ -61,24 +62,33 @@ TEST_CASE("BASE DESIGN", "[design]")
   {
     REQUIRE(Hashable::getHash(123) == 982);
     REQUIRE(Hashable::getHash("Tien Huynh") == 956);
-  } 
+  }
 
   SECTION("Classics")
   {
-    Classics Romeo("Romeo", 10, "TH", "BK", Date(2017));
+    Classics Romeo("Romeo", 10, "TH", "BK", Date(2017, 10));
     REQUIRE(Romeo.getMajorActor() == "BK");
-    Classics Juliet("Romeo", 10, "TH", "BK", Date(2017));
+    Classics Juliet("Romeo", 10, "TH", "BK", Date(2017, 10));
     Video &a = (Video &)Romeo;
 
     Video &c = dynamic_cast<Video &>(Romeo);
 
     REQUIRE(a.getDirector() == "TH");
     REQUIRE(c.getTotalStock() == 10);
+
+    std::vector<std::shared_ptr<Video>> videoList;
+    videoList.push_back(std::make_shared<Classics>("Romeo", 10, "TH", "BK", Date(2017)));
+
+    auto tmp = dynamic_pointer_cast<Classics>(videoList.front());
+    CHECK(tmp->getMajorActor() == "BK");
+    CHECK(tmp->getDate().getYear() == 2017);
+    CHECK(tmp->getTitle() == "Romeo");
+    CHECK(tmp->getTotalStock() == 10);
   }
 
   SECTION("HashTree")
   {
-    
+
     // HashTree<Customer> customerList;
     // customerList.add(Customer("Tien", "Huynh", 1111));
     // REQUIRE(customerList.contains(Customer("Tien", "Huynh", 1111)).getFirstName() == "Tien");
