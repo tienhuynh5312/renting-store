@@ -17,6 +17,17 @@
 //   if (option == "B")
 //   {
 //     // Borrow
+        // match.str(2) customer iD
+        // str(3) media type
+        // str(4) movie type 
+        // DIFFERENT CASES
+        // if Classics
+        // str(5) month
+        // str(6) yeay
+        // str(7) major Actor
+        // else
+        // title
+        // year
 //   }
 //   else if (option == "R")
 //   {
