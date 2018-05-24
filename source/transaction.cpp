@@ -19,11 +19,6 @@ const std::string &Transaction::getTransactionDetail() const
   return this->transactionDetail;
 }
 
-int Transaction::getHash() const
-{
-  return Hashable<int>::getHash(transactionDetail);
-}
-
 /*
   These following operations are needed for binary search tree to work properly.
   */

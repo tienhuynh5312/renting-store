@@ -6,7 +6,7 @@
 #include "hashable.h"
 #include <ostream>
 
-class Transaction : public Hashable<int>
+class Transaction
 {
 private:
   std::string transactionDetail;
@@ -30,7 +30,6 @@ public:
    */
   const std::string &getTransactionDetail() const;
 
-  int getHash() const;
 
   /*
   These following operations are needed for binary search tree to work properly.
