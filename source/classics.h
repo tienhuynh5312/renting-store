@@ -17,7 +17,7 @@ public:
   const std::string &getMajorActor() const;
   bool operator<(const Classics &rhs) const;
   bool operator==(const Classics &rhs) const;
-
+  int getHash() const;
 private:
   std::string majorActor;
 };

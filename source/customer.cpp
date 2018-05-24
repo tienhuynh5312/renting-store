@@ -45,3 +45,8 @@ std::ostream& operator<<(std::ostream& out, const Customer& rhs)
 {
   return out << rhs.customerID;
 }
+
+int Customer::getHash() const
+{
+  return Hashable::getHash(customerID);
+}

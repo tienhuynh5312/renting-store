@@ -16,7 +16,7 @@ class Hashable
 public:
   // Hashable<Type>();
   // virtual ~Hashable<Type>();
-
+  virtual int getHash() const = 0;
   /**
    * @brief Get the Hash of a string.
    * 

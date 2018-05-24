@@ -6,6 +6,7 @@
 #include <string>
 #include "date.h"
 #include "item.h"
+#include "hashable.h"
 enum class VideoType
 {
   CLASSICS,
@@ -14,14 +15,12 @@ enum class VideoType
 };
 class Classics;
 
-class Video : public Item
+class Video : public Item, Hashable
 {
-private:
+protected:
   std::string title;
   std::string director;
   Date date;
-
-protected:
   VideoType videoType;
 
 public:
@@ -33,6 +32,7 @@ public:
   Video(const std::string &title, int stock, const std::string &director);
   Video(const std::string &title, int stock, const std::string &director, const Date &date);
 
+  int getHash() const;
   virtual const std::string &getTitle() const;
   virtual const std::string &getDirector() const;
   virtual const Date &getDate() const;

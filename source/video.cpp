@@ -86,3 +86,8 @@ bool Video::operator==(const Video &rhs) const
   if (rhs.videoType != videoType)
     return false;
 }
+
+int Video::getHash() const
+{
+  return Hashable::getHash(title) + Hashable::getHash(date.getYear);
+}

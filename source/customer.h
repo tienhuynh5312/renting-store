@@ -9,7 +9,7 @@
 #include <list>
 #include "transaction.h"
 
-class Customer : public Person
+class Customer : public Person, Hashable
 {
 private:
   // unique customer id
@@ -28,7 +28,7 @@ public:
   virtual ~Customer();
   const int &getCustomerID() const;
   const int &getTotalCustomers() const;
-
+  int getHash() const;
   /*
   These following operations are needed for binary search tree to work properly.
   */

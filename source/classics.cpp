@@ -44,3 +44,8 @@ const std::string &Classics::getMajorActor() const
 {
   return majorActor;
 }
+
+int Classics::getHash() const
+{
+  return Hashable::getHash(majorActor) + Hashable::getHash(date.getYear()) + Hashable::getHash(date.getMonth());
+}
