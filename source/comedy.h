@@ -15,7 +15,7 @@
 
 class Comedy : public Video{
 public:
-    Comedy() = delete;
+    Comedy(){ videoType = VideoType::COMEDY;};
     virtual ~Comedy();
     
     Comedy(const std::string &title, int stock, const std::string &director);
