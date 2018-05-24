@@ -17,7 +17,7 @@
  * @tparam Type Item type for hash tree container.
  */
 
-template <class ItemType>
+template <typename KeyType, typename ItemType>
 class HashTree
 {
 public:
@@ -47,7 +47,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const ItemType &item);
+  virtual bool add(const KeyType &key, const ItemType & item);
 
   /**
    * @brief Remove an item from hash tree.
@@ -56,7 +56,7 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(const ItemType &item);
+  virtual bool remove(const KeyType &key);
 
   /**
    * @brief Find an item in hash tree.
@@ -65,7 +65,7 @@ public:
    * @return true 
    * @return false 
    */
-  virtual ItemType contains(const ItemType &item);
+  virtual ItemType* contains(const ItemType &item);
 
   /**
    * @brief Optimize the hash tree for better performance.
@@ -93,13 +93,9 @@ private:
    */
   std::size_t hashTableCapacity;
 
-  /**
-   * @brief Rebalancing each tree in the hash table.
-   * 
-   */
-  void rebalanceTree();
-
   const std::size_t DEFAULT_CAPACITY = 50;
 };
+
+#include "hashtree.cpp"
 
 #endif // _HASHTREE_H
