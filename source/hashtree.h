@@ -9,7 +9,9 @@
 #define _HASHTREE_H
 
 #include <list>
-#include "hashable.h"
+#include <memory>
+
+#include "item.h"
 
 /**
  * @brief Hash tree
@@ -17,7 +19,7 @@
  * @tparam Type Item type for hash tree container.
  */
 
-template <typename KeyType, typename ItemType>
+template <typename Int, typename Sptr>
 class HashTree
 {
 public:
@@ -32,7 +34,7 @@ public:
    * 
    * @param capacity 
    */
-  HashTree(const std::size_t& capacity);
+  HashTree(const std::size_t &capacity);
 
   /**
    * @brief Destroy the Hash Tree object
@@ -47,7 +49,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const KeyType &key, const ItemType & item);
+  virtual bool add(const Int &key, Sptr itemptr);
 
   /**
    * @brief Remove an item from hash tree.
@@ -56,7 +58,7 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(const KeyType &key);
+  virtual bool remove(Sptr itemptr);
 
   /**
    * @brief Find an item in hash tree.
@@ -65,34 +67,27 @@ public:
    * @return true 
    * @return false 
    */
-  virtual ItemType* contains(const ItemType &item);
-
-  /**
-   * @brief Optimize the hash tree for better performance.
-   * 
-   */
-  virtual void optimizeHashTree();
+  virtual Sptr contains(Sptr itemptr);
 
 private:
-
   /**
-   * @brief An array of binary tree.
-   * hashTable = new 
+   * @brief An array of lists.
+   * hashTable = new
+   * sperate chaining
    */
-  std::list<ItemType> * hashTable;
+  std::list<Sptr> *hashTable;
 
   /**
    * @brief Total Items are stored in the hash tree.
-   * 
    */
   std::size_t totalItems;
 
   /**
    * @brief Maximum capaticy of the hash table.
-   * 
    */
   std::size_t hashTableCapacity;
 
+  // Default size for hashtable
   const std::size_t DEFAULT_CAPACITY = 50;
 };
 

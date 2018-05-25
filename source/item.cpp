@@ -96,6 +96,6 @@ std::ostream &operator<<(std::ostream &out, const Item &rhs)
 
 int Item::getHash() const
 {
-  return Hashable::getHash(totalItems);
+  return Hashable::getHash(this->itemID);
 }
 // end
