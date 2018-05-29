@@ -73,7 +73,7 @@ public:
 
   virtual bool resetPosition();
 
-  virtual HashableType* nextPosition();
+  virtual std::list<HashableType>::iterator nextPosition();
 
 private:
   /**
