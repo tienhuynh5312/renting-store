@@ -71,7 +71,9 @@ public:
 
   virtual void foreach(void visit(const HashableType &value));
 
-  virtual void reset();
+  virtual bool resetPosition();
+
+  virtual HashableType* nextPosition();
 
 private:
   /**
@@ -81,6 +83,9 @@ private:
    */
   std::list<HashableType> *hashTable;
 
+  // iterator for current list with node
+  std::list<HashableType>::iterator position;
+  int currentListIndex;
   /**
    * @brief Total Items are stored in the hash tree.
    */
