@@ -19,7 +19,7 @@
  * @tparam Type Item type for hash tree container.
  */
 
-template <typename Int, typename Sptr>
+template <typename Int, typename HashableType>
 class HashTree
 {
 public:
@@ -49,7 +49,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const Int &key, Sptr itemptr);
+  virtual bool add(const Int &key, const HashableType &value);
 
   /**
    * @brief Remove an item from hash tree.
@@ -58,7 +58,7 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(Sptr itemptr);
+  virtual bool remove(const HashableType &value);
 
   /**
    * @brief Find an item in hash tree.
@@ -67,7 +67,11 @@ public:
    * @return true 
    * @return false 
    */
-  virtual Sptr contains(Sptr itemptr);
+  virtual HashableType contains(const HashableType &value);
+
+  virtual void foreach(void visit(const HashableType &value));
+
+  virtual void reset();
 
 private:
   /**
@@ -75,7 +79,7 @@ private:
    * hashTable = new
    * sperate chaining
    */
-  std::list<Sptr> *hashTable;
+  std::list<HashableType> *hashTable;
 
   /**
    * @brief Total Items are stored in the hash tree.

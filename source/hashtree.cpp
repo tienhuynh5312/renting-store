@@ -7,39 +7,37 @@
 
 #include "hashtree.h"
 
-template <typename Int, typename Sptr>
-HashTree<Int, Sptr>::HashTree() 
-try : hashTable(new std::list<Sptr>[ DEFAULT_CAPACITY ]), hashTableCapacity(DEFAULT_CAPACITY)
+template <typename Int, typename HashableType>
+HashTree<Int, HashableType>::HashTree()
+try : hashTable(new std::list<HashableType>[ DEFAULT_CAPACITY ]), hashTableCapacity(DEFAULT_CAPACITY)
 {
 }
 catch (std::exception &e)
-{
-  // alloc error thrown
+{ // alloc error thrown
 }
 
-template <typename Int, typename Sptr>
-HashTree<Int, Sptr>::HashTree(const std::size_t &capacity) 
-try : hashTable(new std::list<Sptr>[capacity]), hashTableCapacity(capacity)
+template <typename Int, typename HashableType>
+HashTree<Int, HashableType>::HashTree(const std::size_t &capacity)
+try : hashTable(new std::list<HashableType>[ capacity ]), hashTableCapacity(capacity)
 {
 }
 catch (std::exception &e)
-{
-  // alloc error thrown
+{ // alloc error thrown
 }
 
-template <typename Int, typename Sptr>
-HashTree<Int, Sptr>::~HashTree()
+template <typename Int, typename HashableType>
+HashTree<Int, HashableType>::~HashTree()
 {
   delete[] this->hashTable;
   this->hashTable = nullptr;
 }
 
-template <typename Int, typename Sptr>
-bool HashTree<Int, Sptr>::add(const Int &key, Sptr itemptr)
+template <typename Int, typename HashableType>
+bool HashTree<Int, HashableType>::add(const Int &key, const HashableType &value)
 {
   try
   {
-    this->hashTable[key].push_back(itemptr);
+    this->hashTable[key].push_back(value);
     return true;
   }
   catch (std::exception &e)
@@ -48,12 +46,12 @@ bool HashTree<Int, Sptr>::add(const Int &key, Sptr itemptr)
   }
 }
 
-template <typename Int, typename Sptr>
-bool HashTree<Int, Sptr>::remove(Sptr itemptr)
+template <typename Int, typename HashableType>
+bool HashTree<Int, HashableType>::remove(const HashableType &value)
 {
   try
   {
-    this->hashTable[itemptr->getHash()].remove(*itemptr);
+    this->hashTable[value->getHash()].remove(*value);
     return true;
   }
   catch (std::exception &e)
@@ -62,18 +60,20 @@ bool HashTree<Int, Sptr>::remove(Sptr itemptr)
   }
 }
 
-template <typename Int, typename Sptr>
-Sptr HashTree<Int, Sptr>::contains(Sptr itemptr)
+template <typename Int, typename HashableType>
+HashableType HashTree<Int, HashableType>::contains(const HashableType &value)
 {
   try
   {
-    if(this->hashTable[itemptr->getHash()].empty()) return nullptr;
-    else 
-    { // if hash for itemptr exists return that list
-      std::list<Sptr> temp = this->hashTable[itemptr->getHash()];
-      // then if the item at **it == item at *itemptr return it
-      for(auto it = temp.begin(); it != temp.end(); ++it) 
-        if(**it == *itemptr) return *it;
+    if (this->hashTable[value->getHash()].empty())
+      return nullptr;
+    else
+    { // if hash for value exists return that list
+      std::list<HashableType> temp = this->hashTable[value->getHash()];
+      // then if the item at **it == item at *value return it
+      for (auto it = temp.begin(); it != temp.end(); ++it)
+        if (**it == *value)
+          return *it;
     }
   }
   catch (std::exception &e)
