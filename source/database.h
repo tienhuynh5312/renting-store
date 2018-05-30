@@ -37,5 +37,13 @@ private:
   bool readTransaction(const std::string &command);
   bool readCustomer(const std::string &command);
   bool readVideo(const std::string &command);
+
+  bool borrowVideo(const std::string& command);
+  bool borrowClassics(const std::string& command);
+  bool borrowComedy(const std::string& command);
+  bool borrowDrama(const std::string& command);
+  bool returnVideo(const std::string& command);
+  void displayCustomerInfo(const std::string& command);
+  void displayInventory();
 };
 #endif // !_DATABASE_H
