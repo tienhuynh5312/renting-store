@@ -8,8 +8,8 @@
 #ifndef _HASHTREE_H
 #define _HASHTREE_H
 
-#include <list>
 #include <memory>
+#include <vector>
 
 #include "item.h"
 
@@ -65,17 +65,31 @@ public:
    * 
    * @param item 
    * @return true 
-   * @return false 
    */
+<<<<<<< HEAD
   virtual ItemType contains(const KeyType &key);
+=======
+  virtual HashableType contains(const HashableType &value);
+
+  /**
+   * @brief Call a function on every single item in the hashtree
+   * 
+   * @param function(const HashableType &)
+   */
+  virtual void foreach(void visit(const HashableType &value));
+>>>>>>> 45f7885d4adcfd14bdf483edcd0a1b03f102a051
 
 private:
   /**
-   * @brief An array of lists.
+   * @brief An array of vector.
    * hashTable = new
    * sperate chaining
    */
+<<<<<<< HEAD
   std::list<std::pair<KeyType, ItemType>> *hashTable;
+=======
+  std::vector<HashableType> []hashTable;
+>>>>>>> 45f7885d4adcfd14bdf483edcd0a1b03f102a051
 
   /**
    * @brief Total Items are stored in the hash tree.

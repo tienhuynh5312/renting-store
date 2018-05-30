@@ -49,3 +49,12 @@ int Classics::getHash() const
 {
   return Hashable::getHash(majorActor) + Hashable::getHash(date.getYear()) + Hashable::getHash(date.getMonth());
 }
+
+ostream &operator<<(ostream &outStream, const Classics &rhs) {
+
+  if ( rhs.getTitle() == "C")
+  {
+    outStream << rhs.getItemType() << "" <<rhs.getTotalStock() << "" << rhs.getDirector() << ""
+              << rhs.getTitle() << "" << rhs.getMajorActor() << "" <<rhs.getDate().getMonth() << "" <<rhs.getDate().getYear();
+  }
+}

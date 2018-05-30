@@ -109,10 +109,12 @@ TEST_CASE("BASE DESIGN", "[design]")
     // list.add(new Transaction("Hahaha"));
 
     HashTree<int, std::shared_ptr<Customer>> customerList;
-
-    customerList.add(1111, std::make_shared<Customer>("Tien", "Huynh", 1111));
-    std::shared_ptr<Customer> me = std::make_shared<Customer>("Tien", "Huynh", 1111);
-    CHECK(customerList.contains(me)->getCustomerID() == 1111);
+    std::shared_ptr<Customer> t = std::make_shared<Customer>("Tien", "Huynh", 1111);
+    customerList.add(1111, t);
+    customerList.remove(1111);
+    customerList.contains(1111);
+    
+    // CHECK(customerList.contains(1111).getCustomerID() == 1111);
   }
   SECTION("Reading DataMovies")
   {

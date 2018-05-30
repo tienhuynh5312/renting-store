@@ -4,9 +4,13 @@
 
 #include <stdio.h>
 #include "video.h"
+#include <iostream>
+
+using namespace std;
 
 class Drama : public Video
 {
+    friend ostream &operator<<(ostream &outStream, const Drama &rhs );
 public:
   Drama(){ videoType = VideoType::DRAMA; };
   virtual ~Drama();
