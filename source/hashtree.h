@@ -66,18 +66,7 @@ public:
    * @param item 
    * @return true 
    */
-<<<<<<< HEAD
   virtual ItemType contains(const KeyType &key);
-=======
-  virtual HashableType contains(const HashableType &value);
-
-  /**
-   * @brief Call a function on every single item in the hashtree
-   * 
-   * @param function(const HashableType &)
-   */
-  virtual void foreach(void visit(const HashableType &value));
->>>>>>> 45f7885d4adcfd14bdf483edcd0a1b03f102a051
 
 private:
   /**
@@ -85,11 +74,7 @@ private:
    * hashTable = new
    * sperate chaining
    */
-<<<<<<< HEAD
   std::list<std::pair<KeyType, ItemType>> *hashTable;
-=======
-  std::vector<HashableType> []hashTable;
->>>>>>> 45f7885d4adcfd14bdf483edcd0a1b03f102a051
 
   /**
    * @brief Total Items are stored in the hash tree.
@@ -105,6 +90,5 @@ private:
   const std::size_t DEFAULT_CAPACITY = 50;
 };
 
-#include "hashtree.cpp"
 
 #endif // _HASHTREE_H
