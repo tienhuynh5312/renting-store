@@ -9,7 +9,7 @@
 #include <list>
 #include "transaction.h"
 
-class Customer : public Person, Hashable
+class Customer : public Person, public Hashable
 {
 private:
   // unique customer id

@@ -26,24 +26,24 @@ const int &Customer::getTotalCustomers() const
 
 int Customer::totalCustomers = 0;
 
-bool Customer::operator==(const Customer& rhs) const
+bool Customer::operator==(const Customer &rhs) const
 {
   return (customerID == rhs.customerID);
 }
 
-bool Customer::operator<(const Customer& rhs) const
+bool Customer::operator<(const Customer &rhs) const
 {
   return (customerID < rhs.customerID);
 }
 
-bool Customer::operator<=(const Customer& rhs) const
+bool Customer::operator<=(const Customer &rhs) const
 {
   return (*this < rhs) || (*this == rhs);
 }
 
-std::ostream& operator<<(std::ostream& out, const Customer& rhs)
+std::ostream &operator<<(std::ostream &out, const Customer &rhs)
 {
-  return out << rhs.customerID;
+  return out << rhs.firstName << " " << rhs.lastName << "[ID: " << rhs.customerID << "]" << std::endl;
 }
 
 int Customer::getHash() const
