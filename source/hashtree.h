@@ -19,7 +19,7 @@
  * @tparam Type Item type for hash tree container.
  */
 
-template <typename Int, typename HashableType>
+template <class KeyType, class ItemType>
 class HashTree
 {
 public:
@@ -49,7 +49,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const Int &key, const HashableType &value);
+  virtual bool add(const KeyType &key, const ItemType &value);
 
   /**
    * @brief Remove an item from hash tree.
@@ -58,7 +58,7 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(const HashableType &value);
+  virtual bool remove(const KeyType &key);
 
   /**
    * @brief Find an item in hash tree.
@@ -67,13 +67,7 @@ public:
    * @return true 
    * @return false 
    */
-  virtual HashableType contains(const HashableType &value);
-
-  virtual void foreach(void visit(const HashableType &value));
-
-  virtual bool resetPosition();
-
-  virtual std::list<HashableType>::iterator nextPosition();
+  virtual ItemType contains(const KeyType &key);
 
 private:
   /**
@@ -81,11 +75,8 @@ private:
    * hashTable = new
    * sperate chaining
    */
-  std::list<HashableType> *hashTable;
+  std::list<std::pair<KeyType, ItemType>> *hashTable;
 
-  // iterator for current list with node
-  std::list<HashableType>::iterator position;
-  int currentListIndex;
   /**
    * @brief Total Items are stored in the hash tree.
    */
