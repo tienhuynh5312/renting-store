@@ -32,13 +32,17 @@ HashTree<KeyType, ItemType>::~HashTree()
 }
 
 template <class KeyType, class ItemType>
-bool HashTree<KeyType, ItemType>::add(const KeyType &key, const ItemType &value)
+bool HashTree<KeyType, ItemType>::add(const KeyType &key, ItemType value)
 {
 
   const int index = key % hashTableCapacity;
   if (contains(key) == nullptr)
   {
-    this->hashTable[index].push_back(std::make_pair<KeyType, ItemType>(key, value));
+    KeyType k = key;
+    ItemType v = nullptr;
+    std::pair<KeyType, ItemType> item = std::make_pair(k, v);
+    this->hashTable[index].push_back(std::move(std::make_pair(k, value)));
+    this->hashTable[index].back().second = value;
     return true;
   }
   else

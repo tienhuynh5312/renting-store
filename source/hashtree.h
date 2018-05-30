@@ -49,7 +49,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const KeyType &key, const ItemType &value);
+  virtual bool add(const KeyType &key, ItemType value);
 
   /**
    * @brief Remove an item from hash tree.
