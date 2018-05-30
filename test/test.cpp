@@ -105,16 +105,18 @@ TEST_CASE("BASE DESIGN", "[design]")
     // CHECK(itemList.contains(romeo).getCurrentStock() == 10);
     // CHECK(itemList.contains(romeo).getTotalStock() == 10);
 
-    // HashTree<Transaction*> list;
-    // list.add(new Transaction("Hahaha"));
+    // HashTree<int, Customer*> list;
+    // list.add(1111, new Customer(1111));
 
     HashTree<int, std::shared_ptr<Customer>> customerList;
     std::shared_ptr<Customer> t = std::make_shared<Customer>("Tien", "Huynh", 1111);
     customerList.add(1111, t);
+    REQUIRE(customerList.contains(1111)->getCustomerID() == 1111);
+    REQUIRE(customerList.contains(1111)->getFirstName() == "Tien");
+    REQUIRE(customerList.contains(1111)->getLastName() == "Huynh");
+    REQUIRE(customerList.contains(1111) == t);
     customerList.remove(1111);
-    customerList.contains(1111);
-    
-    // CHECK(customerList.contains(1111).getCustomerID() == 1111);
+    REQUIRE(customerList.contains(1111) == nullptr);
   }
   SECTION("Reading DataMovies")
   {
