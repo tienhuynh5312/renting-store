@@ -23,7 +23,7 @@
         // DIFFERENT CASES
         // if Classics
         // str(5) month
-        // str(6) yeay
+        // str(6) year
         // str(7) major Actor
         // else
         // title
@@ -32,14 +32,47 @@
 //   else if (option == "R")
 //   {
 //     // Return
+//     // match.str(2) customer iD
+//     // str(3) media type
+//     // str(4) movie type
+//     // if CLassics
+//     // str(5) month
+//     // str(6) year
+//     // str(7) major Actor
+//     // else
+//     // title
+//     // year
 //   }
 //   else if (option == "I")
 //   {
 //     // Display Inventory
+//     // using traverse function in Hashtree to display
+//    std::cout << "********** Comedy Invectory **********" << std::endl;
+//    hashtree.traverse(?)(variable);
+//    std::cout << endl;
+
+//    std::cout << "********** Drama Invectory **********" << std::endl;
+//    hashtree.traverse(?)(variable);
+//    std::cout << endl;
+
+//    std::cout << "********** Classic Invectory **********" << std::endl;
+//    hashtree.traverse(?)(variable);
+//    std::cout << endl;
+
 //   }
 //   else if (option == "H")
 //   {
 //     // Display item of a customer
+//    hashtree *temp = hashtree.search(key?);
+
+//    if (temp == nullptr) {
+//    std::cout << "The customer ID: " << key?ID? << " does not exist" << std::endl;
+//    return false;
+//    }
+
+//    //Printing the history of specific customer
+//    temp---> print of history;
+//    return true;
 //   }
 //   else
 //   {
