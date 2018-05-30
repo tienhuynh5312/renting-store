@@ -50,3 +50,4 @@ int Customer::getHash() const
 {
   return Hashable::getHash(customerID);
 }
+

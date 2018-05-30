@@ -1,6 +1,7 @@
 
 
 #include "comedy.h"
+#include <string>
 
 Comedy::~Comedy()
 {
@@ -37,4 +38,14 @@ bool Comedy::operator==(const Comedy &rhs) const
     return true;
   else
     return false;
+}
+
+
+ostream &operator<<(ostream &outStream, const Comedy &rhs) {
+
+    if ( rhs.getTitle() == "F")
+    {
+        outStream << rhs.getItemType() << "" <<rhs.getTotalStock() << "" << rhs.getDirector() << ""
+                  << rhs.getTitle() << "" << rhs.getDate().getYear();
+    }
 }

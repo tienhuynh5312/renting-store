@@ -6,8 +6,12 @@
 #include <stdio.h>
 #include "video.h"
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 class Comedy : public Video{
+    friend ostream &operator<<(ostream &outStream, const Comedy &rhs );
 public:
     Comedy(){ videoType = VideoType::COMEDY;};
     virtual ~Comedy();
@@ -17,6 +21,8 @@ public:
 
     bool operator<(const Comedy & rhs) const;
     bool operator==(const Comedy & rhs) const;
+
+
 };
 
 #endif /* comedy_h */

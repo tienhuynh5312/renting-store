@@ -35,5 +35,15 @@ bool Drama::operator==(const Drama &rhs) const {
     
     return (this->getDirector() == rhs.getDirector() &&
             this->getTitle() == rhs.getTitle());
-};
+}
+
+ostream &operator<<(ostream &outStream, const Drama &rhs) {
+
+  if ( rhs.getTitle() == "D")
+  {
+    outStream << rhs.getItemType() << "" <<rhs.getTotalStock() << "" << rhs.getDirector() << ""
+              << rhs.getTitle() << "" << rhs.getDate().getYear();
+  }
+}
+
 

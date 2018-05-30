@@ -5,9 +5,13 @@
 
 #include <string>
 #include "video.h"
+#include <iostream>
+
+using namespace std;
 
 class Classics : public Video
 {
+    friend ostream &operator<<(ostream &outStream, const Classics &rhs );
 public:
   Classics() { videoType = VideoType::CLASSICS; };
   virtual ~Classics();
@@ -18,6 +22,8 @@ public:
   bool operator<(const Classics &rhs) const;
   bool operator==(const Classics &rhs) const;
   int getHash() const;
+
+
 private:
   std::string majorActor;
 };
