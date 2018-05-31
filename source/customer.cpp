@@ -51,9 +51,9 @@ std::ostream &operator<<(std::ostream &out, const Customer &rhs)
   out << std::endl << "[ID: " << rhs.customerID << "] " << rhs.firstName << " " << rhs.lastName << std::endl;
   
   out << "==Transaction History (Recently)==" << std::endl;
-  for (auto it = rhs.myTransaction.begin(); it != rhs.myTransaction.end(); it++)
+  for (const auto& it : rhs.myTransaction)
   {
-    if (auto trans = it->lock())
+    if (auto trans = it.lock())
       out << trans->getTransactionDetail() << std::endl;
   }
   out << "==================================" << std::endl;

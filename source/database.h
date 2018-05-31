@@ -35,9 +35,9 @@ public:
   bool readCustomer(const std::string &command);
   bool readVideo(const std::string &command);
 private:
-  HashTree<int, std::shared_ptr<Customer>> customers{};
-  HashTree<int, std::shared_ptr<Video>> items{};
-  HashTree<int, std::shared_ptr<Transaction>> transactions{};
+  HashTree<int, std::shared_ptr<Customer>> customers{100};
+  HashTree<int, std::shared_ptr<Video>> items{100};
+  HashTree<int, std::shared_ptr<Transaction>> transactions{1000};
 
 
   bool borrowVideo(const std::string& command);

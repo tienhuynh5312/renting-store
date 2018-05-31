@@ -284,7 +284,10 @@ std::shared_ptr<Customer> Database::getCustomer(const Customer &customer)
 
 bool Database::addCustomer(std::shared_ptr<Customer> customer)
 {
-  return customers.add(customer->getCustomerID(), customer);
+  if (customers.contains(customer->getCustomerID()).get() != nullptr)
+    return false;
+  else
+    return customers.add(customer->getCustomerID(), customer);
 }
 
 bool Database::removeCustomer(const int &id)
@@ -306,7 +309,10 @@ std::shared_ptr<Video> Database::getVideo(const Video &video)
 
 bool Database::addVideo(std::shared_ptr<Video> video)
 {
-  return items.add(video->getHash(), video);
+  if (items.contains(video->getHash()).get() != nullptr)
+    return false;
+  else
+    return items.add(video->getHash(), video);
 }
 
 bool Database::removeVideo(const int &id)
