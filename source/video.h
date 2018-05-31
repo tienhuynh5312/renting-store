@@ -37,7 +37,7 @@ public:
   virtual const std::string &getDirector() const;
   virtual const Date &getDate() const;
   virtual std::string getVideoType() const;
-  static VideoType getVideoType(const std::string& rhs);
+  static VideoType getVideoType(const std::string &rhs);
 
   virtual void setTitle(const std::string &title);
   virtual void setDirector(const std::string &director);

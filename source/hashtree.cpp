@@ -71,6 +71,18 @@ ItemType HashTree<KeyType, ItemType>::contains(const KeyType &key)
   return nullptr;
 }
 
+template <class KeyType, class ItemType>
+int HashTree<KeyType, ItemType>::getCapacity() const
+{
+  return this->hashTableCapacity;
+}
+
+template <class KeyType, class ItemType>
+std::list<std::pair<KeyType, ItemType>> *HashTree<KeyType, ItemType>::getStructure()
+{
+  return this->hashTable;
+}
+
 template class HashTree<int, std::shared_ptr<Customer>>;
 template class HashTree<int, std::shared_ptr<Transaction>>;
 template class HashTree<int, std::shared_ptr<Video>>;

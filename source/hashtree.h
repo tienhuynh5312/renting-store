@@ -67,6 +67,10 @@ public:
    */
   virtual ItemType contains(const KeyType &key);
 
+  int getCapacity() const;
+
+  std::list<std::pair<KeyType, ItemType>> *getStructure();
+
 private:
   /**
    * @brief An array of vector.
@@ -88,6 +92,5 @@ private:
   // Default size for hashtable
   const std::size_t DEFAULT_CAPACITY = 50;
 };
-
 
 #endif // _HASHTREE_H

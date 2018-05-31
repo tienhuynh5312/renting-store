@@ -11,8 +11,8 @@ using namespace std;
 
 class Classics : public Video
 {
-    friend ostream &operator<<(ostream &outStream, const Classics &rhs );
 public:
+    friend ostream &operator<<(ostream &outStream, const Classics &rhs );
   Classics() { videoType = VideoType::CLASSICS; };
   virtual ~Classics();
 
