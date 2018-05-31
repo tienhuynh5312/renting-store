@@ -8,13 +8,14 @@
 #include <ostream>
 #include <list>
 #include "transaction.h"
+#include <memory>
 
 class Customer : public Person, public Hashable
 {
 private:
   // unique customer id
   int customerID;
-  std::list<Transaction *> myTransaction;
+  std::list<std::weak_ptr<Transaction>> myTransaction;
 
 protected:
   // count of all customers
@@ -27,7 +28,9 @@ public:
   Customer(const std::string &first, const std::string &last, const int &id);
   virtual ~Customer();
   const int &getCustomerID() const;
-  const int &getTotalCustomers() const;
+  static const int &getTotalCustomers();
+
+  bool linkTransaction(std::shared_ptr<Transaction> trans);
   int getHash() const;
   /*
   These following operations are needed for binary search tree to work properly.

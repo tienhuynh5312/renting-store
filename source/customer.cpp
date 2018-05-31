@@ -4,14 +4,16 @@
 #include "person.h"
 #include "customer.h"
 
+int Customer::totalCustomers = 0;
+
 Customer::Customer(const std::string &first, const std::string &last, const int &id) : Person(first, last), customerID(id)
 {
-  ++totalCustomers;
+  totalCustomers++;
 }
 
 Customer::~Customer()
 {
-  --totalCustomers;
+  totalCustomers--;
 }
 
 const int &Customer::getCustomerID() const
@@ -19,13 +21,16 @@ const int &Customer::getCustomerID() const
   return this->customerID;
 }
 
-const int &Customer::getTotalCustomers() const
+const int &Customer::getTotalCustomers()
 {
   return totalCustomers;
 }
 
-int Customer::totalCustomers = 0;
-
+bool Customer::linkTransaction(std::shared_ptr<Transaction> trans)
+{
+  myTransaction.push_front(trans);
+  return true;
+}
 bool Customer::operator==(const Customer &rhs) const
 {
   return (customerID == rhs.customerID);
@@ -43,11 +48,19 @@ bool Customer::operator<=(const Customer &rhs) const
 
 std::ostream &operator<<(std::ostream &out, const Customer &rhs)
 {
-  return out << rhs.firstName << " " << rhs.lastName << "[ID: " << rhs.customerID << "]" << std::endl;
+  out << "[ID: " << rhs.customerID << "] " << rhs.firstName << " " << rhs.lastName << std::endl;
+  
+  out << "==Transaction History (Recently)==" << std::endl;
+  for (auto it = rhs.myTransaction.begin(); it != rhs.myTransaction.end(); it++)
+  {
+    if (auto trans = it->lock())
+      out << trans->getTransactionDetail() << std::endl;
+  }
+  out << "============================" << std::endl;
+  return out;
 }
 
 int Customer::getHash() const
 {
   return Hashable::getHash(customerID);
 }
-

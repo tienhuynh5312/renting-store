@@ -18,6 +18,7 @@
 #include "../source/hashable.h"
 #include "../source/hashtree.h"
 #include "../source/database.h"
+#include "../source/comedy.h"
 #include <regex>
 #include <iostream>
 #include <vector>
@@ -153,9 +154,25 @@ TEST_CASE("BASE DESIGN", "[design]")
       Database data;
       data.readFile(FileType::CUSTOMER, "data4customers.txt");
       REQUIRE(data.getCustomer(3333)->getFirstName() == "Witch");
-      REQUIRE(data.getCustomer(3333)->getLastName() == "Wicked");
+      REQUIRE(data.getCustomer(8888)->getFirstName() == "Pig");
+      REQUIRE(data.getCustomer(4444)->getFirstName() == "Moose");
+      REQUIRE(data.getCustomer(9999)->getFirstName() == "Duck");
+      REQUIRE(data.getCustomer(6666)->getFirstName() == "Donkey");
+      REQUIRE(data.getCustomer(7777)->getFirstName() == "Spider");
+      REQUIRE(data.getCustomer(1111)->getFirstName() == "Mouse");
+      REQUIRE(data.getCustomer(9000)->getFirstName() == "Lizard");
+      REQUIRE(data.getCustomer(8000)->getFirstName() == "Wacky");
+      REQUIRE(data.getCustomer(5000)->getFirstName() == "Frog");
+      REQUIRE(data.getCustomer(2000)->getFirstName() == "Duck");
       data.readFile(FileType::VIDEO, "data4movies.txt");
       data.readFile(FileType::TRANSACTION, "data4commands.txt");
+
+      const int key = Classics("It's a Wonderful Life",10, "Frank Capra", "James Steward", Date(1946,11)).getHash();
+      REQUIRE(data.getVideo(key).get() != nullptr);
+      REQUIRE(data.getVideo(key)->getTotalStock() == 10);
+      REQUIRE(data.getVideo(key)->getTitle() == "It's a Wonderful Life");
+      REQUIRE(data.getVideo(key)->getDirector() == "Frank Capra");
+      REQUIRE(dynamic_pointer_cast<Classics>(data.getVideo(key))->getMajorActor() == "James Steward");
     }
     catch (std::exception &e)
     {
