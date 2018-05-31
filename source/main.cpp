@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
     std::cout << "1. Read customer files" << std::endl;
     std::cout << "2. Read Video files" << std::endl;
     std::cout << "3. Read Transaction files" << std::endl;
-    std::cout << "put the number in here : ";
+    std::cout << "Choose an option: ";
     std::cin >> choice;
 
     switch (choice)

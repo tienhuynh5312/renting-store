@@ -2,7 +2,7 @@
 #ifndef video_h
 #define video_h
 
-#include <stdio.h>
+#include <ostream>
 #include <string>
 #include "date.h"
 #include "item.h"
@@ -45,6 +45,8 @@ public:
 
   virtual bool operator<(const Video &) const;
   virtual bool operator==(const Video &) const;
+
+  friend std::ostream& operator<<(std::ostream& out, const Video& rhs);
 };
 
 #endif /* video_h */

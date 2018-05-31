@@ -91,3 +91,8 @@ int Video::getHash() const
 {
   return Hashable::getHash(title) + Hashable::getHash(title) + Hashable::getHash(director) + Hashable::getHash(date.getYear());
 }
+
+std::ostream& operator<<(std::ostream& out, const Video& rhs)
+{
+  return out << rhs.getVideoType() << ", " << rhs.getCurrentStock() << "/" << rhs.getTotalStock() << ", " << rhs.getDirector() << ", " << rhs.getTitle() << ", " << rhs.getDate().getYear();
+}

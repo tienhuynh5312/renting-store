@@ -52,6 +52,7 @@ int Classics::getHash() const
 
 ostream &operator<<(ostream &outStream, const Classics &rhs)
 {
-  outStream << rhs.getItemType() << "" << rhs.getTotalStock() << "" << rhs.getDirector() << ""
-            << rhs.getTitle() << "" << rhs.getMajorActor() << "" << rhs.getDate().getMonth() << "" << rhs.getDate().getYear();
+  outStream << "Classics"
+            << ", " << rhs.getCurrentStock() << "/" << rhs.getTotalStock() << ", " << rhs.getDirector() << ", "
+            << rhs.getTitle() << ", " << rhs.getMajorActor() << " " << rhs.getDate().getMonth() << " " << rhs.getDate().getYear();
 }

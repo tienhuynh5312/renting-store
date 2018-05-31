@@ -69,7 +69,7 @@ public:
 
   int getCapacity() const;
 
-  std::list<std::pair<KeyType, ItemType>> *getStructure();
+  std::list<std::pair<KeyType, ItemType>>* getStructure() const;
 
 private:
   /**

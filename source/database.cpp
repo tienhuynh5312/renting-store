@@ -185,34 +185,32 @@ void Database::displayCustomerInfo(const std::string &command)
 
 void Database::displayInventory()
 { // shared_ptr to items
-  std::cout << "Display Inventory" << std::endl;
+  std::cout << "=================Display Inventory=====================" << std::endl;
   auto hash_table = items.getStructure();
-  int size = items.getCapacity();
-  std::cout << size << std::endl;
+  const int size = items.getCapacity();
   // create buf
   std::stringstream classic;
   std::stringstream comedy;
   std::stringstream drama;
   // get structure
-  for (int i = 0; i < size; ++i)
+  for (int i = 0; i < size; i++)
   { // if empty do nothing
     if (!hash_table[i].empty())
     {
-      for (auto it = hash_table[i].begin(); it != hash_table[i].end(); ++it)
+      for (auto it = hash_table[i].begin(); it != hash_table[i].end(); it++)
       {
-        std::cout << &it << std::endl;
         if (it->second->getVideoType() == std::string("Classics"))
         {
-          std::shared_ptr<Classics> shared_classic = (std::dynamic_pointer_cast<Classics>(it->second));
-          classic << *shared_classic << std::endl;
+          auto shared_classic = dynamic_pointer_cast<Classics>(it->second);
+          classic << *(shared_classic) << std::endl;
         }
-        if (it->second->getVideoType() == std::string("Comedy"))
+        else if (it->second->getVideoType() == std::string("Comedy"))
         {
-          comedy << *(std::dynamic_pointer_cast<Comedy>(it->second)) << std::endl;
+          comedy << *(it->second) << std::endl;
         }
-        if (it->second->getVideoType() == std::string("Drama"))
+        else if (it->second->getVideoType() == std::string("Drama"))
         {
-          drama << *(std::dynamic_pointer_cast<Drama>(it->second)) << std::endl;
+          drama << *(it->second) << std::endl;
         }
       }
     }
@@ -221,6 +219,7 @@ void Database::displayInventory()
   std::cout << classic.str() << std::endl;
   std::cout << comedy.str() << std::endl;
   std::cout << drama.str() << std::endl;
+  std::cout << "=================End of Inventory=====================" << std::endl;
 }
 
 bool Database::getClassics(const std::string &command)

@@ -78,7 +78,7 @@ int HashTree<KeyType, ItemType>::getCapacity() const
 }
 
 template <class KeyType, class ItemType>
-std::list<std::pair<KeyType, ItemType>> *HashTree<KeyType, ItemType>::getStructure()
+std::list<std::pair<KeyType, ItemType>>* HashTree<KeyType, ItemType>::getStructure() const
 {
   return this->hashTable;
 }
