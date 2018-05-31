@@ -40,26 +40,12 @@ private:
   HashTree<int, std::shared_ptr<Video>> items{100};
   HashTree<int, std::shared_ptr<Transaction>> transactions{1000};
 
-<<<<<<< HEAD
-  // std::set<std::weak_ptr<Classics>> classics;
-  // std::set<std::weak_ptr<Comedy>> comedy;
-  // std::set<std::weak_ptr<Classics>> drama;
-
-
-  bool borrowVideo(const std::string& command);
-  bool getClassics(const std::string& command);
-  bool getComedy(const std::string& command);
-  bool getDrama(const std::string& command);
-  bool returnVideo(const std::string& command);
-  void displayCustomerInfo(const std::string& command);
-=======
   bool borrowVideo(const std::string &command);
   bool getClassics(const std::string &command);
   bool getComedy(const std::string &command);
   bool getDrama(const std::string &command);
   bool returnVideo(const std::string &command);
   void displayCustomerInfo(const std::string &command);
->>>>>>> 694c02535fddde6013a12c8e0e243b7e34dc1573
   void displayInventory();
 };
 #endif // !_DATABASE_H

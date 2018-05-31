@@ -67,14 +67,10 @@ public:
    */
   virtual ItemType contains(const KeyType &key);
 
-<<<<<<< HEAD
-  virtual void traverse(void visit(ItemType item));
-=======
   int getCapacity() const;
 
   std::list<std::pair<KeyType, ItemType>> *getStructure();
 
->>>>>>> 694c02535fddde6013a12c8e0e243b7e34dc1573
 private:
   /**
    * @brief An array of vector.
