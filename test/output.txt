@@ -23,7 +23,7 @@ SOURCE="../source"
 # Test drive
 #g++ -std=c++14 -g -Wall -Wextra test.cpp person.o customer.o borrowable.o item.o video.o date.o transaction.o comedy.o classics.o drama.o ../source/hashable.h ../source/binary-search-tree/*.h ../source/hashtree.cpp
 
-g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 test.cpp ../source/*.cpp ../source/binary-search-tree/*.cpp
+g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 test.cpp ../source/*.cpp
 
 # g++ -std=c++14 -g -Wall -Wextra test.cpp ../source/hashable.h ../source/*.cpp ../source/binary-search-tree/*.cpp
 
