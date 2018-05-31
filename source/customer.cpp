@@ -48,7 +48,7 @@ bool Customer::operator<=(const Customer &rhs) const
 
 std::ostream &operator<<(std::ostream &out, const Customer &rhs)
 {
-  out << "[ID: " << rhs.customerID << "] " << rhs.firstName << " " << rhs.lastName << std::endl;
+  out << std::endl << "[ID: " << rhs.customerID << "] " << rhs.firstName << " " << rhs.lastName << std::endl;
   
   out << "==Transaction History (Recently)==" << std::endl;
   for (auto it = rhs.myTransaction.begin(); it != rhs.myTransaction.end(); it++)
@@ -56,7 +56,7 @@ std::ostream &operator<<(std::ostream &out, const Customer &rhs)
     if (auto trans = it->lock())
       out << trans->getTransactionDetail() << std::endl;
   }
-  out << "============================" << std::endl;
+  out << "==================================" << std::endl;
   return out;
 }
 
