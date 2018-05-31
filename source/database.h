@@ -19,8 +19,8 @@ public:
   bool addCustomer(const Customer &customer);
   bool removeCustomer(const int &id);
 
-  std::shared_ptr<Customer> getVideo(const int &id);
-  std::shared_ptr<Customer> getVideo(const Video &video);
+  std::shared_ptr<Video> getVideo(const int &id);
+  std::shared_ptr<Video> getVideo(const Video &video);
   bool addVideo(const Video &video);
   bool removeVideo(const int &id);
 
@@ -29,14 +29,14 @@ public:
   bool addTransaction(const Transaction &transaction);
   bool removeTransaction(const std::string &transactionDetail);
 
+  bool readTransaction(const std::string &command);
+  bool readCustomer(const std::string &command);
+  bool readVideo(const std::string &command);
 private:
   HashTree<int, std::shared_ptr<Customer>> customers;
   HashTree<int, std::shared_ptr<Video>> items;
   HashTree<int, std::shared_ptr<Transaction>> transactions;
 
-  bool readTransaction(const std::string &command);
-  bool readCustomer(const std::string &command);
-  bool readVideo(const std::string &command);
 
   bool borrowVideo(const std::string& command);
   bool borrowClassics(const std::string& command);

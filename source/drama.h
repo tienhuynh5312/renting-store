@@ -10,16 +10,17 @@ using namespace std;
 
 class Drama : public Video
 {
-    friend ostream &operator<<(ostream &outStream, const Drama &rhs );
 public:
-  Drama(){ videoType = VideoType::DRAMA; };
+  Drama() { videoType = VideoType::DRAMA; };
   virtual ~Drama();
 
   Drama(const std::string &title, int stock, const std::string &director);
-  Drama(const std::string &title, int stock, const std::string &director, const Date& date);
+  Drama(const std::string &title, int stock, const std::string &director, const Date &date);
 
   bool operator<(const Drama &rhs) const;
   bool operator==(const Drama &rhs) const;
+  int getHash() const;
+  friend ostream &operator<<(ostream &outStream, const Drama &rhs);
 };
 
 #endif /* drama_h */

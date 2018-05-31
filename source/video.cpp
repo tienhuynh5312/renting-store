@@ -89,5 +89,5 @@ bool Video::operator==(const Video &rhs) const
 
 int Video::getHash() const
 {
-  return Hashable::getHash(title) + Hashable::getHash(date.getYear());
+  return Hashable::getHash(title) + Hashable::getHash(title) + Hashable::getHash(director) + Hashable::getHash(date.getYear());
 }

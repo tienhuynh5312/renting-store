@@ -4,6 +4,8 @@
 #include <memory>
 #include "hashtree.h"
 #include "customer.h"
+#include "transaction.h"
+#include "video.h"
 
 template <class KeyType, class ItemType>
 HashTree<KeyType, ItemType>::HashTree()
@@ -71,4 +73,5 @@ ItemType HashTree<KeyType, ItemType>::contains(const KeyType &key)
 }
 
 template class HashTree<int, std::shared_ptr<Customer>>;
-template class HashTree<int, Customer*>;
+template class HashTree<int, std::shared_ptr<Transaction>>;
+template class HashTree<int, std::shared_ptr<Video>>;

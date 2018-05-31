@@ -30,7 +30,10 @@ bool Drama::operator<(const Drama &rhs) const
   }
 }
 
-
+int Drama::getHash() const
+{
+  return Hashable::getHash(title) + Hashable::getHash(director);
+}
 bool Drama::operator==(const Drama &rhs) const {
     
     return (this->getDirector() == rhs.getDirector() &&

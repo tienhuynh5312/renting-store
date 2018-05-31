@@ -32,6 +32,11 @@ bool Comedy::operator<(const Comedy &rhs) const
   }
 }
 
+int Comedy::getHash() const
+{
+  return Hashable::getHash(title) + Hashable::getHash(date.getYear());
+}
+
 bool Comedy::operator==(const Comedy &rhs) const
 {
   if (getTitle() == rhs.getTitle() && getDate().getYear() == rhs.getDate().getYear())
@@ -40,9 +45,9 @@ bool Comedy::operator==(const Comedy &rhs) const
     return false;
 }
 
+ostream &operator<<(ostream &outStream, const Comedy &rhs)
+{
 
-ostream &operator<<(ostream &outStream, const Comedy &rhs) {
-
-    outStream << rhs.getItemType() << "" <<rhs.getTotalStock() << "" << rhs.getDirector() << ""
-                  << rhs.getTitle() << "" << rhs.getDate().getYear();
+  outStream << rhs.getItemType() << "" << rhs.getTotalStock() << "" << rhs.getDirector() << ""
+            << rhs.getTitle() << "" << rhs.getDate().getYear();
 }

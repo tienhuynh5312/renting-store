@@ -11,7 +11,6 @@
 using namespace std;
 
 class Comedy : public Video{
-    friend ostream &operator<<(ostream &outStream, const Comedy &rhs );
 public:
     Comedy(){ videoType = VideoType::COMEDY;};
     virtual ~Comedy();
@@ -23,6 +22,8 @@ public:
     bool operator==(const Comedy & rhs) const;
 
 
+    int getHash() const;
+    friend ostream &operator<<(ostream &outStream, const Comedy &rhs );
 };
 
 #endif /* comedy_h */

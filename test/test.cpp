@@ -109,14 +109,37 @@ TEST_CASE("BASE DESIGN", "[design]")
     // list.add(1111, new Customer(1111));
 
     HashTree<int, std::shared_ptr<Customer>> customerList;
-    std::shared_ptr<Customer> t = std::make_shared<Customer>("Tien", "Huynh", 1111);
+    Customer me{"Tien", "Huynh", 1111};
+    std::shared_ptr<Customer> t = std::make_shared<Customer>(me);
     customerList.add(1111, t);
     REQUIRE(customerList.contains(1111)->getCustomerID() == 1111);
     REQUIRE(customerList.contains(1111)->getFirstName() == "Tien");
     REQUIRE(customerList.contains(1111)->getLastName() == "Huynh");
     REQUIRE(customerList.contains(1111) == t);
+    REQUIRE(customerList.contains(1112) == nullptr);
     customerList.remove(1111);
     REQUIRE(customerList.contains(1111) == nullptr);
+    HashTree<int, std::shared_ptr<Transaction>> transaction;
+    transaction.add(Hashable::getHash("Tien Huynh"), std::make_shared<Transaction>("Tien Huynh"));
+
+    REQUIRE(transaction.contains(Hashable::getHash("Tien Huynh")) != nullptr);
+    REQUIRE(transaction.contains(Hashable::getHash("Tien Huynh"))->getTransactionDetail() == "Tien Huynh");
+  }
+
+  SECTION("HashTree Video")
+  {
+    HashTree<int, std::shared_ptr<Video>> video;
+
+    std::shared_ptr<Classics> c = std::make_shared<Classics>("TH", 10, "TH","TH",Date(2018));
+    video.add(c->getHash(), c);
+    REQUIRE(video.contains(c->getHash()) == c);
+    REQUIRE(video.contains(c->getHash())->getTitle() == "TH");
+    REQUIRE(video.contains(c->getHash())->getCurrentStock() == 10);
+    video.contains(c->getHash())->borrowItem();
+    REQUIRE(video.contains(c->getHash())->getCurrentStock() == 9);
+
+    REQUIRE(dynamic_pointer_cast<Classics>(video.contains(c->getHash()))->getMajorActor() == "TH");
+
   }
   SECTION("Reading DataMovies")
   {

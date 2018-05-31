@@ -208,3 +208,42 @@
 //   std::smatch match;
 //   std::regex_match(command, match, pattern);
 // }
+
+// ////////////////////////////////////
+// std::shared_ptr<Customer> Database::getCustomer(const int &id)
+// {
+//   return customers.contains(id);
+// }
+
+// std::shared_ptr<Customer> Database::getCustomer(const Customer &customer)
+// {
+//   return getCustomer(customer.getCustomerID());
+// }
+
+// bool Database::addCustomer(const Customer &customer)
+// {
+//   return customers.add(customer.getCustomerID(), std::make_shared<Customer>(customer));
+// }
+
+// bool Database::removeCustomer(const int &id)
+// {
+//   return customers.remove(id);
+// }
+
+// ////////////////////////////////////
+
+// std::shared_ptr<Customer> Database::getVideo(const int &id)
+// {
+// }
+
+// std::shared_ptr<Customer> Database::getVideo(const Video &video)
+// {
+// }
+
+// bool Database::addVideo(const Video &video)
+// {
+// }
+
+// bool Database::removeVideo(const int &id)
+// {
+// }
