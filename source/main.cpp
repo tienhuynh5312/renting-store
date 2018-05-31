@@ -18,6 +18,7 @@ int main(int argc, char const *argv[])
   std::cout << thisStore.getStoreID() << ": " << thisStore.getStoreName() << std::endl;
   std::cout << "***********************************************" << std::endl;
 
+  std::string ch;
   int choice = 0;
   while (choice != -1)
   {
@@ -29,27 +30,37 @@ int main(int argc, char const *argv[])
     std::cout << "2. Read Video files" << std::endl;
     std::cout << "3. Read Transaction files" << std::endl;
     std::cout << "Choose an option: ";
-    std::cin >> choice;
-
-    switch (choice)
+    try
     {
-    case 0:
-      thisStore.readFile(FileType::CUSTOMER, "data4customers.txt");
-      thisStore.readFile(FileType::VIDEO, "data4movies.txt");
-      thisStore.readFile(FileType::TRANSACTION, "data4commands.txt");
-      break;
-    case 1:
+      std::cin >> ch;
+      choice = std::stoi(ch);
+      switch (choice)
+      {
+      case 0:
+        thisStore.readFile(FileType::CUSTOMER, "data4customers.txt");
+        thisStore.readFile(FileType::VIDEO, "data4movies.txt");
+        thisStore.readFile(FileType::TRANSACTION, "data4commands.txt");
+        break;
+      case 1:
+        std::cout << "Enter a file path: ";
+        thisStore.readFile(FileType::CUSTOMER, getInput());
+        break;
+      case 2:
+        std::cout << "Enter a file path: ";
+        thisStore.readFile(FileType::VIDEO, getInput());
+        break;
+      case 3:
+        std::cout << "Enter a file path: ";
+        thisStore.readFile(FileType::TRANSACTION, getInput());
+        break;
 
-      thisStore.readFile(FileType::CUSTOMER, getInput());
-      break;
-    case 2:
-
-      thisStore.readFile(FileType::VIDEO, getInput());
-      break;
-    case 3:
-
-      thisStore.readFile(FileType::TRANSACTION, getInput());
-      break;
+      default:
+        choice = -1;
+      }
+    }
+    catch (std::exception &e)
+    {
+      std::cout << "Invalid option" << std::endl;
     }
   }
 

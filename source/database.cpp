@@ -216,9 +216,9 @@ void Database::displayInventory()
     }
   }
   // print all items in  string buffs
-  std::cout << classic.str() << std::endl;
   std::cout << comedy.str() << std::endl;
   std::cout << drama.str() << std::endl;
+  std::cout << classic.str() << std::endl;
   std::cout << "=================End of Inventory=====================" << std::endl;
 }
 
