@@ -29,3 +29,13 @@ void Store::executeCommand(const FileType &fType, const std::string &command)
     break;
   }
 }
+
+const std::string &Store::getStoreName() const
+{
+  return storeName;
+}
+
+const int &Store::getStoreID() const
+{
+  return storeID;
+}
