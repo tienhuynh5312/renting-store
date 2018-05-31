@@ -1,249 +1,320 @@
-// #include "database.h"
-// #include <regex>
-// #include "comedy.h"
-// #include "classics.h"
-// #include "drama.h"
-// #include <iostream>
+#include "database.h"
+#include <regex>
+#include "comedy.h"
+#include "classics.h"
+#include "drama.h"
+#include <iostream>
 
-// bool Database::readTransaction(const std::string &command)
-// {
-//   std::smatch match;
-//   std::regex transPattern(R"((\w)(.*))");
-//   std::regex_match(command, match, transPattern);
-//   if (match.size() == 0)
-//     return false;
+bool Database::readTransaction(const std::string &command)
+{
+  std::cout << "Read trans: " << command << std::endl;
+  std::smatch match;
+  std::regex transPattern(R"((\w)(.*)[\r\n]*)");
+  std::regex_match(command, match, transPattern);
+  if (match.size() == 0)
+  {
+    std::cout << match.size() << "Failed" << std::endl;
+    return false;
+  }
 
-//   const std::string &option = match.str(1);
-//   if (option == "B")
-//   {
-//     borrowVideo(command);
-//   }
-//   else if (option == "R")
-//   {
-//     // Return
-//     returnVideo(command);
-//   }
-//   else if (option == "I")
-//   {
-//     // Display Inventory
-//     displayInventory();
-//   }
-//   else if (option == "H")
-//   {
-//     // Display item of a customer
-//     displayCustomerInfo(command);
-//   }
-//   else
-//   {
-//     // Invalid option. Notify
-//   }
-// }
+  const std::string &option = match.str(1);
+  if (option == "B")
+  {
+    borrowVideo(command);
+  }
+  else if (option == "R")
+  {
+    // Return
+    returnVideo(command);
+  }
+  else if (option == "I")
+  {
+    // Display Inventory
+    displayInventory();
+  }
+  else if (option == "H")
+  {
+    // Display item of a customer
+    displayCustomerInfo(command);
+  }
+  else
+  {
+    // Invalid option. Notify
+  }
+}
 
-// bool Database::readCustomer(const std::string &command)
-// {
-//   std::smatch match;
-//   std::regex idPattern(R"((\d{4}) (\w+) (\w+))");
-//   std::regex_match(command, match, idPattern);
-//   if (match.size() != 4)
-//     return false;
-//   else
-//   {
-//     int id = std::stoi(match.str(1));
-//     std::string first = match.str(2);
-//     std::string last = match.str(3);
-//     return addCustomer(Customer(first, last, id));
-//   }
-// }
+bool Database::readCustomer(const std::string &command)
+{
+  std::smatch match;
+  std::regex idPattern(R"((\d{4}) (\w*) (\w*)[\r\n]*)");
+  std::regex_match(command, match, idPattern);
+  if (match.size() != 4)
+  {
+    return false;
+  }
+  else
+  {
+    int id = std::stoi(match.str(1));
+    std::string first = match.str(2);
+    std::string last = match.str(3);
+    return addCustomer(std::make_shared<Customer>(first, last, id));
+  }
+}
 
-// bool Database::readVideo(const std::string &command)
-// {
-//   std::smatch match;
-//   std::regex classicsPattern(R"((.+) (\d+) (\d+))");
-//   std::regex pattern(R"(([A-Z]), (\d+), (.+), (.+), ([\w| ]+))");
-//   std::regex_match(command, match, pattern);
+bool Database::readVideo(const std::string &command)
+{
+  std::cout << "Read video: " << command << std::endl;
+  std::smatch match;
+  // std::regex classicsPattern(R"((.+) (\d+) (\d+))");
+  std::regex pattern(R"(([A-Z]), (\d+), (.+), (.+), ([\w| ]+)[\r\n]*)");
+  std::regex_match(command, match, pattern);
 
-//   if (match.size() != 5)
-//     return false;
-//   else
-//   {
-//     int stock = std::stoi(match.str(2));
-//     std::string director{match.str(3)};
-//     std::string title{match.str(4)};
-//     if (match.str(1) == "F")
-//     {
-//       // Comedy
-//       Date year{std::stoi(match.str(5))};
-//       return addVideo(Comedy(title, stock, director, year));
-//     }
-//     else if (match.str(1) == "D")
-//     {
-//       // Drama
-//       Date year{std::stoi(match.str(5))};
-//       return addVideo(Drama(title, stock, director, year));
-//     }
-//     else if (match.str(1) == "C")
-//     {
-//       // Classics
-//       std::smatch last;
-//       std::string l{match.str(5)};
-//       std::regex lastPart(R"(([\w ]+) (\d) (\d+))");
-//       std::regex_match(l, last, lastPart);
+  if (match.size() != 6)
+    return false;
+  else
+  {
+    int stock = std::stoi(match.str(2));
+    std::string director{match.str(3)};
+    std::string title{match.str(4)};
+    if (match.str(1) == "F")
+    {
+      // Comedy
+      Date year{std::stoi(match.str(5))};
+      std::cout << "Adding comedy" << std::endl;
+      return addVideo(std::make_shared<Comedy>(title, stock, director, year));
+    }
+    else if (match.str(1) == "D")
+    {
+      // Drama
+      Date year{std::stoi(match.str(5))};
+      std::cout << "Adding Drama" << std::endl;
+      return addVideo(std::make_shared<Drama>(title, stock, director, year));
+    }
+    else if (match.str(1) == "C")
+    {
+      // Classics
+      std::smatch last;
+      std::string l{match.str(5)};
+      std::regex lastPart(R"(([\w ]+) (\d+) (\d+)[\r\n]*)");
+      std::regex_match(l, last, lastPart);
 
-//       if (last.size() != 4)
-//         return false;
-//       else
-//       {
-//         int month = std::stoi(last.str(2));
-//         int year = std::stoi(last.str(3));
-//         std::string majorActor{last.str(1)};
+      if (last.size() != 4)
+      {
+        return false;
+      }
+      else
+      {
+        int month = std::stoi(last.str(2));
+        int year = std::stoi(last.str(3));
+        std::string majorActor{last.str(1)};
+        std::cout << "Adding Classics" << std::endl;
+        return addVideo(std::make_shared<Classics>(title, stock, director, majorActor, Date(year, month)));
+      }
+    }
+    else
+    {
+      return false;
+    }
+  }
+}
 
-//         return addVideo(Classics(title, stock, director, majorActor, Date(year, month)));
-//       }
-//     }
-//     else
-//     {
-//       return false;
-//     }
-//   }
-// }
+bool Database::borrowVideo(const std::string &command)
+{
+  std::cout << "Borrowing: " << command << std::endl;
+  std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1})(.*)[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
 
-// bool Database::borrowVideo(const std::string &command)
-// {
-//   std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1})(.*))");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
+  if (match.size() != 6)
+    return false;
+  else
+  {
+    const int customerID = std::stoi(match.str(2));
+    std::string itemType{match.str(3)};
+    std::string videoType{match.str(4)};
 
-//   if (match.size() <= 5)
-//     return false;
-//   else
-//   {
-//     const int customerID = std::stoi(match.str(2));
-//     std::string itemType{match.str(3)};
-//     std::string videoType{match.str(4)};
+    std::shared_ptr<Customer> borrower = getCustomer(customerID);
 
-//     std::shared_ptr<Customer> borrower = getCustomer(customerID);
+    if (borrower == nullptr)
+      return false;
 
-//     if (borrower == nullptr)
-//       return false;
+    bool borrowSucceed = false;
+    if (videoType == "F")
+      borrowSucceed = getComedy(command);
+    else if (videoType == "D")
+      borrowSucceed = getDrama(command);
+    else if (videoType == "C")
+      borrowSucceed = getClassics(command);
+  }
+}
 
-//     bool borrow = false;
-//     if (videoType == "F")
-//       borrow = borrowComedy(command);
-//     else if (videoType == "D")
-//       borrow = borrowDrama(command);
-//     else if (videoType == "C")
-//       borrow = borrowClassics(command);
-//   }
-// }
+bool Database::returnVideo(const std::string &command)
+{
+  std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1})(.*)[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
+  if (match.size() != 6)
+    return false;
+  else
+  {
+    const int customerID = std::stoi(match.str(2));
+    std::string itemType{match.str(3)};
+    std::string videoType{match.str(4)};
 
-// bool Database::returnVideo(const std::string &command)
-// {
-//   std::regex pattern(R"( (\d{4}) (\w{1}) (\w{1})(.*))");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
-// }
+    std::shared_ptr<Customer> borrower = getCustomer(customerID);
 
-// void Database::displayCustomerInfo(const std::string &command)
-// {
-//   std::regex pattern(R"((\w) (\d{4})");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
+    if (borrower == nullptr)
+      return false;
 
-//   if (match.size() != 3)
-//     return;
-//   else
-//   {
-//     const int customerID = std::stoi(match.str(2));
-//     std::shared_ptr<Customer> borrower = getCustomer(customerID);
-//     if (borrower != nullptr)
-//     {
-//       std::cout << *borrower << std::endl;
-//     }
-//   }
-// }
+    bool borrow = false;
+    if (videoType == "F")
+      borrow = getComedy(command);
+    else if (videoType == "D")
+      borrow = getDrama(command);
+    else if (videoType == "C")
+      borrow = getClassics(command);
+  }
+}
 
-// void Database::displayInventory()
-// {
-// }
+void Database::displayCustomerInfo(const std::string &command)
+{
+  std::cout << "Display Customer: " << command << std::endl;
+  std::regex pattern(R"((\w) (\d{4})[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
 
-// bool Database::borrowClassics(const std::string &command)
-// {
-//   std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1}) (\d*) (\d*) (.*)");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
+  if (match.size() != 3)
+    return;
+  else
+  {
+    const int customerID = std::stoi(match.str(2));
+    std::shared_ptr<Customer> borrower = getCustomer(customerID);
+    if (borrower != nullptr)
+    {
+      std::cout << *borrower << std::endl;
+    }
+  }
+}
 
-//   if (match.size() != 8)
-//     return false;
-//   else
-//   {
-//     const int month = std::stoi(match.str(5));
-//     const int year = std::stoi(match.str(6));
+void Database::displayInventory()
+{
+  std::cout << "Display Inventory" << std::endl;
+}
 
-//     const Date date{year, month};
-//     std::string majorActor{match.str(7)};
-//   }
-// }
+bool Database::getClassics(const std::string &command)
+{
+  std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1}) (\d*) (\d*) (.*)[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
 
-// bool Database::borrowComedy(const std::string &command)
-// {
-//   std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1}) ([\w ]*), (\d*))");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
+  if (match.size() != 8)
+    return false;
+  else
+  {
+    const int month = std::stoi(match.str(5));
+    const int year = std::stoi(match.str(6));
 
-//   if (match.size() != 7)
-//     return false;
-//   else
-//   {
-//     const std::string title = match.str(5);
-//     const int year = std::stoi(match.str(6));
-//     const Date date{year};
+    const Date date{year, month};
+    std::string majorActor{match.str(7)};
 
-//     getVideo(Comedy(title, 0, "", date));
-//   }
-// }
+    const int key = Classics("", 0, "", majorActor, Date(year, month)).getHash();
+    auto it = dynamic_pointer_cast<Classics>(items.contains(key));
+    if (it != nullptr)
+      return it->borrowItem();
+    else
+      return false;
+  }
+}
 
-// bool Database::borrowDrama(const std::string &command)
-// {
-//   std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1})(.*))");
-//   std::smatch match;
-//   std::regex_match(command, match, pattern);
-// }
+bool Database::getComedy(const std::string &command)
+{
+  std::regex pattern(R"((\w) (\d{4}) (\w{1}) (\w{1}) ([\w ]*), (\d*)[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
 
-// ////////////////////////////////////
-// std::shared_ptr<Customer> Database::getCustomer(const int &id)
-// {
-//   return customers.contains(id);
-// }
+  if (match.size() != 7)
+    return false;
+  else
+  {
+    const std::string title = match.str(5);
+    const int year = std::stoi(match.str(6));
+    const Date date{year};
 
-// std::shared_ptr<Customer> Database::getCustomer(const Customer &customer)
-// {
-//   return getCustomer(customer.getCustomerID());
-// }
+    const int key = Comedy(title, 0, "", date).getHash();
+    auto it = dynamic_pointer_cast<Comedy>(items.contains(key));
+    if (it != nullptr)
+      return it->borrowItem();
+    else
+      return false;
+  }
+}
 
-// bool Database::addCustomer(const Customer &customer)
-// {
-//   return customers.add(customer.getCustomerID(), std::make_shared<Customer>(customer));
-// }
+bool Database::getDrama(const std::string &command)
+{
+  std::regex pattern(R"((\w) (\d{4}) (\w) (\w) ([\w ]*), (.*),[\r\n]*)");
+  std::smatch match;
+  std::regex_match(command, match, pattern);
+  return false;
+}
 
-// bool Database::removeCustomer(const int &id)
-// {
-//   return customers.remove(id);
-// }
+////////////////////////////////////
+std::shared_ptr<Customer> Database::getCustomer(const int &id)
+{
+  return customers.contains(id);
+}
 
-// ////////////////////////////////////
+std::shared_ptr<Customer> Database::getCustomer(const Customer &customer)
+{
+  return getCustomer(customer.getCustomerID());
+}
 
-// std::shared_ptr<Customer> Database::getVideo(const int &id)
-// {
-// }
+bool Database::addCustomer(std::shared_ptr<Customer> customer)
+{
+  return customers.add(customer->getCustomerID(), customer);
+}
 
-// std::shared_ptr<Customer> Database::getVideo(const Video &video)
-// {
-// }
+bool Database::removeCustomer(const int &id)
+{
+  return customers.remove(id);
+}
 
-// bool Database::addVideo(const Video &video)
-// {
-// }
+////////////////////////////////////
 
-// bool Database::removeVideo(const int &id)
-// {
-// }
+std::shared_ptr<Video> Database::getVideo(const int &id)
+{
+}
+
+std::shared_ptr<Video> Database::getVideo(const Video &video)
+{
+  return items.contains(video.getHash());
+}
+
+bool Database::addVideo(std::shared_ptr<Video> video)
+{
+  return items.add(video->getHash(), video);
+}
+
+bool Database::removeVideo(const int &id)
+{
+  return items.remove(id);
+}
+
+std::shared_ptr<Transaction> Database::getTransaction(const std::string &transactionDetail)
+{
+  return getTransaction(Transaction(transactionDetail));
+}
+
+std::shared_ptr<Transaction> Database::getTransaction(const Transaction &transaction)
+{
+  return transactions.contains(transaction.getHash());
+}
+
+bool Database::addTransaction(std::shared_ptr<Transaction> trans)
+{
+  return transactions.add(trans->getHash(), trans);
+}
+
+bool Database::removeTransaction(const std::string &transactionDetail)
+{
+  return transactions.remove(Transaction(transactionDetail).getHash());
+}

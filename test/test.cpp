@@ -17,6 +17,7 @@
 #include "../source/classics.h"
 #include "../source/hashable.h"
 #include "../source/hashtree.h"
+#include "../source/database.h"
 #include <regex>
 #include <iostream>
 #include <vector>
@@ -124,13 +125,17 @@ TEST_CASE("BASE DESIGN", "[design]")
 
     REQUIRE(transaction.contains(Hashable::getHash("Tien Huynh")) != nullptr);
     REQUIRE(transaction.contains(Hashable::getHash("Tien Huynh"))->getTransactionDetail() == "Tien Huynh");
+
+    const int i = 4;
+    const_cast<int &>(i) = 3;
+    REQUIRE(i == 3);
   }
 
   SECTION("HashTree Video")
   {
     HashTree<int, std::shared_ptr<Video>> video;
 
-    std::shared_ptr<Classics> c = std::make_shared<Classics>("TH", 10, "TH","TH",Date(2018));
+    std::shared_ptr<Classics> c = std::make_shared<Classics>("TH", 10, "TH", "TH", Date(2018));
     video.add(c->getHash(), c);
     REQUIRE(video.contains(c->getHash()) == c);
     REQUIRE(video.contains(c->getHash())->getTitle() == "TH");
@@ -139,63 +144,79 @@ TEST_CASE("BASE DESIGN", "[design]")
     REQUIRE(video.contains(c->getHash())->getCurrentStock() == 9);
 
     REQUIRE(dynamic_pointer_cast<Classics>(video.contains(c->getHash()))->getMajorActor() == "TH");
-
   }
-  SECTION("Reading DataMovies")
+
+  SECTION("Database")
   {
     try
     {
-      // classics movie last part pattern: (.+) (\d+) (\d+)
-      std::smatch match;
-      std::regex classicsPattern(R"((.+) (\d+) (\d+))");
-      std::regex pattern(R"(([A-Z]), (\d+), (.+), (.+), ([\w| ]+))");
-      std::string s = {"C, 10, George Cukor, Holiday, Cary Grant 9 1938"};
-      std::regex_match(s, match, pattern);
-
-      std::cout << match.size() << std::endl;
-      for (std::size_t i = 0; i < match.size(); i++)
-        std::cout << i << ": " << match.str(i) << std::endl;
-
-      // For classics movie only
-      if (match.str(1) == "C")
-      {
-        // std::string lastPart = match.str(5);
-        // std::regex_match(lastPart, match, pattern);
-        // std::cout << match.size() << std::endl;
-        // for (std::size_t i = 0; i < match.size(); i++)
-        //   std::cout << i << ": " << match.str(i) << std::endl;
-
-        std::string name = match.str(5);
-        std::regex namePattern(R"(([\w ]+) (\d) (\d+))");
-        std::regex_match(name, match, namePattern);
-        std::cout << match.size() << std::endl;
-        for (std::size_t i = 0; i < match.size(); i++)
-          std::cout << i << ": " << match.str(i) << std::endl;
-      }
-
-      // =================
-      // ID
-
-      std::regex idPattern(R"((\d{4}) (\w+) (\w+))");
-      std::string id{"1111 Mouse Mickey"};
-      std::regex_match(id, match, idPattern);
-      std::cout << match.size() << std::endl;
-      for (std::size_t i = 0; i < match.size(); i++)
-        std::cout << i << ": " << match.str(i) << std::endl;
-
-      // ===================
-      // Transaction
-
-      std::regex transPattern(R"((\w)(.*))");
-      std::string trans{"B 1234 D C 9 1938 Katherine Hepburn"};
-      std::regex_match(trans, match, transPattern);
-      std::cout << match.size() << std::endl;
-      for (std::size_t i = 0; i < match.size(); i++)
-        std::cout << i << ": " << match.str(i) << std::endl;
+      Database data;
+      data.readFile(FileType::CUSTOMER, "data4customers.txt");
+      REQUIRE(data.getCustomer(3333)->getFirstName() == "Witch");
+      REQUIRE(data.getCustomer(3333)->getLastName() == "Wicked");
+      data.readFile(FileType::VIDEO, "data4movies.txt");
+      data.readFile(FileType::TRANSACTION, "data4commands.txt");
     }
-    catch (std::regex_error &e)
+    catch (std::exception &e)
     {
       std::cout << e.what() << std::endl;
     }
   }
+  // SECTION("Reading DataMovies")
+  // {
+  //   try
+  //   {
+  //     // classics movie last part pattern: (.+) (\d+) (\d+)
+  //     std::smatch match;
+  //     std::regex classicsPattern(R"((.+) (\d+) (\d+))");
+  //     std::regex pattern(R"(([A-Z]), (\d+), (.+), (.+), ([\w| ]+))");
+  //     std::string s = {"C, 10, George Cukor, Holiday, Cary Grant 9 1938"};
+  //     std::regex_match(s, match, pattern);
+
+  //     std::cout << match.size() << std::endl;
+  //     for (std::size_t i = 0; i < match.size(); i++)
+  //       std::cout << i << ": " << match.str(i) << std::endl;
+
+  //     // For classics movie only
+  //     if (match.str(1) == "C")
+  //     {
+  //       // std::string lastPart = match.str(5);
+  //       // std::regex_match(lastPart, match, pattern);
+  //       // std::cout << match.size() << std::endl;
+  //       // for (std::size_t i = 0; i < match.size(); i++)
+  //       //   std::cout << i << ": " << match.str(i) << std::endl;
+
+  //       std::string name = match.str(5);
+  //       std::regex namePattern(R"(([\w ]+) (\d) (\d+))");
+  //       std::regex_match(name, match, namePattern);
+  //       std::cout << match.size() << std::endl;
+  //       for (std::size_t i = 0; i < match.size(); i++)
+  //         std::cout << i << ": " << match.str(i) << std::endl;
+  //     }
+
+  //     // =================
+  //     // ID
+
+  //     std::regex idPattern(R"((\d{4}) (\w+) (\w+)[\r*\n*])");
+  //     std::string id{"1111 Mouse Mickey\r\n"};
+  //     std::regex_match(id, match, idPattern);
+  //     std::cout << match.size() << std::endl;
+  //     for (std::size_t i = 0; i < match.size(); i++)
+  //       std::cout << i << ": " << match.str(i) << std::endl;
+
+  //     // ===================
+  //     // Transaction
+
+  //     std::regex transPattern(R"((\w)(.*))");
+  //     std::string trans{"B 1234 D C 9 1938 Katherine Hepburn"};
+  //     std::regex_match(trans, match, transPattern);
+  //     std::cout << match.size() << std::endl;
+  //     for (std::size_t i = 0; i < match.size(); i++)
+  //       std::cout << i << ": " << match.str(i) << std::endl;
+  //   }
+  //   catch (std::regex_error &e)
+  //   {
+  //     std::cout << e.what() << std::endl;
+  //   }
+  // }
 }

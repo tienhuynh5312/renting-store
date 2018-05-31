@@ -9,8 +9,7 @@
 #define _HASHTREE_H
 
 #include <memory>
-#include <vector>
-
+#include <list>
 #include "item.h"
 
 /**
