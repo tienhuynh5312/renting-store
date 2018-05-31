@@ -71,7 +71,7 @@ bool Database::readVideo(const std::string &command)
 
   if (match.size() != 6)
   {
-    std::cout << "[Error]: Video Format is invalid" << std::endl;
+    std::cout << "[Error]: Video Format is invalid" << command<< std::endl;
     return false;
   }
   else
