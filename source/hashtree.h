@@ -67,6 +67,7 @@ public:
    */
   virtual ItemType contains(const KeyType &key);
 
+  virtual void traverse(void visit(ItemType item));
 private:
   /**
    * @brief An array of vector.

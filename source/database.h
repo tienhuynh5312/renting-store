@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include <list>
+#include <set>
 class Database : public ProcessText
 {
 public:
@@ -38,6 +39,10 @@ private:
   HashTree<int, std::shared_ptr<Customer>> customers{100};
   HashTree<int, std::shared_ptr<Video>> items{100};
   HashTree<int, std::shared_ptr<Transaction>> transactions{1000};
+
+  // std::set<std::weak_ptr<Classics>> classics;
+  // std::set<std::weak_ptr<Comedy>> comedy;
+  // std::set<std::weak_ptr<Classics>> drama;
 
 
   bool borrowVideo(const std::string& command);

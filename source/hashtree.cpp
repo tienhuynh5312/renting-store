@@ -71,6 +71,17 @@ ItemType HashTree<KeyType, ItemType>::contains(const KeyType &key)
   return nullptr;
 }
 
+template <class KeyType, class ItemType>
+void HashTree<KeyType, ItemType>::traverse(void visit(ItemType item))
+{
+  for (int i = 0; i < hashTableCapacity; i++)
+    {
+      for (const auto& it : hashTable[i])
+        visit(it.second);
+    }
+}
+
+
 template class HashTree<int, std::shared_ptr<Customer>>;
 template class HashTree<int, std::shared_ptr<Transaction>>;
 template class HashTree<int, std::shared_ptr<Video>>;
