@@ -1,9 +1,12 @@
 #include "database.h"
-#include <regex>
 #include "comedy.h"
 #include "classics.h"
 #include "drama.h"
+
 #include <iostream>
+#include <memory>
+#include <regex>
+#include <sstream>
 
 bool Database::readTransaction(const std::string &command)
 {
@@ -71,7 +74,7 @@ bool Database::readVideo(const std::string &command)
 
   if (match.size() != 6)
   {
-    std::cout << "[Error]: Video Format is invalid" << command<< std::endl;
+    std::cout << "[Error]: Video Format is invalid" << command << std::endl;
     return false;
   }
   else
@@ -181,8 +184,43 @@ void Database::displayCustomerInfo(const std::string &command)
 }
 
 void Database::displayInventory()
-{
+{ // shared_ptr to items
   std::cout << "Display Inventory" << std::endl;
+  auto hash_table = items.getStructure();
+  int size = items.getCapacity();
+  std::cout << size << std::endl;
+  // create buf
+  std::stringstream classic;
+  std::stringstream comedy;
+  std::stringstream drama;
+  // get structure
+  for (int i = 0; i < size; ++i)
+  { // if empty do nothing
+    if (!hash_table[i].empty())
+    {
+      for (auto it = hash_table[i].begin(); it != hash_table[i].end(); ++it)
+      {
+        std::cout << &it << std::endl;
+        if (it->second->getVideoType() == std::string("Classics"))
+        {
+          std::shared_ptr<Classics> shared_classic = (std::dynamic_pointer_cast<Classics>(it->second));
+          classic << *shared_classic << std::endl;
+        }
+        if (it->second->getVideoType() == std::string("Comedy"))
+        {
+          comedy << *(std::dynamic_pointer_cast<Comedy>(it->second)) << std::endl;
+        }
+        if (it->second->getVideoType() == std::string("Drama"))
+        {
+          drama << *(std::dynamic_pointer_cast<Drama>(it->second)) << std::endl;
+        }
+      }
+    }
+  }
+  // print all items in  string buffs
+  std::cout << classic.str() << std::endl;
+  std::cout << comedy.str() << std::endl;
+  std::cout << drama.str() << std::endl;
 }
 
 bool Database::getClassics(const std::string &command)

@@ -72,6 +72,7 @@ ItemType HashTree<KeyType, ItemType>::contains(const KeyType &key)
 }
 
 template <class KeyType, class ItemType>
+<<<<<<< HEAD
 void HashTree<KeyType, ItemType>::traverse(void visit(ItemType item))
 {
   for (int i = 0; i < hashTableCapacity; i++)
@@ -81,6 +82,18 @@ void HashTree<KeyType, ItemType>::traverse(void visit(ItemType item))
     }
 }
 
+=======
+int HashTree<KeyType, ItemType>::getCapacity() const
+{
+  return this->hashTableCapacity;
+}
+
+template <class KeyType, class ItemType>
+std::list<std::pair<KeyType, ItemType>> *HashTree<KeyType, ItemType>::getStructure()
+{
+  return this->hashTable;
+}
+>>>>>>> 694c02535fddde6013a12c8e0e243b7e34dc1573
 
 template class HashTree<int, std::shared_ptr<Customer>>;
 template class HashTree<int, std::shared_ptr<Transaction>>;

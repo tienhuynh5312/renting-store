@@ -3,14 +3,14 @@
 #include "video.h"
 
 Drama::~Drama(){
-    
+
 };
 
 Drama::Drama(const std::string &title, int stock, const std::string &director) : Video(title, stock, director)
 {
   videoType = VideoType::DRAMA;
 };
-Drama::Drama(const std::string &title, int stock, const std::string &director, const Date& date) : Video(title, stock, director, date)
+Drama::Drama(const std::string &title, int stock, const std::string &director, const Date &date) : Video(title, stock, director, date)
 {
   videoType = VideoType::DRAMA;
 }
@@ -34,18 +34,15 @@ int Drama::getHash() const
 {
   return Hashable::getHash(title) + Hashable::getHash(director);
 }
-bool Drama::operator==(const Drama &rhs) const {
-    
-    return (this->getDirector() == rhs.getDirector() &&
-            this->getTitle() == rhs.getTitle());
+bool Drama::operator==(const Drama &rhs) const
+{
+
+  return (this->getDirector() == rhs.getDirector() &&
+          this->getTitle() == rhs.getTitle());
 }
 
-ostream &operator<<(ostream &outStream, const Drama &rhs) {
-
-
-    outStream << rhs.getItemType() << "" <<rhs.getTotalStock() << "" << rhs.getDirector() << ""
-              << rhs.getTitle() << "" << rhs.getDate().getYear();
-
+ostream &operator<<(ostream &outStream, const Drama &rhs)
+{
+  outStream << rhs.getItemType() << "" << rhs.getTotalStock() << "" << rhs.getDirector() << ""
+            << rhs.getTitle() << "" << rhs.getDate().getYear();
 }
-
-
