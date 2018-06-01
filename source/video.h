@@ -26,50 +26,53 @@ protected:
 public:
   /**
    * @brief Construct a new Video object
-   * 
    */
   Video(); // Video need at least title
   
   /**
    * @brief Destroy the Video object
-   * 
    */
   virtual ~Video();
 
   /**
    * @brief Construct a new Video object
    * 
-   * @param title 
+   * @param title title for video object
    */
   Video(const std::string &title);
 
   /**
    * @brief Construct a new Video object
    * 
-   * @param title 
-   * @param director 
+   * @param title title for video object
+   * @param director director of video object
    */
   Video(const std::string &title, const std::string &director);
   
   /**
    * @brief Construct a new Video object
    * 
-   * @param title 
-   * @param stock 
-   * @param director 
+   * @param title title of video object
+   * @param stock initial stock of video object
+   * @param director director of video object
    */
   Video(const std::string &title, int stock, const std::string &director);
   
   /**
    * @brief Construct a new Video object
    * 
-   * @param title 
-   * @param stock 
-   * @param director 
-   * @param date 
+   * @param title title of video object
+   * @param stock initial stock of video object
+   * @param director director of video obejct
+   * @param date date of video object
    */
   Video(const std::string &title, int stock, const std::string &director, const Date &date);
 
+  /**
+   * @brief Get the Hash object
+   * 
+   * @return int 
+   */
   int getHash() const;
   
   /**
@@ -103,7 +106,7 @@ public:
   /**
    * @brief Get the Video Type object
    * 
-   * @param rhs 
+   * @param rhs returns the video type
    * @return VideoType 
    */
   static VideoType getVideoType(const std::string &rhs);
@@ -132,24 +135,24 @@ public:
   /**
    * @brief 
    * 
-   * @return true 
-   * @return false 
+   * @return true if this video is less than argument
+   * @return false if this video is greater than or equal to arguement
    */
   virtual bool operator<(const Video &) const;
 
   /**
    * @brief 
    * 
-   * @return true 
-   * @return false 
+   * @return true if this video is equal to argument
+   * @return false if this video is not equal to argument
    */
   virtual bool operator==(const Video &) const;
 
   /**
-   * @brief 
+   * @brief
    * 
-   * @param out 
-   * @param rhs 
+   * @param out ostream object to be returned
+   * @param rhs video object to get data
    * @return std::ostream& 
    */
   friend std::ostream& operator<<(std::ostream& out, const Video& rhs);
