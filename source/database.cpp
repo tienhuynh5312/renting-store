@@ -183,7 +183,7 @@ void Database::displayCustomerInfo(const std::string &command)
   }
 }
 
-void Database::displayInventory()
+void Database::displayInventory() const
 { // shared_ptr to items
   std::cout << "=================Display Inventory=====================" << std::endl;
   auto hash_table = items.getStructure();

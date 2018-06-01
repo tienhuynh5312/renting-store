@@ -1,4 +1,3 @@
-#pragma once
 #ifndef _DATABASE_H
 #define _DATABASE_H
 #include "hashtree.h"
@@ -46,6 +45,6 @@ private:
   bool getDrama(const std::string &command);
   bool returnVideo(const std::string &command);
   void displayCustomerInfo(const std::string &command);
-  void displayInventory();
+  void displayInventory() const;
 };
 #endif // !_DATABASE_H
