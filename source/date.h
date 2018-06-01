@@ -1,10 +1,4 @@
-//
-//  date.h
-//  Movie
-//
-//  Created by Byunggeun Park on 5/15/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
+
 
 #ifndef date_h
 #define date_h

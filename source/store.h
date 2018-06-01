@@ -2,14 +2,15 @@
 #define _STORE_H
 
 #include <string>
+#include "database.h"
 class Store
 {
 private:
   std::string storeName;
   int storeID;
-
+  Database data;
 public:
-  Store() = delete;
+  Store();
 
   /**
    * @brief Construct a new Store object with name and store ID
@@ -33,6 +34,10 @@ public:
    * @return int& store ID.
    */
   const int &getStoreID() const;
+
+  void readFile(const FileType& fType, const std::string& path);
+  void executeCommand(const FileType& fType, const std::string& command);
+
 };
 
 #endif

@@ -1,21 +1,19 @@
-//
-//  classics.h
-//  Movie
-//
-//  Created by Byunggeun Park on 5/14/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
+
 
 #ifndef classics_h
 #define classics_h
 
 #include <string>
 #include "video.h"
+#include <iostream>
+
+using namespace std;
 
 class Classics : public Video
 {
 public:
-  Classics() = delete;
+    friend ostream &operator<<(ostream &outStream, const Classics &rhs );
+  Classics() { videoType = VideoType::CLASSICS; };
   virtual ~Classics();
 
   Classics(const std::string &title, int stock, const std::string &director);
@@ -23,6 +21,8 @@ public:
   const std::string &getMajorActor() const;
   bool operator<(const Classics &rhs) const;
   bool operator==(const Classics &rhs) const;
+  int getHash() const;
+
 
 private:
   std::string majorActor;

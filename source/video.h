@@ -1,34 +1,26 @@
-//
-//  video.h
-//  Movie
-//
-//  Created by Byunggeun Park on 5/14/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
 
 #ifndef video_h
 #define video_h
 
-#include <stdio.h>
+#include <ostream>
 #include <string>
 #include "date.h"
 #include "item.h"
+#include "hashable.h"
+
 enum class VideoType
 {
   CLASSICS,
   COMEDY,
   DRAMA
 };
-class Classics;
 
 class Video : public Item
 {
-private:
+protected:
   std::string title;
   std::string director;
   Date date;
-
-protected:
   VideoType videoType;
 
 public:
@@ -40,20 +32,21 @@ public:
   Video(const std::string &title, int stock, const std::string &director);
   Video(const std::string &title, int stock, const std::string &director, const Date &date);
 
-  // virtual std::string getGenre() const = 0;
-  // virtual std::string toString() const = 0;
-  // virtual void displayMovieInfo() const = 0;
+  int getHash() const;
+  virtual const std::string &getTitle() const;
+  virtual const std::string &getDirector() const;
+  virtual const Date &getDate() const;
+  virtual std::string getVideoType() const;
+  static VideoType getVideoType(const std::string &rhs);
 
-  const std::string &getTitle() const;
-  const std::string &getDirector() const;
-  const Date &getDate() const;
-
-  void setTitle(const std::string &title);
-  void setDirector(const std::string &director);
-  void setDate(const Date &date);
+  virtual void setTitle(const std::string &title);
+  virtual void setDirector(const std::string &director);
+  virtual void setDate(const Date &date);
 
   virtual bool operator<(const Video &) const;
   virtual bool operator==(const Video &) const;
+
+  friend std::ostream& operator<<(std::ostream& out, const Video& rhs);
 };
 
 #endif /* video_h */

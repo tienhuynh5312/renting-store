@@ -1,10 +1,3 @@
-//
-//  video.cpp
-//  Movie
-//
-//  Created by Byunggeun Park on 5/14/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
 
 #include "video.h"
 
@@ -34,6 +27,24 @@ Video::~Video()
 {
 }
 
+std::string Video::getVideoType() const
+{
+  if (videoType == VideoType::CLASSICS)
+    return "Classics";
+  else if (videoType == VideoType::COMEDY)
+    return "Comedy";
+  else if (videoType == VideoType::DRAMA)
+    return "Drama";
+}
+VideoType Video::getVideoType(const std::string &rhs)
+{
+  if (rhs == "Comedy")
+    return VideoType::COMEDY;
+  else if (rhs == "Classics")
+    return VideoType::CLASSICS;
+  else if (rhs == "Drama")
+    return VideoType::DRAMA;
+}
 const std::string &Video::getTitle() const
 {
   return title;
@@ -76,3 +87,12 @@ bool Video::operator==(const Video &rhs) const
     return false;
 }
 
+int Video::getHash() const
+{
+  return Hashable::getHash(title) + Hashable::getHash(title) + Hashable::getHash(director) + Hashable::getHash(date.getYear());
+}
+
+std::ostream& operator<<(std::ostream& out, const Video& rhs)
+{
+  return out << rhs.getVideoType() << ", " << rhs.getCurrentStock() << "/" << rhs.getTotalStock() << ", " << rhs.getDirector() << ", " << rhs.getTitle() << ", " << rhs.getDate().getYear();
+}

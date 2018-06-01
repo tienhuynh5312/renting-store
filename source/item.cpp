@@ -13,7 +13,7 @@ Item::Item(const std::string &type) : Borrowable()
 {
   ++totalItems;
   itemType = getItemType(type);
-  itemID = 0;
+  itemID = totalItems;
 }
 
 Item::Item(const std::string &type, const int &id) : Item(type)
@@ -61,7 +61,41 @@ ItemType Item::getItemType(const std::string &itemType)
     return ItemType::VIDEO;
 }
 
+/*
+  These following operations are needed for binary search tree to work properly.
+  */
+bool Item::operator==(const Item &rhs) const
+{
+  return (itemID == rhs.itemID) && (itemType == rhs.itemType);
+}
+
+bool Item::operator<(const Item &rhs) const
+{
+  if (itemID < rhs.itemID)
+    return true;
+  else if (itemID > rhs.itemID)
+    return false;
+  else
+  {
+    if (itemType < rhs.itemType)
+      return true;
+    else
+      return false;
+  }
+}
+
+bool Item::operator<=(const Item &rhs) const
+{
+  return (*this < rhs) || (*this == rhs);
+}
+
+std::ostream &operator<<(std::ostream &out, const Item &rhs)
+{
+  return out << "[ID:" << rhs.itemID << "]";
+}
+
 int Item::getHash() const
 {
-  return Hashable<int>::getHash(itemID) + Hashable<int>::getHash(getItemType());
+  return Hashable::getHash(this->itemID);
 }
+// end

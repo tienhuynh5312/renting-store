@@ -4,13 +4,14 @@
 #include <string>
 #include "borrowable.h"
 #include "hashable.h"
+#include <ostream>
 
 enum class ItemType
 {
   VIDEO
 };
 
-class Item : public Borrowable, public Hashable<int>
+class Item : public Borrowable, public Hashable
 {
 private:
   // price of item
@@ -26,7 +27,7 @@ protected:
   static int totalItems;
 
 public:
-  Item() = delete; // Dont allow create new Item without specifying item type
+  Item(){}; // Dont allow create new Item without specifying item type
 
   /**
    * @brief Construct a new Item object
@@ -81,9 +82,19 @@ public:
    * @return int 
    */
   int getTotalItems() const;
-  static Item *Create(ItemType type);
   static ItemType getItemType(const std::string& itemType);
   int getHash() const;
+
+    /*
+  These following operations are needed for binary search tree to work properly.
+  */
+  bool operator==(const Item& rhs) const;
+  bool operator<(const Item& rhs) const;
+  bool operator<=(const Item& rhs) const;
+
+  friend std::ostream& operator<<(std::ostream& out, const Item& rhs);
+
+  // end
 };
 
 #endif

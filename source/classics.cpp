@@ -1,10 +1,4 @@
-//
-//  classics.cpp
-//  Movie
-//
-//  Created by Byunggeun Park on 5/14/18.
-//  Copyright © 2018 Byunggeun Park. All rights reserved.
-//
+
 
 #include "classics.h"
 #include "video.h"
@@ -49,4 +43,16 @@ bool Classics::operator==(const Classics &rhs) const
 const std::string &Classics::getMajorActor() const
 {
   return majorActor;
+}
+
+int Classics::getHash() const
+{
+  return Hashable::getHash(majorActor) + Hashable::getHash(date.getYear()) + Hashable::getHash(date.getMonth());
+}
+
+ostream &operator<<(ostream &outStream, const Classics &rhs)
+{
+  outStream << "Classics"
+            << ", " << rhs.getCurrentStock() << "/" << rhs.getTotalStock() << ", " << rhs.getDirector() << ", "
+            << rhs.getTitle() << ", " << rhs.getMajorActor() << " " << rhs.getDate().getMonth() << " " << rhs.getDate().getYear();
 }

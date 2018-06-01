@@ -8,14 +8,17 @@
 #ifndef _HASHTREE_H
 #define _HASHTREE_H
 
-#include "./binary-search-tree/binarysearchtree.h"
+#include <memory>
+#include <list>
+#include "item.h"
 
 /**
  * @brief Hash tree
  * 
  * @tparam Type Item type for hash tree container.
  */
-template <class Type>
+
+template <class KeyType, class ItemType>
 class HashTree
 {
 public:
@@ -30,7 +33,7 @@ public:
    * 
    * @param capacity 
    */
-  HashTree(const size_t& capacity);
+  HashTree(const std::size_t &capacity);
 
   /**
    * @brief Destroy the Hash Tree object
@@ -45,7 +48,7 @@ public:
    * @return true if insertion succeeds.
    * @return false if insertion failed.
    */
-  virtual bool add(const Type &item);
+  virtual bool add(const KeyType &key, ItemType value);
 
   /**
    * @brief Remove an item from hash tree.
@@ -54,58 +57,52 @@ public:
    * @return true if removal succeeds.
    * @return false if removal failed.
    */
-  virtual bool remove(const Type &item);
+  virtual bool remove(const KeyType &key);
 
   /**
    * @brief Find an item in hash tree.
    * 
    * @param item 
    * @return true 
-   * @return false 
    */
-  virtual Type* contain(const Type &item);
+  virtual ItemType contains(const KeyType &key);
+
+  ItemType operator()(const KeyType& key);
+  // 8552743944-4812
+  /**
+   * @brief Get the Capacity object
+   * 
+   * @return int 
+   */
+  int getCapacity() const;
 
   /**
-   * @brief Optimize the hash tree for better performance.
+   * @brief Get the Structure object
    * 
+   * @return std::list<std::pair<KeyType, ItemType>>* 
    */
-  virtual void optimizeHashTree();
+  std::list<std::pair<KeyType, ItemType>>* getStructure() const;
 
 private:
-
   /**
-   * @brief An array of binary tree.
-   * hashTable = new 
+   * @brief An array of vector.
+   * hashTable = new
+   * sperate chaining
    */
-  BinarySearchTree<Type>* hashTable;
+  std::list<std::pair<KeyType, ItemType>> *hashTable;
 
   /**
    * @brief Total Items are stored in the hash tree.
-   * 
    */
-  size_t totalItems;
+  std::size_t totalItems;
 
   /**
    * @brief Maximum capaticy of the hash table.
-   * 
    */
-  size_t hashTableCapacity;
+  std::size_t hashTableCapacity;
 
-  /**
-   * @brief Rebalancing each tree in the hash table.
-   * 
-   */
-  void rebalanceTree();
-
-  /**
-   * @brief Get the Hash Index of a item
-   * 
-   * @param item An Item
-   * @return const size_t An index in hash table.
-   */
-  const size_t getHashIndex(const Type& item);
-
-  const size_t DEFAULT_CAPACITY = 50;
+  // Default size for hashtable
+  const std::size_t DEFAULT_CAPACITY = 50;
 };
 
 #endif // _HASHTREE_H
