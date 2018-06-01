@@ -12,9 +12,20 @@ using namespace std;
 class Classics : public Video
 {
 public:
-    friend ostream &operator<<(ostream &outStream, const Classics &rhs );
+
+  /**
+   * @brief 
+   * 
+   * @param outStream 
+   * @param rhs 
+   * @return ostream& 
+   */
+  friend ostream &operator<<(ostream &outStream, const Classics &rhs );
+  //
   Classics() { videoType = VideoType::CLASSICS; };
+  //
   virtual ~Classics();
+
 
   Classics(const std::string &title, int stock, const std::string &director);
   Classics(const std::string &title, int stock, const std::string &director, const std::string &majorActor, const Date &date);
