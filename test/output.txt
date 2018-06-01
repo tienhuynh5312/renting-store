@@ -9,7 +9,7 @@ SOURCE="../source"
 #g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 test.cpp ../source/*.cpp
 
 # Generate program for use
-g++ -std=c++14 -Wall -Wextra -Wfatal-errors ../source/*.cpp -o main.out
+g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 ../source/*.cpp -o main.out
 
 # delete all compiled objects.
 rm -rf *.o
