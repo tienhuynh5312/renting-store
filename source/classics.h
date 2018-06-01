@@ -55,20 +55,18 @@ public:
   Classics(const std::string &title, int stock, const std::string &director, const std::string &majorActor, const Date &date);
 
   /**
-   * @brief
-   * 
-   * @param 
+   * @brief Returns string refrence to major actor for this classics movie.
    * 
    * @return String reference to major actor
    */
   const std::string &getMajorActor() const;
 
   /**
-   * @brief
+   * @brief Operator overload for classics object. Compares this object to parameter object.
    * 
-   * @param
+   * @param rhs Classics object to compare this object too
    * 
-   * @return
+   * @return returns true if this is less than argument
    */
   bool operator<(const Classics &rhs) const;
 
