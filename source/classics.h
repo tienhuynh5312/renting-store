@@ -64,27 +64,25 @@ public:
   /**
    * @brief Operator overload for classics object. Compares this object to parameter object.
    * 
-   * @param rhs Classics object to compare this object too
+   * @param rhs Classics object to compare this object to
    * 
-   * @return returns true if this is less than argument
+   * @return true if this is less than argument
    */
   bool operator<(const Classics &rhs) const;
 
   /**
-   * @brief
+   * @brief Operator overload for classics object. Compares this object to parameter object.
    * 
-   * @param
+   * @param rhs Classics object to compare this object to
    * 
-   * @return
+   * @return true if this object is euql to argument
    */
   bool operator==(const Classics &rhs) const;
 
   /**
-   * @brief
+   * @brief Returns hash for this object.
    * 
-   * @param
-   * 
-   * @return
+   * @return int that represent hash of this object.
    */
   int getHash() const;
 
