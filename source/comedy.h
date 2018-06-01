@@ -26,26 +26,26 @@ public:
     /**
      * @brief Construct a new Comedy object
      * 
-     * @param title 
-     * @param stock 
-     * @param director 
+     * @param title Title if comedy video
+     * @param stock Initial stock of comedy video
+     * @param director Director of comedy video
      */
     Comedy(const std::string &title, int stock, const std::string &director);
     /**
      * @brief Construct a new Comedy object
      * 
-     * @param title 
-     * @param stock 
-     * @param director 
-     * @param date 
+     * @param title Title if comedy video
+     * @param stock Initial stock of comedy video
+     * @param director director Director of comedy video
+     * @param date Date of comedy video
      */
     Comedy(const std::string &title, int stock, const std::string &director, const Date& date);
 
     /**
      * @brief Arithematic operation
      * 
-     * @param rhs 
-     * @return true 
+     * @param rhs Comedy object to compare this object to
+     * @return true if this is less than argument
      * @return false 
      */
     bool operator<(const Comedy & rhs) const;
@@ -59,11 +59,11 @@ public:
      */
     int getHash() const;
     /**
-     * @brief output stream
+     * @brief Operator overload that returns an ostream object reference.
      * 
-     * @param outStream 
-     * @param rhs 
-     * @return ostream& 
+     * @param outStream ostream reference to be returned
+     * @param rhs Classics object to send to ostream
+     * @return ostream& containing Comedy object data
      */
     friend ostream &operator<<(ostream &outStream, const Comedy &rhs );
 };
