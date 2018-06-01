@@ -13,45 +13,43 @@ private:
 public:
   /**
    * @brief Construct a new Date object
-   * 
    */
   Date();
   /**
    * @brief Destroy the Date object
-   * 
    */
   virtual ~Date();
   /**
    * @brief Construct a new Date object
    * 
-   * @param date 
+   * @param date date object to copy
    */
   Date(const Date &date);
   /**
    * @brief Construct a new Date object
    * 
-   * @param y 
-   * @param m 
-   * @param d 
+   * @param y year
+   * @param m month
+   * @param d day
    */
   Date(const int &y, const int &m = 1, const int &d = 1);
 
   /**
    * @brief Get the Year object
    * 
-   * @return int 
+   * @return year
    */
   int getYear() const;
   /**
    * @brief Get the Month object
    * 
-   * @return int 
+   * @return month
    */
   int getMonth() const;
   /**
    * @brief Get the Day object
    * 
-   * @return int 
+   * @return day
    */
   int getDay() const;
 
@@ -77,17 +75,62 @@ public:
   /**
    * @brief Arithematic operation to compare dates
    * 
-   * @param rhs 
-   * @return true 
-   * @return false 
+   * @param rhs object to compare this object 
+   * @return true if this is less than argument
+   * @return false if this is greater than or equal to argument
    */
   bool operator<(const Date &rhs) const;
+
+  /**
+   * @brief Arithematic operation to compare dates
+   * 
+   * @param rhs object to compare this object 
+   * @return true if this is less than argument
+   * @return false if this is greater than or equal to argument
+   */
   bool operator>(const Date &rhs) const;
+
+  /**
+   * @brief Arithematic operation to compare dates
+   * 
+   * @param rhs object to compare this object 
+   * @return true if this is equal to this object
+   * @return false if this is not equal to this object
+   */
   bool operator==(const Date &rhs) const;
+
+  /**
+   * @brief Arithematic operation to compare dates
+   * 
+   * @param rhs object to compare this object 
+   * @return true if this is not equal to this object
+   * @return false if this is equal to this object
+   */
   bool operator!=(const Date &rhs) const;
+
+  /**
+   * @brief Arithematic operation to compare dates
+   * 
+   * @param rhs object to compare this object 
+   * @return true if this is less than or equal to argument
+   * @return false if this is greater than argument
+   */
   bool operator<=(const Date &rhs) const;
+
+  /**
+   * @brief Arithematic operation to compare dates
+   * 
+   * @param rhs object to compare this object 
+   * @return true if this is greater than or equal to argument
+   * @return false if this is less than argument
+   */
   bool operator>=(const Date &rhs) const;
 
+  /**
+   * @brief Construct a copy Date object
+   * 
+   * @param rhs object to be copied 
+   */
   Date &operator=(const Date &date);
 };
 
