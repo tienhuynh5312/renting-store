@@ -83,6 +83,12 @@ std::list<std::pair<KeyType, ItemType>>* HashTree<KeyType, ItemType>::getStructu
   return this->hashTable;
 }
 
+template <class KeyType, class ItemType>
+ItemType HashTree<KeyType, ItemType>::operator()(const KeyType& key)
+{
+  return contains(key);
+}
+
 template class HashTree<int, std::shared_ptr<Customer>>;
 template class HashTree<int, std::shared_ptr<Transaction>>;
 template class HashTree<int, std::shared_ptr<Video>>;

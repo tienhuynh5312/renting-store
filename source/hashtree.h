@@ -67,8 +67,20 @@ public:
    */
   virtual ItemType contains(const KeyType &key);
 
+  ItemType operator()(const KeyType& key);
+  // 8552743944-4812
+  /**
+   * @brief Get the Capacity object
+   * 
+   * @return int 
+   */
   int getCapacity() const;
 
+  /**
+   * @brief Get the Structure object
+   * 
+   * @return std::list<std::pair<KeyType, ItemType>>* 
+   */
   std::list<std::pair<KeyType, ItemType>>* getStructure() const;
 
 private:
