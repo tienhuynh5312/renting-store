@@ -68,9 +68,9 @@ public:
   /**
    * @brief output stream
    * 
-   * @param outStream 
-   * @param rhs 
-   * @return ostream& 
+   * @param outStream stream to be returned
+   * @param rhs object to get data of
+   * @return ostream& ostream reference
    */
   friend ostream &operator<<(ostream &outStream, const Drama &rhs);
 };
