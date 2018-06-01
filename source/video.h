@@ -133,7 +133,7 @@ public:
   virtual void setDate(const Date &date);
 
   /**
-   * @brief 
+   * @brief Arithematic operation
    * 
    * @return true if this video is less than argument
    * @return false if this video is greater than or equal to arguement
