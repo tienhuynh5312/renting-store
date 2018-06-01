@@ -27,39 +27,39 @@ public:
   virtual ~ProcessText(){};
 
   /**
-   * @brief 
+   * @brief Reads file from path
    * 
-   * @param fileType 
-   * @param path 
+   * @param fileType type of file to be read
+   * @param path path to file
    */
   void readFile(const FileType& fileType, const std::string &path);
 
 protected:
 
   /**
-   * @brief 
+   * @brief reads transactions 
    * 
    * @param command 
-   * @return true 
-   * @return false 
+   * @return true if sucessfully read
+   * @return false if not sucessfully read
    */
   virtual bool readTransaction(const std::string &command) = 0;
 
   /**
-   * @brief 
+   * @brief reads customers
    * 
    * @param command 
-   * @return true 
-   * @return false 
+   * @return true if sucessfully read
+   * @return false if not sucessfully read
    */
   virtual bool readCustomer(const std::string &command) = 0;
   
   /**
-   * @brief 
+   * @brief reads videos
    * 
    * @param command 
-   * @return true 
-   * @return false 
+   * @return true if sucessfully read
+   * @return false if not sucessfully read
    */
   virtual bool readVideo(const std::string &command) = 0;
 };
