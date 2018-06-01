@@ -130,23 +130,16 @@ public:
   virtual void setDate(const Date &date);
 
   /**
-   * @brief 
+   * @brief Arithematic operation
    * 
    * @return true 
    * @return false 
    */
   virtual bool operator<(const Video &) const;
-
-  /**
-   * @brief 
-   * 
-   * @return true 
-   * @return false 
-   */
   virtual bool operator==(const Video &) const;
 
   /**
-   * @brief 
+   * @brief output stream
    * 
    * @param out 
    * @param rhs 
