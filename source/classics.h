@@ -23,21 +23,15 @@ public:
    */
   friend ostream &operator<<(ostream &outStream, const Classics &rhs);
   
+  
   /**
    * @brief Construct a classics object with the videoType set to classic.
    */
-
-  /**
-   * @brief 
-   * 
-   * @param outStream 
-   * @param rhs 
-   * @return ostream& 
-   */
-  friend ostream &operator<<(ostream &outStream, const Classics &rhs );
-  //
   Classics() { videoType = VideoType::CLASSICS; };
-  //
+  
+  /**
+   * @brief Destructor for classics object.
+   */
   virtual ~Classics();
 
   /**
