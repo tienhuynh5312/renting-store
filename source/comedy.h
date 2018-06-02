@@ -1,4 +1,7 @@
-
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
 
 #ifndef comedy_h
 #define comedy_h

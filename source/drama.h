@@ -1,3 +1,7 @@
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
 
 #ifndef drama_h
 #define drama_h

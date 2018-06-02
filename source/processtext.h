@@ -1,3 +1,8 @@
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
+
 #pragma once
 #ifndef _PROCESSTEXT_H
 #define _PROCESSTEXT_H

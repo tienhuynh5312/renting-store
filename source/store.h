@@ -1,3 +1,8 @@
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
+
 #ifndef _STORE_H
 #define _STORE_H
 
