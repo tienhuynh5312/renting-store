@@ -1,4 +1,7 @@
-
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
 
 #ifndef date_h
 #define date_h
