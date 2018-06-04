@@ -6,8 +6,8 @@ class Borrowable
 private:
   int itemBorrowed; // number of items is borrowed
   int totalSupply; // total inital stock supply that this item has.
-  bool borrowable;
   double borrowingPrice;
+  bool borrowable;
 
 public:
 

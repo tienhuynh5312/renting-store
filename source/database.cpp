@@ -22,27 +22,30 @@ bool Database::readTransaction(const std::string &command)
   if (option == "B")
   {
     // Borrow
-    borrowVideo(command);
+    return borrowVideo(command);
   }
   else if (option == "R")
   {
     // Return
-    returnVideo(command);
+    return returnVideo(command);
   }
   else if (option == "I")
   {
     // Display Inventory
     displayInventory();
+    return true;
   }
   else if (option == "H")
   {
     // Display item of a customer
     displayCustomerInfo(command);
+    return true;
   }
   else
   {
     // Invalid option. Notify
     std::cout << "[Error] Invalid Command: " << option << std::endl;
+    return false;
   }
 }
 
@@ -248,6 +251,8 @@ bool Database::getClassics(const std::string &command)
         return it->borrowItem();
       else if (match.str(1) == "R")
         return it->returnItem();
+      else
+        return false;
     }
     else
       return false;
@@ -276,6 +281,8 @@ bool Database::getComedy(const std::string &command)
         return it->borrowItem();
       else if (match.str(1) == "R")
         return it->returnItem();
+      else
+        return false;
     }
     else
       return false;
@@ -302,6 +309,8 @@ bool Database::getDrama(const std::string &command)
         return it->borrowItem();
       else if (match.str(1) == "R")
         return it->returnItem();
+      else
+        return false;
     }
     else
       return false;

@@ -12,7 +12,8 @@ enum class VideoType
 {
   CLASSICS,
   COMEDY,
-  DRAMA
+  DRAMA,
+  INVALID
 };
 
 class Video : public Item

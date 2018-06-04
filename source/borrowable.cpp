@@ -1,7 +1,7 @@
 #include "borrowable.h"
 
 Borrowable::Borrowable() : itemBorrowed(0), totalSupply(10),
-                           borrowable(true), borrowingPrice(0.0)
+                           borrowingPrice(0.0), borrowable(true)
 {
 }
 

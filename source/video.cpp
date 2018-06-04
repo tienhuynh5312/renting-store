@@ -35,6 +35,8 @@ std::string Video::getVideoType() const
     return "Comedy";
   else if (videoType == VideoType::DRAMA)
     return "Drama";
+  else
+    return "";
 }
 VideoType Video::getVideoType(const std::string &rhs)
 {
@@ -44,6 +46,8 @@ VideoType Video::getVideoType(const std::string &rhs)
     return VideoType::CLASSICS;
   else if (rhs == "Drama")
     return VideoType::DRAMA;
+  else
+    return VideoType::INVALID;
 }
 const std::string &Video::getTitle() const
 {
@@ -79,12 +83,20 @@ bool Video::operator<(const Video &rhs) const
 {
   if (rhs.videoType != videoType)
     return false;
+  else
+  {
+    return title < rhs.title && director < rhs.director;
+  }
 }
 
 bool Video::operator==(const Video &rhs) const
 {
   if (rhs.videoType != videoType)
     return false;
+  else
+  {
+    return title == rhs.title && director == rhs.director;
+  }
 }
 
 int Video::getHash() const
@@ -92,7 +104,7 @@ int Video::getHash() const
   return Hashable::getHash(title) + Hashable::getHash(title) + Hashable::getHash(director) + Hashable::getHash(date.getYear());
 }
 
-std::ostream& operator<<(std::ostream& out, const Video& rhs)
+std::ostream &operator<<(std::ostream &out, const Video &rhs)
 {
   return out << rhs.getVideoType() << ", " << rhs.getCurrentStock() << "/" << rhs.getTotalStock() << ", " << rhs.getDirector() << ", " << rhs.getTitle() << ", " << rhs.getDate().getYear();
 }

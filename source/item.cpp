@@ -48,6 +48,8 @@ std::string Item::getItemType() const
 {
   if (itemType == ItemType::VIDEO)
     return "Video";
+  else
+    return "";
 }
 
 int Item::getTotalItems() const
@@ -59,6 +61,8 @@ ItemType Item::getItemType(const std::string &itemType)
 {
   if (itemType == "Video")
     return ItemType::VIDEO;
+  else
+    return ItemType::INVALID;
 }
 
 /*

@@ -8,7 +8,8 @@
 
 enum class ItemType
 {
-  VIDEO
+  VIDEO,
+  INVALID
 };
 
 class Item : public Borrowable, public Hashable
