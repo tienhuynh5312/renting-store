@@ -1,10 +1,8 @@
 /**
- * @brief Hash tree
- * 
- * @file Hashtree.h
- * @author Tien Huynh
- * @date 2018-05-18
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
  */
+
 #ifndef _HASHTREE_H
 #define _HASHTREE_H
 
