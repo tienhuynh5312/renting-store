@@ -1,13 +1,6 @@
 #!/bin/bash
 SOURCE="../source"
 
-
-# Uncomment this when need Store class
-# g++ -c -o store.o ${SOURCE}/store.cpp
-
-# Test drive
-#g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 test.cpp ../source/*.cpp
-
 # Generate program for use
 g++ -std=c++14 -Wall -Wextra -Wfatal-errors -O3 ../source/*.cpp -o main.out
 
