@@ -1,10 +1,8 @@
 /**
- * @brief Person header file
- * 
- * @file person.h
- * @author Tien Huynh
- * @date 2018-05-17
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
  */
+
 #ifndef _Person_H
 #define _Person_H
 

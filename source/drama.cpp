@@ -25,7 +25,7 @@ bool Drama::operator<(const Drama &rhs) const
   {
     if (getTitle() < rhs.getTitle())
       return true;
-    else if (getTitle() > rhs.getTitle())
+    else
       return false;
   }
 }
@@ -36,13 +36,12 @@ int Drama::getHash() const
 }
 bool Drama::operator==(const Drama &rhs) const
 {
-
   return (this->getDirector() == rhs.getDirector() &&
           this->getTitle() == rhs.getTitle());
 }
 
 ostream &operator<<(ostream &outStream, const Drama &rhs)
 {
-  outStream << rhs.getItemType() << "" << rhs.getTotalStock() << "" << rhs.getDirector() << ""
+  return outStream << rhs.getItemType() << "" << rhs.getTotalStock() << "" << rhs.getDirector() << ""
             << rhs.getTitle() << "" << rhs.getDate().getYear();
 }

@@ -1,3 +1,8 @@
+/**
+ * Project#4 : Inventory Tracking System
+ * Tien Huynh, Erik Jose Maldonado, Byunggeun Park (BK)
+ */
+
 #ifndef ITEM_H
 #define ITEM_H
 
@@ -8,7 +13,8 @@
 
 enum class ItemType
 {
-  VIDEO
+  VIDEO,
+  INVALID
 };
 
 class Item : public Borrowable, public Hashable
